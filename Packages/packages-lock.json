@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.easyar.sense": {
-      "version": "file:C:/Users/Den-O/Desktop/com.easyar.sense-4.5.0+2500.38660d14.tgz",
+      "version": "file:D:/easyar/com.easyar.sense-4.5.0+2500.38660d14.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
