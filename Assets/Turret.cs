@@ -18,10 +18,14 @@ public class Turret : MonoBehaviour
     private float fireRate;
     private float fireRateDelta;
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("target"); 
+        target = other.gameObject.transform;
+    }
     void Start()
     {
-       target = FindObjectOfType<enemy>().transform;
+        
        currectGun = GetComponentInChildren<BulletShoot>();
        currectGun.GetRateOfFire = 0.1f;
        fireRate = currectGun.GetRateOfFire;
@@ -31,6 +35,7 @@ public class Turret : MonoBehaviour
     
     void Update()
     {
+        if(target!=null){
         Vector3 enemyPos = new Vector3(target.position.x,target.position.y,target.position.z);
                     //out of range check
         if(Vector3.Distance(transform.position, enemyPos)>range)
@@ -49,6 +54,8 @@ public class Turret : MonoBehaviour
         {
         currectGun.Fire();
         fireRateDelta = fireRate;
+        
+        }
         }
     }
     void OnDrawGizmosSelected()//show turret range

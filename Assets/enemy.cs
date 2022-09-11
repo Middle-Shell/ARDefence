@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
+    public Vector3 dir;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(dir*Time.deltaTime);
     }
 }

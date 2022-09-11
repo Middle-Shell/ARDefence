@@ -37,9 +37,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Turret.cs" />
+     <Compile Include="Assets\_Game\Projectiles\BulletSpeed.cs" />
      <Compile Include="Assets\enemy.cs" />
      <Compile Include="Assets\_Game\Projectiles\BulletShoot.cs" />
-     <Compile Include="Assets\_Game\Projectiles\BulletSpeed.cs" />
     <Reference Include="UnityEngine">
         <HintPath>F:\Unity\2021.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
