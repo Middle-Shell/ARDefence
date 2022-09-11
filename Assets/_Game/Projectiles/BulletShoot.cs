@@ -15,7 +15,7 @@ public class BulletShoot : MonoBehaviour
     }
     void DestroyObjectDelayed()
     {
-        Destroy( Instantiate(projectile),0.5f);
+        Destroy( Instantiate(projectile,transform.position,transform.rotation),0.5f);
     }
    public void Fire()
    {
