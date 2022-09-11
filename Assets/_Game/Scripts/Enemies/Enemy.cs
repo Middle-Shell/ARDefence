@@ -10,7 +10,8 @@ namespace easyar
     public class Enemy : UnityEngine.MonoBehaviour
     {
         [SerializeField] private Transform _target = null;
-
+        private byte _motheLand = 0;
+        
         [SerializeField] private int _hp = 100;
         //[SerializeField] private float _speed = 2f;
         
@@ -29,7 +30,8 @@ namespace easyar
             _hp -= damageValue;
             if (_hp <= 0)
             {
-                StopAllCoroutines();   
+                StopAllCoroutines();
+                _hp = 100;
                 EventCrossroad.OnUnitDied(this.gameObject);
             }
         }

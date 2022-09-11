@@ -9,6 +9,7 @@ namespace _Game.Scripts.Enemies
 {
     public class StandartBarrack : MonoBehaviour, IBaseBarrack
     {
+        [SerializeField] private byte idLand = 0;
         public  List<GameObject> _solders = new List<GameObject>();
         
         [SerializeField] private float _perSecends = 1f;
@@ -50,6 +51,7 @@ namespace _Game.Scripts.Enemies
 
         private void ReturnUnit(GameObject unit)
         {
+            
             unit.transform.position = _storeUnitPosition.transform.position;
         }
         IEnumerator Spawn()
