@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 using easyar;
 
 namespace _Game.Scripts.Enemies
@@ -9,9 +10,19 @@ namespace _Game.Scripts.Enemies
     public class StandartBarrack : MonoBehaviour, IBaseBarrack
     {
         public  List<GameObject> _solders = new List<GameObject>();
+        
         [SerializeField] private float _perSecends = 1f;
+        
         [SerializeField] private GameObject _target;
-        [SerializeField] private GameObject _startPosition;// = Vector3.zero;
+        
+        [SerializeField] private GameObject _startPosition; // = Vector3.zero;
+        [SerializeField] private GameObject _storeUnitPosition; // vector3
+
+        public void Start()
+        {
+            EventCrossroad.UnitDiedEvent += AddSolder;
+            EventCrossroad.UnitDiedEvent += ReturnUnit;
+        }
 
         public void OnEnable()
         {
@@ -36,17 +47,19 @@ namespace _Game.Scripts.Enemies
             _solders.RemoveAt(0);
             Debug.Log("Solder came out");
         }
+
+        private void ReturnUnit(GameObject unit)
+        {
+            unit.transform.position = _storeUnitPosition.transform.position;
+        }
         IEnumerator Spawn()
         {
             while (true)
             {
                 Debug.Log("Start");
                 yield return new WaitForSeconds(_perSecends);
-                Debug.Log("time");
-                Debug.Log(_target.activeSelf);
-                if (_target.activeSelf)
+                if (_target.activeSelf && _solders.Any())
                 {
-                    Debug.Log("Target");
                     _solders[0].transform.position = _startPosition.transform.position;
                     _solders[0].GetComponent<Enemy>().Target = _target.transform;
                     _solders[0].GetComponent<Enemy>().Go();

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using _Game.Scripts;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace easyar
@@ -8,26 +10,37 @@ namespace easyar
     public class Enemy : UnityEngine.MonoBehaviour
     {
         [SerializeField] private Transform _target = null;
+
+        [SerializeField] private int _hp = 100;
         //[SerializeField] private float _speed = 2f;
         
-        //когда они приходят на место или умирают, надо их возвращать, подумать насчёт event'ов
         public Transform Target
         {
-            set => _target = value;
-        }
+            set => _target = value; //подумать над передачей таргета, когда цели нет
+        } 
 
         public void Go()
         {
             StartCoroutine(Walk());
         }
 
+        public void ApplyDamage(int damageValue)
+        {
+            _hp -= damageValue;
+            if (_hp <= 0)
+            {
+                StopAllCoroutines();   
+                EventCrossroad.OnUnitDied(this.gameObject);
+            }
+        }
+        
         IEnumerator Walk()
         {
             while (true)
             {
-                Debug.Log("Go");
                 yield return new WaitForSeconds(0.1f);
                 transform.position = Vector3.Lerp (transform.position, _target.position, 0.1f);
+                if (Math.Abs(transform.position.x - _target.position.x) < 0.2) ApplyDamage(100); //тестовое
             }
         }
     }

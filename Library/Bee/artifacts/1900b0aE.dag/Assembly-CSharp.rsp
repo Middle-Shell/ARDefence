@@ -373,6 +373,7 @@
 "Assets/_Game/Scripts/AttackBuildings/BaseBarrack.cs"
 "Assets/_Game/Scripts/AttackBuildings/StandartBarrack.cs"
 "Assets/_Game/Scripts/Enemies/Enemy.cs"
+"Assets/_Game/Scripts/Services/EventCrossroad.cs"
 -langversion:9.0
 
 /deterministic
