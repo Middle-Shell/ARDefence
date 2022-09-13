@@ -33,6 +33,7 @@ namespace easyar
                 StopAllCoroutines();
                 _hp = 100;
                 EventCrossroad.OnUnitDied(this.gameObject);
+                Debug.Log("Died");
             }
         }
         
@@ -40,9 +41,9 @@ namespace easyar
         {
             while (true)
             {
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.25f);
                 transform.position = Vector3.Lerp (transform.position, _target.position, 0.1f);
-                if (Math.Abs(transform.position.x - _target.position.x) < 0.2) ApplyDamage(100); //тестовое
+                if (Vector3.Distance(transform.position, _target.position) < 0.1) ApplyDamage(100); //тестовое
             }
         }
     }

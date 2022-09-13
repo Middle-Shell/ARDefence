@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 264211267}
   - component: {fileID: 264211266}
   - component: {fileID: 264211271}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 608648456}
   - component: {fileID: 608648455}
   - component: {fileID: 608648460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 628329980}
   - component: {fileID: 628329979}
   - component: {fileID: 628329984}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 903549322}
   - component: {fileID: 903549321}
   - component: {fileID: 903549326}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 943795041}
   - component: {fileID: 943795040}
   - component: {fileID: 943795045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1212,7 @@ GameObject:
   - component: {fileID: 1454348607}
   - component: {fileID: 1454348606}
   - component: {fileID: 1454348611}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1511,6 +1511,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1172920675}
     m_Modifications:
+    - target: {fileID: 6737339784700008625, guid: b57948be9dcaf0745b6fce4c5b92297b, type: 3}
+      propertyPath: m_Radius
+      value: 1.457705
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737339784700008625, guid: b57948be9dcaf0745b6fce4c5b92297b, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737339784700008625, guid: b57948be9dcaf0745b6fce4c5b92297b, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6737339785514771972, guid: b57948be9dcaf0745b6fce4c5b92297b, type: 3}
       propertyPath: m_Name
       value: Aturret
@@ -1574,7 +1586,7 @@ GameObject:
   - component: {fileID: 1683545323}
   - component: {fileID: 1683545322}
   - component: {fileID: 1683545326}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1977,7 +1989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2123067269
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using easyar;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
@@ -17,6 +18,8 @@ public class Turret : MonoBehaviour
     //-------------------------------------------
     private float _fireRate;
     private float _fireRateDelta;
+
+    [SerializeField] private int damageValue = 25;
 
 
     private void OnTriggerEnter(Collider other)
@@ -58,6 +61,8 @@ public class Turret : MonoBehaviour
                                                                                               //out of _range check
             if (Vector3.Distance(transform.position, _enemyPos) > _range.radius)
                 StopAllCoroutines();
+            //Возможно стоит перенести старт корутины в TriggerEnter и заLoppить корутину - while true
+            //А там где проверка на target=null воткнуть остановку корутины
         }
 
     }
@@ -66,11 +71,12 @@ public class Turret : MonoBehaviour
 
     IEnumerator TargetTracker()
     {
+        yield return new WaitForSeconds(0.2f);
         //Rotate turret
         _targetDirection = _enemyPos - transform.position;
         _turretRoatationStep = _turretRoatationSpeed * Time.deltaTime;
         _newLookDirection = Vector3.RotateTowards(transform.forward, _targetDirection, _turretRoatationStep, 0f);
-        Debug.DrawRay(transform.position, _newLookDirection, Color.red);
+        
         transform.rotation = Quaternion.LookRotation(_newLookDirection);
 
         _fireRateDelta -= Time.deltaTime;
@@ -78,9 +84,14 @@ public class Turret : MonoBehaviour
         {
             _currectGun.Fire();
             _fireRateDelta = _fireRate;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _range.radius, 1 << 6))
+                //6 слой-enemy, что бы игнорировать все столкновения кроме как с 6
+            {
+                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+                hit.collider.gameObject.GetComponent<Enemy>().ApplyDamage(damageValue);
+            }
         }
-        yield return new WaitForSeconds(0.1f);
-
     }
 
 
