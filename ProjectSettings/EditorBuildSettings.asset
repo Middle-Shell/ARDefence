@@ -9,4 +9,4 @@ EditorBuildSettings:
     path: Assets/_Game/Scenes/Developer.unity
     guid: f54f55e9082b05f4c881fc7e7c85a1b6
   m_configObjects:
-    EasyAR.Settings: {fileID: 11400000, guid: 5d5e89f807ddf384cbd70d2ccee7bd69, type: 2}
+    EasyAR.Settings: {fileID: 11400000, guid: 92cc1cb69e07d314d8c2d16bc69051dc, type: 2}
