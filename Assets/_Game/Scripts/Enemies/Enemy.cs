@@ -15,7 +15,7 @@ namespace easyar
         [SerializeField] private int _hp = 100;
         [SerializeField] private float _speed = 2f;
 
-        [SerializeField] private TMP_InputField _text;
+        [SerializeField] private Slider _text;
         
         public Transform Target
         {
@@ -44,8 +44,8 @@ namespace easyar
             while (true)
             {
                 yield return new WaitForSeconds(0.05f);
-                Debug.Log(_text.text);
-                transform.position = Vector3.MoveTowards(transform.position, _target.position, ((float)Convert.ToDouble(_text.text)) * Time.deltaTime); //Vector3.Lerp (transform.position, _target.position, 0.1f);
+                Debug.Log(_text.value);
+                transform.position = Vector3.MoveTowards(transform.position, _target.position, (float)_text.value * Time.deltaTime); //Vector3.Lerp (transform.position, _target.position, 0.1f);
                 if (Vector3.Distance(transform.position, _target.position) < 0.01) ApplyDamage(100); //тестовое
             }
         }
