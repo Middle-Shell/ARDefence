@@ -48,6 +48,7 @@
      <Compile Include="Assets\_Game\Scripts\BulletSpeed.cs" />
      <Compile Include="Assets\_Game\Scripts\BulletShoot.cs" />
      <Compile Include="Assets\_Game\Scripts\Services\EventCrossroad.cs" />
+     <Compile Include="Assets\TryToDetectSyrface.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
