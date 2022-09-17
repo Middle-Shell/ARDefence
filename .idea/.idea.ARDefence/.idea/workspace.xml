@@ -12,6 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/TouchController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -82,6 +83,7 @@
       <workItem from="1663180521420" duration="2420000" />
       <workItem from="1663267479552" duration="2315000" />
       <workItem from="1663361833853" duration="2153000" />
+      <workItem from="1663438285279" duration="1231000" />
     </task>
     <servers />
   </component>
