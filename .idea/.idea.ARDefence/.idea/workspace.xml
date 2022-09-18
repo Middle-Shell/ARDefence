@@ -4,13 +4,7 @@
     <list default="true" id="f31b4852-9862-4c8c-b452-2e4c302c71d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ARDefence/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ARDefence/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scenes/Developer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scenes/Developer.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Turret.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Turret.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/TouchController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -84,6 +79,11 @@
       <workItem from="1662904499366" duration="506000" />
       <workItem from="1663057828689" duration="2144000" />
       <workItem from="1663074555061" duration="3668000" />
+      <workItem from="1663168101612" duration="915000" />
+      <workItem from="1663180521420" duration="2420000" />
+      <workItem from="1663267479552" duration="2315000" />
+      <workItem from="1663361833853" duration="2153000" />
+      <workItem from="1663438285279" duration="1231000" />
     </task>
     <servers />
   </component>
