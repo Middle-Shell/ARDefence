@@ -3,8 +3,39 @@
   <component name="ChangeListManager">
     <list default="true" id="f31b4852-9862-4c8c-b452-2e4c302c71d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ARDefence/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ARDefence/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARDefence.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ARDefence.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Materials/EasyAR.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Materials/EasyAR.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scenes/SurfaceTracking_ImageTarget.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scenes/SurfaceTracking_ImageTarget.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scenes/SurfaceTracking_ImageTargetSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scenes/SurfaceTracking_ImageTargetSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/EasyAR.Sense.Sample.SurfaceTracking_ImageTarget.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/EasyAR.Sense.Sample.SurfaceTracking_ImageTarget.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/TouchController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/TouchController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/UIController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/UIController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Textures/EasyAR.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Textures/EasyAR.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scenes/Developer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scenes/Developer.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Search.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Search.settings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,8 +43,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Samples/EasyAR Sense/4.5.0+2500.38660d14/WorldSensing SurfaceTracking_ImageTarget/Scripts/TouchController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Game/Scripts/Services/NavigationBaker.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -84,6 +115,8 @@
       <workItem from="1663267479552" duration="2315000" />
       <workItem from="1663361833853" duration="2153000" />
       <workItem from="1663438285279" duration="1231000" />
+      <workItem from="1663523812339" duration="2133000" />
+      <workItem from="1663598792285" duration="4595000" />
     </task>
     <servers />
   </component>
