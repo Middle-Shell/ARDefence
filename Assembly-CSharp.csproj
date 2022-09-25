@@ -50,6 +50,7 @@
      <Compile Include="Assets\_Game\Scripts\BulletShoot.cs" />
      <Compile Include="Assets\_Game\Scripts\Services\EventCrossroad.cs" />
      <Compile Include="Assets\_Game\Scripts\Services\NavigationBaker.cs" />
+     <Compile Include="Assets\_Game\Scripts\Services\PlaneDetecter.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -751,6 +752,10 @@
     <ProjectReference Include="NavMeshComponents.csproj">
       <Project>{681ca1f2-16ff-0c46-b0da-9bdbb76b43b7}</Project>
       <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="EasyAR.Sense.Sample.SurfaceTracking_ImageTarget.csproj">
+      <Project>{216dfa2b-d1e0-55d4-9465-5ea27298ee8f}</Project>
+      <Name>EasyAR.Sense.Sample.SurfaceTracking_ImageTarget</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{d66c84b9-1f72-67a2-beb2-7d1ed09f4e01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyAR.Sense.Sample.SurfaceTracking_ImageTarget", "EasyAR.Sense.Sample.SurfaceTracking_ImageTarget.csproj", "{216dfa2b-d1e0-55d4-9465-5ea27298ee8f}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMeshComponents.csproj", "{681ca1f2-16ff-0c46-b0da-9bdbb76b43b7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponentsEditor", "NavMeshComponentsEditor.csproj", "{08b2a2c5-d228-252b-7a11-30f1a1a1497e}"
@@ -14,6 +16,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{d66c84b9-1f72-67a2-beb2-7d1ed09f4e01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{d66c84b9-1f72-67a2-beb2-7d1ed09f4e01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216dfa2b-d1e0-55d4-9465-5ea27298ee8f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216dfa2b-d1e0-55d4-9465-5ea27298ee8f}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{681ca1f2-16ff-0c46-b0da-9bdbb76b43b7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{681ca1f2-16ff-0c46-b0da-9bdbb76b43b7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08b2a2c5-d228-252b-7a11-30f1a1a1497e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
