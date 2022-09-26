@@ -25,7 +25,7 @@ namespace _Game.Scripts.Services
         
         public static void OnPlaneSleep(GameObject plane)
         {
-            PlaneAwakeEvent?.Invoke(plane);
+            PlaneSleepEvent?.Invoke(plane);
         }
     }
 }

@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using _Game.Scripts.Services;
+using System.Threading;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ActiveSender : MonoBehaviour
 {
     // Start is called before the first frame update
+    
     void Start()
     {
-        
+         
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
-        
+
+        EventCrossroad.OnPlaneAwake(this.gameObject);
+       
+    }
+
+    void OnDisable()
+    {
+       EventCrossroad.OnPlaneSleep(this.gameObject);   
     }
 }

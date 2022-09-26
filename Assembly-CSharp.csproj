@@ -43,9 +43,12 @@
      <Compile Include="Assets\_Game\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\_Game\Scripts\BulletSpeed.cs" />
      <Compile Include="Assets\_Game\Scripts\BulletShoot.cs" />
-     <Compile Include="Assets\_Game\Scripts\Services\EventCrossroad.cs" />
-     <Compile Include="Assets\_Game\Scripts\CubeFreeze.cs" />
      <Compile Include="Assets\_Game\Scripts\ActiveSender.cs" />
+     <Compile Include="Assets\_Game\Scripts\PlaneOut.cs" />
+     <Compile Include="Assets\_Game\Scripts\Services\PlaneDetecter.cs" />
+     <Compile Include="Assets\_Game\Scripts\Services\EventCrossroad.cs" />
+     <Compile Include="Assets\_Game\Scripts\Services\NavigationBaker.cs" />
+     <Compile Include="Assets\_Game\Scripts\CubeFreeze.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -738,6 +741,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{08b2a2c5-d228-252b-7a11-30f1a1a1497e}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{681ca1f2-16ff-0c46-b0da-9bdbb76b43b7}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
