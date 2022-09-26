@@ -34,10 +34,10 @@ public class PlaneDetecter : MonoBehaviour
             
             if (_planesList[i].name == plane.name)
             {
-                
+                DestroyClone(i);
                 _planesList.RemoveAt(i);
                 
-                 if (i == 0)
+                if (i == 0)
                     CreateClone();
                 return;
             }
@@ -46,13 +46,12 @@ public class PlaneDetecter : MonoBehaviour
 
     private void CreateClone()
     {
-        _gamePlane.transform.SetParent(null,true);
+        //_gamePlane.transform.SetParent(null,true);
         _gamePlaneCOPY = Instantiate(_gamePlane);//создание копии
-        _gamePlaneCOPY.transform.SetParent(_planesList[0].transform,true);// перенос в tracker
-                
+        _gamePlaneCOPY.transform.SetParent(_planesList[0].transform);
     }
-    private void DestroyClone()
+    private void DestroyClone(int k)
     {
-        Destroy(_planesList[0].transform.GetChild(1).gameObject);
+        Destroy(_planesList[k].transform.GetChild(0).gameObject);
     }
 }
