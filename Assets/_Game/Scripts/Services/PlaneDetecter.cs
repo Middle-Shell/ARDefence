@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using _Game.Scripts.Services;
 using UnityEngine;
-using System.Threading;
 
 public class PlaneDetecter : MonoBehaviour
 {
@@ -23,32 +20,40 @@ public class PlaneDetecter : MonoBehaviour
 
         _planesList.Add(plane);
         if(_planesList.Count==1)
-            CreateClone();
+            CreateClone(_planesList[0].transform);
     }
 
     private void ExitPlane(GameObject plane)
     {
-        
-        for (int i = 0; i < _planesList.Count; ++i)
+        int a = _planesList.Count;
+        for (int i = 0; i < a; ++i)
         {
-            
             if (_planesList[i].name == plane.name)
             {
-                DestroyClone(i);
-                _planesList.RemoveAt(i);
-                
                 if (i == 0)
-                    CreateClone();
+                {
+                    DestroyClone(i);
+                    _planesList.RemoveAt(i);
+                    if (a>=2)
+                        CreateClone(_planesList[i].transform);
+                    
+                    return;
+                }
+
+                _planesList.RemoveAt(i);
+                                
                 return;
             }
         }
     }
 
-    private void CreateClone()
+    private void CreateClone(Transform plane)
     {
         //_gamePlane.transform.SetParent(null,true);
         _gamePlaneCOPY = Instantiate(_gamePlane);//создание копии
-        _gamePlaneCOPY.transform.SetParent(_planesList[0].transform);
+        _gamePlaneCOPY.transform.SetParent(plane, true);
+        _gamePlaneCOPY.transform.position = _planesList[0].transform.position;
+        _gamePlaneCOPY.transform.Rotate(-90f, 0, 0);
     }
     private void DestroyClone(int k)
     {

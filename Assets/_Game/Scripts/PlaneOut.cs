@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlaneOut : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void OnDisable()
+    private void Update()
     {
-        this.gameObject.SetActive(true);
-        this.gameObject.transform.SetParent(null,true);
-
+        this.transform.Rotate(-360f, 0, 0);
     }
 }

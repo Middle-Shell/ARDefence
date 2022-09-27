@@ -48,11 +48,11 @@
      <Compile Include="Assets\_Game\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\_Game\Scripts\BulletSpeed.cs" />
      <Compile Include="Assets\_Game\Scripts\BulletShoot.cs" />
+     <Compile Include="Assets\_Game\Scripts\ActiveSender.cs" />
+     <Compile Include="Assets\_Game\Scripts\PlaneOut.cs" />
      <Compile Include="Assets\_Game\Scripts\Services\PlaneDetecter.cs" />
      <Compile Include="Assets\_Game\Scripts\Services\EventCrossroad.cs" />
      <Compile Include="Assets\_Game\Scripts\Services\NavigationBaker.cs" />
-     <Compile Include="Assets\_Game\Scripts\ActiveSender.cs" />
-     <Compile Include="Assets\_Game\Scripts\PlaneOut.cs" />
      <Compile Include="Assets\_Game\Scripts\CubeFreeze.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

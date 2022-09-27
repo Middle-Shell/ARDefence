@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using _Game.Scripts.Services;
-using System.Threading;
 
 public class ActiveSender : MonoBehaviour
 {
