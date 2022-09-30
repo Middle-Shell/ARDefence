@@ -3,19 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f31b4852-9862-4c8c-b452-2e4c302c71d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ARDefence/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ARDefence/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TryToDetectSyrface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TryToDetectSyrface.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Game/Scenes/Developer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scenes/Developer.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scenes/Developer/NavMesh-Plane.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scenes/Developer/NavMesh-Plane.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ActiveSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/ActiveSender.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/AttackBuildings/BaseBarrack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/AttackBuildings/BaseBarrack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/AttackBuildings/StandartBarrack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/AttackBuildings/StandartBarrack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/BulletShoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/BulletShoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/BulletSpeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/BulletSpeed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/CubeFreeze.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/CubeFreeze.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Enemies/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/PlaneOut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/PlaneOut.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Services/NavigationBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Services/NavigationBaker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/Services/PlaneDetecter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Scripts/Services/PlaneDetecter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
@@ -66,10 +55,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="13412">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="13412" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -112,6 +101,9 @@
       <workItem from="1664129472617" duration="1985000" />
       <workItem from="1664131491974" duration="5303000" />
       <workItem from="1664278408441" duration="10577000" />
+      <workItem from="1664379756575" duration="1517000" />
+      <workItem from="1664391001201" duration="7493000" />
+      <workItem from="1664481024020" duration="1106000" />
     </task>
     <servers />
   </component>

@@ -51,9 +51,10 @@ public class PlaneDetecter : MonoBehaviour
     {
         //_gamePlane.transform.SetParent(null,true);
         _gamePlaneCOPY = Instantiate(_gamePlane);//создание копии
+        _gamePlaneCOPY.transform.GetChild(0).gameObject.AddComponent<PlaneOut>();
         _gamePlaneCOPY.transform.SetParent(plane, true);
         _gamePlaneCOPY.transform.position = _planesList[0].transform.position;
-        _gamePlaneCOPY.transform.Rotate(-90f, 0, 0);
+        //_gamePlaneCOPY.transform.Rotate(-90f, 0, 0);
     }
     private void DestroyClone(int k)
     {
