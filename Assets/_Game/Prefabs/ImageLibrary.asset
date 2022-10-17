@@ -26,14 +26,4 @@ MonoBehaviour:
     m_Size: {x: 0.5, y: 0.774571}
     m_SpecifySize: 1
     m_Name: BarracksCard
-    m_Texture: {fileID: 2800000, guid: 31fb3d2ce92539147ac0e6e21028c7f8, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 4885570702057855128
-      m_GuidHigh: 4720074071481934489
-    m_SerializedTextureGuid:
-      m_GuidLow: 9981142853260803543
-      m_GuidHigh: 3921116662759640569
-    m_Size: {x: 0.5, y: 0.7777778}
-    m_SpecifySize: 1
-    m_Name: BastilleCard
-    m_Texture: {fileID: 2800000, guid: ed09fdd7248a8a84f94da76ed49a6a36, type: 3}
+    m_Texture: {fileID: 0}
