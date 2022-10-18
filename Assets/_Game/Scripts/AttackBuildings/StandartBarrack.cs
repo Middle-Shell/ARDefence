@@ -22,12 +22,11 @@ namespace _Game.Scripts.Enemies
         public void Start()
         {
             EventCrossroad.UnitDiedEvent += AddSolder;
-            EventCrossroad.UnitDiedEvent += ReturnUnit;
+            EventCrossroad.UnitDiedEvent += ReturnUnit;//подпись на события
         }
 
         public void OnEnable()
         {
-            Debug.Log("Awake");
             //AddSolder(sol);
             StartCoroutine(Spawn());
         }

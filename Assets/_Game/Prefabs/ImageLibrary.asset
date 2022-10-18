@@ -27,3 +27,23 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: BarracksCard
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5178919080115890657
+      m_GuidHigh: 586649494314291082
+    m_SerializedTextureGuid:
+      m_GuidLow: 8945470039293950161
+      m_GuidHigh: 13768357424476638025
+    m_Size: {x: 0.5, y: 0.774571}
+    m_SpecifySize: 1
+    m_Name: Turret
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5498412101847853951
+      m_GuidHigh: 18387046673965451138
+    m_SerializedTextureGuid:
+      m_GuidLow: 9981142853260803543
+      m_GuidHigh: 3921116662759640569
+    m_Size: {x: 0.5, y: 0.774571}
+    m_SpecifySize: 1
+    m_Name: BastilleCard
+    m_Texture: {fileID: 0}

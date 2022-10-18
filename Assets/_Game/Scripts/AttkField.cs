@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AttkField : MonoBehaviour
 {
+    //Перейти в Position Tracker
+    //проверка областей не эффективна т.к. карты находятся в каких то ебенях
+    //перенести смену цвета в Position Tracker
     public Material[] materials;
     [SerializeField] 
     bool Defzone;//proverka chasti zony (1-Attk zone,0-Deff zone)
@@ -11,7 +14,6 @@ public class AttkField : MonoBehaviour
     {
         if (Defzone)
         {
-            Debug.Log("hey");
             if (other.tag == "Deff")
             {
                 other.gameObject.GetComponent<MeshRenderer>().material = materials[0];
@@ -28,9 +30,9 @@ public class AttkField : MonoBehaviour
         }
 
     }
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
         other.gameObject.GetComponent<MeshRenderer>().material = materials[1];
 
-    }
+    }*/
 }

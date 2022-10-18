@@ -351,6 +351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2435593071883820083}
+  - component: {fileID: 2667405061407537421}
   m_Layer: 0
   m_Name: Target (Barracks)
   m_TagString: Attk
@@ -367,10 +368,28 @@ Transform:
   m_GameObject: {fileID: 8313431391197229796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7459963861326697891}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2667405061407537421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313431391197229796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0310450b5ae84a4a9d8d7135746c0d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idLand: 0
+  _solders: []
+  _perSecends: 1
+  _target: {fileID: 0}
+  _startPosition: {fileID: 3373118538542790361}
+  _storeUnitPosition: {fileID: 8313431391197229796}

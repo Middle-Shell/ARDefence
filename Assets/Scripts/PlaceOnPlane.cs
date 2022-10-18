@@ -5,6 +5,7 @@ using UnityEngine.XR.ARSubsystems;
 
 namespace UnityEngine.XR.ARFoundation.Samples
 {
+    //удалить нахер, это из примеров
     /// <summary>
     /// Listens for touch events and performs an AR raycast from the screen touch point.
     /// AR raycasts will only hit detected trackables like feature points and planes.

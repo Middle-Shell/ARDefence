@@ -20,12 +20,12 @@ namespace _Game.Scripts.Services
 
         public static void OnPlaneAwake(GameObject plane)
         {
-            PlaneAwakeEvent?.Invoke(plane);
+            PlaneAwakeEvent?.Invoke(plane);//вероятно удалить
         }
         
         public static void OnPlaneSleep(GameObject plane)
         {
-            PlaneSleepEvent?.Invoke(plane);
+            PlaneSleepEvent?.Invoke(plane);//вероятно удалить
         }
     }
 }
