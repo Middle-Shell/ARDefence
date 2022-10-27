@@ -1,52 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6737339784635219158
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6737339784635219159}
-  - component: {fileID: 6737339784635219152}
-  m_Layer: 0
-  m_Name: GunPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6737339784635219159
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6737339784635219158}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.506, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6737339785917633714}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6737339784635219152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6737339784635219158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ecbd62ea4825aa4dae719cbe16ca5e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 5435856785633717006, guid: 00debeb536943e543be55a995deb881e,
-    type: 3}
-  rateOfFire: 15
 --- !u!1 &6737339784700008630
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6737339784700008631}
   - component: {fileID: 6737339784700008625}
-  - component: {fileID: 6737339784700008624}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -96,20 +48,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6737339784700008624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6737339784700008630}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82c7d0477bf1d874a916dc98e5f9e305, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  damageValue: 25
 --- !u!1 &6737339785506812549
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +173,7 @@ GameObject:
   - component: {fileID: 6737339785514771973}
   - component: {fileID: 7085925218085884704}
   m_Layer: 0
-  m_Name: Aturret 1
+  m_Name: Card_Aturret
   m_TagString: Deff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,12 +204,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6737339785514771972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b0359b5553c3543a3b2ab0c58c922b, type: 3}
+  m_Script: {fileID: 11500000, guid: f9e9aade0a5aeb649a3fe00f0af6abfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _plane: {fileID: 0}
   _selfPrefab: {fileID: 6737339785514771972, guid: b57948be9dcaf0745b6fce4c5b92297b,
     type: 3}
+  materials:
+  - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
+  - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}
   mesh: {fileID: 6737339786245154159}
 --- !u!1 &6737339785579497671
 GameObject:
@@ -449,7 +390,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6737339785588333518}
-  - {fileID: 6737339784635219159}
   m_Father: {fileID: 6737339785579497664}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}

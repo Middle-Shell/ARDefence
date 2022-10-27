@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 2435593071883820083}
   - component: {fileID: 2667405061407537421}
   m_Layer: 0
-  m_Name: Target (Barracks)
+  m_Name: Plane_Barrack
   m_TagString: Attk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

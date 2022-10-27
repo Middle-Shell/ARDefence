@@ -24,7 +24,7 @@ public class Turret : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
+        //Debug.Log(other);
 
         // создать очередь на расстрел
         if (other.tag != "Deff") { 

@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 2435593071883820083}
   - component: {fileID: 5070037977455314597}
   m_Layer: 0
-  m_Name: Target (Barracks) 1
+  m_Name: Card_Barrack
   m_TagString: Attk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,7 +368,7 @@ Transform:
   m_GameObject: {fileID: 8313431391197229796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7459963861326697891}
@@ -384,9 +384,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8313431391197229796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b0359b5553c3543a3b2ab0c58c922b, type: 3}
+  m_Script: {fileID: 11500000, guid: f9e9aade0a5aeb649a3fe00f0af6abfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _plane: {fileID: 0}
   _selfPrefab: {fileID: 8313431391197229796, guid: 7bff480631af01a45b38f52c9ae2f834,
     type: 3}
+  materials:
+  - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
+  - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}
+  mesh: {fileID: 6262382348345648347}

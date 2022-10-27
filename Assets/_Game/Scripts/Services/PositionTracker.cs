@@ -7,13 +7,14 @@ using UnityEngine.XR.ARSubsystems;
 //[RequireComponent(typeof(ARRaycastManager))]
 public class PositionTracker : MonoBehaviour
 {
-    float _Tx, _Tz;
+    private float _Tx, _Tz;
     [SerializeField] private GameObject _plane;
     [SerializeField] private GameObject _selfPrefab;
     private Vector3 _oldPosition = Vector3.positiveInfinity;
-    public Material[] materials;
-
-    public MeshRenderer mesh;
+    
+    [SerializeField] private Material[] materials;
+    
+    public MeshRenderer mesh;//тестовое
 
     void Start()
     {
@@ -63,54 +64,64 @@ public class PositionTracker : MonoBehaviour
 
             _Tx = this.transform.position.x;
             _Tz = this.transform.position.z;
-            foreach (Transform child in GetComponentsInChildren<Transform>())//берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
+            foreach (Transform child in
+                     GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
 
                 if (child.tag == "Deff")
                 {
-                    if (_Tx < 0 && _Tx> -0.25f)//сначала проверяем по Х потом уже по Z
+                    try
                     {
-                        if (_Tz > 0 && _Tz<0.25f)
+                        if (_Tx < 0 && _Tx > -0.25f) //сначала проверяем по Х потом уже по Z
                         {
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                            StopCoroutine(Find());
-                        }
-                        else
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                        if(_Tz < 0 && _Tz > -0.25f)
-                        {
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                            StartCoroutine(Find());
+                            if (_Tz > 0 && _Tz < 0.25f)
+                            {
+                                child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                                StopCoroutine(Find());
+                            }
+                            else
+                                child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+
+                            if (_Tz < 0 && _Tz > -0.25f)
+                            {
+                                child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                                StartCoroutine(Find());
+                            }
+                            else
+                                child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+
                         }
                         else
                             child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
 
-                    }
-                    else
-                        child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                    if (_Tx > 0 && _Tx< 0.25f)
-                    {
-                        if (_Tz < 0 && _Tz > -0.25f)
+                        if (_Tx > 0 && _Tx < 0.25f)
                         {
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                            StopCoroutine(Find());
-                        }
-                        else
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                            if (_Tz < 0 && _Tz > -0.25f)
+                            {
+                                child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                                StopCoroutine(Find());
+                            }
+                            else
+                                child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
 
-                        if(_Tz > 0 && _Tz < 0.25f)
-                        {
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                            StartCoroutine(Find());
+                            if (_Tz > 0 && _Tz < 0.25f)
+                            {
+                                child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                                StartCoroutine(Find());
+                            }
+                            else
+                                child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
                         }
-                        else
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+
+                        //проверяем возможность строительства
+                        //StartCoroutine(Find());
                     }
-                    
-                    //проверяем возможность строительства
-                    //StartCoroutine(Find());
+                    catch
+                    {
+                        print("меша нет");
+                    }
                 }
-                //----------------------------------------------------------------------------------------------------
+            //----------------------------------------------------------------------------------------------------
                 //if(child.tag =="Attk")
                 //{
                 //    if (_Tx > 0)//сначала проверяем по Х потом уже по Z
