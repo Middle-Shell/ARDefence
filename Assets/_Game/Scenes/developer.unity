@@ -1664,9 +1664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfd229fdca11ae4897e7c44191e4ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPoint: {fileID: 5725875896574399644, guid: a48454c6bdd972b4aa6406a282c22622,
-    type: 3}
-  _trackerPoint: {fileID: 0}
 --- !u!4 &494778631
 Transform:
   m_ObjectHideFlags: 0
