@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class Return : MonoBehaviour
 {
     [SerializeField] private GameObject _setUp;
-    [SerializeField] private GameObject _tracker;
+    [SerializeField] private GameObject _disable;
 
     public void Back()
     {
         _setUp.SetActive(true);
-        _tracker.SetActive(false);//переключение меню
+        _disable.SetActive(false);//переключение меню
     }
 }
 

@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6737339784635219158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ecbd62ea4825aa4dae719cbe16ca5e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 19c23c7e54c5a7f40a5c3e19123f9ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5435856785633717006, guid: 00debeb536943e543be55a995deb881e,
     type: 3}
-  rateOfFire: 15
+  rateOfFire: 1
 --- !u!1 &6737339784700008630
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6737339784700008630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82c7d0477bf1d874a916dc98e5f9e305, type: 3}
+  m_Script: {fileID: 11500000, guid: 206651315755e534891be70082f9b392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
