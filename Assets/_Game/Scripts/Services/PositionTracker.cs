@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-//[RequireComponent(typeof(ARRaycastManager))]
 public class PositionTracker : MonoBehaviour
 {
     private float _Tx, _Tz;
@@ -14,19 +13,19 @@ public class PositionTracker : MonoBehaviour
     
     [SerializeField] private Material[] materials;
     
-    public MeshRenderer mesh;//тестовое
+    public bool _isWorking;//тестовое
 
     void Start()
     {
-        
         _plane = GameObject.FindWithTag("Anchor");//поиск plane
        
         StartCoroutine(MaterialChanger());
     }
+    
     IEnumerator Find()
     {
             
-        print("check");
+        //print("start check");
         if (Math.Abs(this.transform.position.x - _oldPosition.x) < 0.02 &&
             Math.Abs(this.transform.position.z - _oldPosition.z) < 0.02)
             //если объект не менял свою позицию больше чем на Х(0,02)(защита от случайной тряски)
@@ -38,10 +37,14 @@ public class PositionTracker : MonoBehaviour
                 GetInstallPositionOnAxis(_oldPosition.z)), 
                 _plane.transform.rotation);
             inst.gameObject.transform.SetParent(_plane.transform);
-            //print(inst.transform.position);
-            mesh.enabled = false;
-            yield return new WaitForSeconds(5f); 
+
+            _isWorking = false;
+            SetInvisible(true);
+            //StopAllCoroutines();
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(CheckState());
             StopCoroutine(Find());
+            yield break;
         }
            
         yield return new WaitForSeconds(2f);//проверка на изменение позиции 2сек
@@ -53,15 +56,14 @@ public class PositionTracker : MonoBehaviour
     {
         while (true)
         {
-            if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState == TrackingState.Limited)
+            if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState 
+                == TrackingState.Limited)
             {
-                //делаем весь объект прозрачным
-                mesh.enabled = false;
-                yield return new WaitForSeconds(0.5f);
-                continue;
+                StartCoroutine(CheckState());
+                SetInvisible(true);
+                StopCoroutine(MaterialChanger());
+                yield break;
             }
-
-            mesh.enabled = true;
             _Tx = this.transform.position.x;
             _Tz = this.transform.position.z;
             foreach (Transform child in
@@ -72,7 +74,6 @@ public class PositionTracker : MonoBehaviour
                 {
                     try
                     {
-                        print(_Tx + " " + _Tz);
                         child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
                         if (_Tx < 0 && _Tx > -0.25f) //сначала проверяем по Х потом уже по Z
                         {
@@ -83,7 +84,11 @@ public class PositionTracker : MonoBehaviour
                             else if (_Tz < 0 && _Tz > -0.25f)//left down
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                                StartCoroutine(Find());
+                                if (!_isWorking)
+                                {
+                                    _isWorking = true;
+                                    StartCoroutine(Find());
+                                }
                             }
                         }
                         else if (_Tx > 0 && _Tx < 0.25f)
@@ -95,7 +100,11 @@ public class PositionTracker : MonoBehaviour
                             else if (_Tz > 0 && _Tz < 0.25f)//right up
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                                StartCoroutine(Find());
+                                if (!_isWorking)
+                                {
+                                    _isWorking = true;
+                                    StartCoroutine(Find());
+                                }
                             }
                         }
                     }
@@ -128,8 +137,7 @@ public class PositionTracker : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
-
-            private float GetInstallPositionOnAxis(float coor)
+    private float GetInstallPositionOnAxis(float coor)
     {
         if ((coor % 0.12f) != 0) //0.12 - расстояние между центрами установленных объектов
             //игровая локация бъётся на кусочки по 0,12(12см)х0,12
@@ -137,4 +145,35 @@ public class PositionTracker : MonoBehaviour
             coor += coor > -1f ? (0.12f - coor % 0.12f) : -coor % 0.12f;
         return coor;
     }
+
+    private void SetInvisible(bool invisible)
+    {
+        try
+        {
+            foreach (MeshRenderer childMesh in GetComponentsInChildren<MeshRenderer>())
+            {
+                childMesh.enabled = !invisible;
+            }
+        }
+        catch
+        {
+            print("no mesh");
+        }
+        
+    }
+    private IEnumerator CheckState()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(.2f);
+            if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState
+                == TrackingState.Tracking)
+            {
+                SetInvisible(false);
+                StartCoroutine(MaterialChanger());
+                StopCoroutine(CheckState());
+            }
+        }
+    }
+    
 }
