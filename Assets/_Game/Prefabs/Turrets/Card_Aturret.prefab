@@ -213,7 +213,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
   - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}
-  mesh: {fileID: 6737339786245154159}
+  _isWorking: 0
 --- !u!1 &6737339785579497671
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 612482277935380912}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Deff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 8100296774194976595}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Deff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 3316514802348508821}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Attk
+  m_TagString: Deff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 5070037977455314597}
   m_Layer: 0
   m_Name: Card_Barrack
-  m_TagString: Attk
+  m_TagString: Deff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,9 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plane: {fileID: 0}
-  _selfPrefab: {fileID: 8313431391197229796, guid: 7bff480631af01a45b38f52c9ae2f834,
+  _selfPrefab: {fileID: 4283592004498416376, guid: 7bff480631af01a45b38f52c9ae2f834,
     type: 3}
   materials:
   - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
   - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}
-  mesh: {fileID: 6262382348345648347}

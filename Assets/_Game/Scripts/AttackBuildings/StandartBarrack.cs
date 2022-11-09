@@ -9,35 +9,32 @@ namespace _Game.Scripts.Enemies
 {
     public class StandartBarrack : MonoBehaviour, IBaseBarrack
     {
-        [SerializeField] private byte idLand = 0;
-        public  List<GameObject> _solders = new List<GameObject>();
+        [SerializeField] private int _idBarrack = 0;
+        [SerializeField] private List<GameObject> _solders = new List<GameObject>();
         
-        [SerializeField] private float _perSecends = 1f;
+        [SerializeField] private float _timeoutSpawn = 1f;
         
-        [SerializeField] private GameObject _target;
+        private GameObject _target;
         
-        [SerializeField] private GameObject _startPosition; // = Vector3.zero;
-        [SerializeField] private GameObject _storeUnitPosition; // vector3
+        [SerializeField] private Transform _startPosition;
+        [SerializeField] private Transform _storeUnitPosition; // vector3
 
         public void Start()
         {
-            EventCrossroad.UnitDiedEvent += AddSolder;
+            //EventCrossroad.UnitDiedEvent += AddSolder;
             EventCrossroad.UnitDiedEvent += ReturnUnit;//подпись на события
-        }
-
-        public void OnEnable()
-        {
-            //AddSolder(sol);
+            
+            _target = GameObject.FindWithTag("EnemyBastille");
+            foreach (var solder in _solders)
+            {
+                solder.GetComponent<Enemy>().IdMasterBarrack = _idBarrack;
+            }
             StartCoroutine(Spawn());
-        }
-
-        private void OnDisable()
-        {
-            StopAllCoroutines();
         }
 
         public void AddSolder(GameObject solder)
         {
+            solder.GetComponent<Enemy>().IdMasterBarrack = _idBarrack;
             _solders.Add(solder);
             Debug.Log("Solder added");
         }
@@ -50,18 +47,21 @@ namespace _Game.Scripts.Enemies
 
         private void ReturnUnit(GameObject unit)
         {
-            
-            unit.transform.position = _storeUnitPosition.transform.position;
+            if (unit.GetComponent<Enemy>().IdMasterBarrack == _idBarrack)
+            {
+                unit.transform.position = _storeUnitPosition.position;
+                AddSolder(unit);
+            }
         }
         IEnumerator Spawn()
         {
             while (true)
             {
                 Debug.Log("Start");
-                yield return new WaitForSeconds(_perSecends);
+                yield return new WaitForSeconds(_timeoutSpawn);
                 if (_target.activeSelf && _solders.Any())
                 {
-                    _solders[0].transform.position = _startPosition.transform.position;
+                    _solders[0].transform.position = _startPosition.position;
                     _solders[0].GetComponent<Enemy>().Target = _target.transform;
                     _solders[0].GetComponent<Enemy>().Go();
                     ExitSolder();

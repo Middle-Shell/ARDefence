@@ -13,7 +13,9 @@ public class PositionTracker : MonoBehaviour
     
     [SerializeField] private Material[] materials;
     
-    public bool _isWorking;//тестовое
+    private bool _isFindWorking;
+    private bool _isChangerWorking;
+    private bool _isCheckWorking;
 
     void Start()
     {
@@ -68,11 +70,12 @@ public class PositionTracker : MonoBehaviour
                      GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
 
-                if (child.tag == "Deff")
-                {
+                if (child.tag == "Deff")//лишняя проверка, если master объект имеет тег дефф, то логично, что все его части к нему относятся
+                {//упразднить проверку в отдельную функцию чек(тег)
                     try
                     {
-                        print(transform.position);
+                        print("local" + this.transform.position);
+                        print("Global" + transform.TransformPoint(this.transform.position));
                         child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
                         if (_Tx < 0 && _Tx > -0.25f) //сначала проверяем по Х потом уже по Z
                         {
@@ -83,9 +86,9 @@ public class PositionTracker : MonoBehaviour
                             else if (_Tz < 0 && _Tz > -0.25f)//left down
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                                if (!_isWorking)
+                                if (!_isFindWorking)
                                 {
-                                    _isWorking = true;
+                                    _isFindWorking = true;
                                     StartCoroutine(Find());
                                 }
                             }
@@ -99,9 +102,9 @@ public class PositionTracker : MonoBehaviour
                             else if (_Tz > 0 && _Tz < 0.25f)//right up
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                                if (!_isWorking)
+                                if (!_isFindWorking)
                                 {
-                                    _isWorking = true;
+                                    _isFindWorking = true;
                                     StartCoroutine(Find());
                                 }
                             }
@@ -169,13 +172,13 @@ public class PositionTracker : MonoBehaviour
         StopCoroutine(MaterialChanger());
         while (true)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
             if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState
                 == TrackingState.Tracking)
             {
                 print("tracking");
                 SetInvisible(false);
-                _isWorking = false;
+                _isFindWorking = false;
                 StartCoroutine(MaterialChanger());
                 yield break;
             }
