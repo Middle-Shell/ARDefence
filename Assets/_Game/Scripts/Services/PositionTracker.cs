@@ -82,7 +82,7 @@ public class PositionTracker : MonoBehaviour
                             if (_Tz > 0 && _Tz < 0.25f)//left up
                             {
                                 StopCoroutine(Find());
-                            }
+                            } 
                             else if (_Tz < 0 && _Tz > -0.25f)//left down
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];

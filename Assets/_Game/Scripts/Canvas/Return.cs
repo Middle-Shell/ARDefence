@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Return : MonoBehaviour
@@ -12,6 +13,11 @@ public class Return : MonoBehaviour
     {
         _setUp.SetActive(true);
         _disable.SetActive(false);//переключение меню
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 
