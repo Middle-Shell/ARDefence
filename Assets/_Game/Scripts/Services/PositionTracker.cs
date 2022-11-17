@@ -6,12 +6,12 @@ using UnityEngine.XR.ARSubsystems;
 
 public class PositionTracker : MonoBehaviour
 {
-    private float _Tx, _Tz;
     [SerializeField] private GameObject _plane;
     [SerializeField] private GameObject _selfPrefab;
-    private Vector3 _oldPosition = Vector3.positiveInfinity;
-    
     [SerializeField] private Material[] materials;
+    
+    private float _Tx, _Tz;
+    private Vector3 _oldPosition = Vector3.positiveInfinity;
     
     private bool _isFindWorking;
     private bool _isChangerWorking;
@@ -55,6 +55,10 @@ public class PositionTracker : MonoBehaviour
 
     IEnumerator MaterialChanger()
     {
+        if(_isChangerWorking) //проверка на экземпляры корутины
+            yield break;
+        
+        _isChangerWorking = true;
         while (true)
         {
             if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState 
@@ -170,6 +174,7 @@ public class PositionTracker : MonoBehaviour
     private IEnumerator CheckState()
     {
         StopCoroutine(MaterialChanger());
+        _isChangerWorking = false;
         while (true)
         {
             yield return new WaitForSeconds(0.4f);
