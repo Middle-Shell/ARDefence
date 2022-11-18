@@ -6,25 +6,24 @@ using UnityEngine.XR.ARSubsystems;
 
 public class PositionTracker : MonoBehaviour
 {
-    [SerializeField] private GameObject _plane;
+    [SerializeField] private GameObject _plane,_camera;
     [SerializeField] private GameObject _selfPrefab;
     [SerializeField] private Material[] materials;
     
-    private float _Tx, _Tz;
+    private float _localX, _localZ,_globalX,_globalZ;
     private Vector3 _oldPosition = Vector3.positiveInfinity;
     
-    private bool _isFindWorking;
-    private bool _isChangerWorking;
-    private bool _isCheckWorking;
+    private bool _isFindWorking,_isChangerWorking,_isCheckWorking;
+   
 
     void Start()
     {
         _plane = GameObject.FindWithTag("Anchor");//поиск plane
-       
+        _camera = GameObject.FindGameObjectWithTag("MainCamera");
         StartCoroutine(MaterialChanger());
     }
     
-    IEnumerator Find()
+    IEnumerator Build()
     {
         while (true)
         {
@@ -55,98 +54,114 @@ public class PositionTracker : MonoBehaviour
 
     IEnumerator MaterialChanger()
     {
-        if(_isChangerWorking) //проверка на экземпляры корутины
+        if (_isChangerWorking) //проверка на экземпляры корутины
             yield break;
-        
+
         _isChangerWorking = true;
         while (true)
         {
-            if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState 
+            if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState
                 == TrackingState.Limited)
             {
                 StartCoroutine(CheckState());
                 SetInvisible(true);
                 yield break;
             }
-            _Tx = this.transform.position.x;
-            _Tz = this.transform.position.z;
+
+            _localX = this.transform.position.x;
+            _localZ = this.transform.position.z;
+            _globalX = _camera.transform.position.x;
+            _globalZ = _camera.transform.position.z; print(_camera.name+"------------------------------------------------------");
             foreach (Transform child in
                      GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
 
-                if (child.tag == "Deff")//лишняя проверка, если master объект имеет тег дефф, то логично, что все его части к нему относятся
-                {//упразднить проверку в отдельную функцию чек(тег)
-                    try
+                if (child.tag ==
+                    "Deff" ) //лишняя проверка, если master объект имеет тег дефф, то логично, что все его части к нему относятся
+                {
+                    //упразднить проверку в отдельную функцию чек(тег)1
+                    /*try
+                    {*/
+                    
+                    child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                    
+                    if ((_localX < 0.02 || _localX > -0.02) &&
+                        (_localZ < 0.02 ||
+                         _localZ > -0.02) && _globalZ < 0) //сначала проверяем взод в радиус погрешности над камерой(дроппод)
                     {
-                        print("local" + this.transform.position);
-                        print("Global" + transform.TransformPoint(this.transform.position));
-                        child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                        if (_Tx < 0 && _Tx > -0.25f) //сначала проверяем по Х потом уже по Z
+                        /*if (_localZ > 0 && _localZ < 0.25f)//left up
+                        {*/
+                        child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                        if (!_isFindWorking)
                         {
-                            if (_Tz > 0 && _Tz < 0.25f)//left up
-                            {
-                                StopCoroutine(Find());
-                            } 
-                            else if (_Tz < 0 && _Tz > -0.25f)//left down
-                            {
-                                child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                                if (!_isFindWorking)
-                                {
-                                    _isFindWorking = true;
-                                    StartCoroutine(Find());
-                                }
-                            }
+                            _isFindWorking = true;
+                            StartCoroutine(Build());
                         }
-                        else if (_Tx > 0 && _Tx < 0.25f)
+                        // StopCoroutine(Build());
+                        /*} 
+                        else if (_localZ < 0 && _localZ > -0.25f)//left down
                         {
-                            if (_Tz < 0 && _Tz > -0.25f)//right down
+                            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                            if (!_isFindWorking)
                             {
-                                StopCoroutine(Find());
+                                _isFindWorking = true;
+                                StartCoroutine(Build());
                             }
-                            else if (_Tz > 0 && _Tz < 0.25f)//right up
-                            {
-                                child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                                if (!_isFindWorking)
-                                {
-                                    _isFindWorking = true;
-                                    StartCoroutine(Find());
-                                }
-                            }
-                        }
-                        else
-                        {
-                            StopCoroutine(Find());
                         }
                     }
-                    catch
+                    else if (_localX > 0 && _localX < 0.25f)
                     {
-                        print("меша нет");
+                        if (_localZ < 0 && _localZ > -0.25f)//right down
+                        {
+                            StopCoroutine(Build());
+                        }
+                        else if (_localZ > 0 && _localZ < 0.25f)//right up
+                        {
+                            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                            if (!_isFindWorking)
+                            {
+                                _isFindWorking = true;
+                                StartCoroutine(Build());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        StopCoroutine(Build());
                     }
                 }
-            //----------------------------------------------------------------------------------------------------
-                //if(child.tag =="Attk")
-                //{
-                //    if (_Tx > 0)//сначала проверяем по Х потом уже по Z
-                //    {
-                //        if (_Tz > 0)
-                //            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                //        else
-                //            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                //    }
-                //    else
-                //    {
-                //        if (_Tz < 0)
-                //            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                //        else
-                //            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                //    }
-                //}
-                
+                catch
+                {
+                    print("меша нет");
+                }
+            }*/
+                        //----------------------------------------------------------------------------------------------------
+                        //if(child.tag =="Attk")
+                        //{
+                        //    if (_Tx > 0)//сначала проверяем по Х потом уже по Z
+                        //    {
+                        //        if (_Tz > 0)
+                        //            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                        //        else
+                        //            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                        //    }
+                        //    else
+                        //    {
+                        //        if (_Tz < 0)
+                        //            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                        //        else
+                        //            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                        //    }
+                        //}
+
+                    }
+
+                    yield return new WaitForSeconds(0.5f);
+                }
             }
-            
-            yield return new WaitForSeconds(0.5f);
         }
     }
+
     private float GetInstallPositionOnAxis(float coor)
     {
         if ((coor % 0.12f) != 0) //0.12 - расстояние между центрами установленных объектов
