@@ -12,7 +12,7 @@ public class PositionTracker : MonoBehaviour
     private Vector3 _oldPosition = Vector3.positiveInfinity;
     
     [SerializeField] private Material[] materials;
-    
+    private const float _PlSegmentWidth = 0.06f;
     public bool _isWorking;//тестовое
 
     void Start()
@@ -142,10 +142,10 @@ public class PositionTracker : MonoBehaviour
     }
     private float GetInstallPositionOnAxis(float coor)
     {
-        if ((coor % 0.12f) != 0) //0.12 - расстояние между центрами установленных объектов
+        if ((coor % _PlSegmentWidth) != 0) //_PlSegmentWidth - расстояние между центрами установленных объектов
             //игровая локация бъётся на кусочки по 0,12(12см)х0,12
             //позиция любой установленного объекта будет кратна 0,12
-            coor += coor > -1f ? (0.12f - coor % 0.12f) : -coor % 0.12f;
+            coor += coor > -1f ? (_PlSegmentWidth - coor % _PlSegmentWidth) : -coor % _PlSegmentWidth;
         return coor;
     }
 
@@ -169,7 +169,7 @@ public class PositionTracker : MonoBehaviour
         StopCoroutine(MaterialChanger());
         while (true)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
             if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState
                 == TrackingState.Tracking)
             {
@@ -177,6 +177,7 @@ public class PositionTracker : MonoBehaviour
                 SetInvisible(false);
                 _isWorking = false;
                 StartCoroutine(MaterialChanger());
+                StopCoroutine(CheckState());
                 yield break;
             }
         }
