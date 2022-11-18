@@ -6,14 +6,16 @@ using UnityEngine.XR.ARSubsystems;
 
 public class PositionTracker : MonoBehaviour
 {
-    private float _Tx, _Tz;
     [SerializeField] private GameObject _plane;
     [SerializeField] private GameObject _selfPrefab;
+    [SerializeField] private Material[] materials;
+    
+    private float _Tx, _Tz;
     private Vector3 _oldPosition = Vector3.positiveInfinity;
     
-    [SerializeField] private Material[] materials;
-    private const float _PlSegmentWidth = 0.06f;
-    public bool _isWorking;//тестовое
+    private bool _isFindWorking;
+    private bool _isChangerWorking;
+    private bool _isCheckWorking;
 
     void Start()
     {
@@ -53,6 +55,10 @@ public class PositionTracker : MonoBehaviour
 
     IEnumerator MaterialChanger()
     {
+        if(_isChangerWorking) //проверка на экземпляры корутины
+            yield break;
+        
+        _isChangerWorking = true;
         while (true)
         {
             if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState 
@@ -68,24 +74,25 @@ public class PositionTracker : MonoBehaviour
                      GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
 
-                if (child.tag == "Deff")
-                {
+                if (child.tag == "Deff")//лишняя проверка, если master объект имеет тег дефф, то логично, что все его части к нему относятся
+                {//упразднить проверку в отдельную функцию чек(тег)
                     try
                     {
-                        print(transform.position);
+                        print("local" + this.transform.position);
+                        print("Global" + transform.TransformPoint(this.transform.position));
                         child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
                         if (_Tx < 0 && _Tx > -0.25f) //сначала проверяем по Х потом уже по Z
                         {
                             if (_Tz > 0 && _Tz < 0.25f)//left up
                             {
                                 StopCoroutine(Find());
-                            }
+                            } 
                             else if (_Tz < 0 && _Tz > -0.25f)//left down
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                                if (!_isWorking)
+                                if (!_isFindWorking)
                                 {
-                                    _isWorking = true;
+                                    _isFindWorking = true;
                                     StartCoroutine(Find());
                                 }
                             }
@@ -99,9 +106,9 @@ public class PositionTracker : MonoBehaviour
                             else if (_Tz > 0 && _Tz < 0.25f)//right up
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                                if (!_isWorking)
+                                if (!_isFindWorking)
                                 {
-                                    _isWorking = true;
+                                    _isFindWorking = true;
                                     StartCoroutine(Find());
                                 }
                             }
@@ -142,10 +149,10 @@ public class PositionTracker : MonoBehaviour
     }
     private float GetInstallPositionOnAxis(float coor)
     {
-        if ((coor % _PlSegmentWidth) != 0) //_PlSegmentWidth - расстояние между центрами установленных объектов
+        if ((coor % 0.12f) != 0) //0.12 - расстояние между центрами установленных объектов
             //игровая локация бъётся на кусочки по 0,12(12см)х0,12
             //позиция любой установленного объекта будет кратна 0,12
-            coor += coor > -1f ? (_PlSegmentWidth - coor % _PlSegmentWidth) : -coor % _PlSegmentWidth;
+            coor += coor > -1f ? (0.12f - coor % 0.12f) : -coor % 0.12f;
         return coor;
     }
 
@@ -167,6 +174,7 @@ public class PositionTracker : MonoBehaviour
     private IEnumerator CheckState()
     {
         StopCoroutine(MaterialChanger());
+        _isChangerWorking = false;
         while (true)
         {
             yield return new WaitForSeconds(0.4f);
@@ -175,9 +183,8 @@ public class PositionTracker : MonoBehaviour
             {
                 print("tracking");
                 SetInvisible(false);
-                _isWorking = false;
+                _isFindWorking = false;
                 StartCoroutine(MaterialChanger());
-                StopCoroutine(CheckState());
                 yield break;
             }
         }

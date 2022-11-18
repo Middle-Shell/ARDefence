@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3061146317852184917}
   - component: {fileID: 3061146317852184918}
   - component: {fileID: 3061146317852184919}
-  - component: {fileID: 3061146317852184916}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -98,22 +97,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9838899, y: 7.2359924, z: 1}
   m_Center: {x: -0.008054929, y: 3.1179962, z: 0}
---- !u!114 &3061146317852184916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3061146317852184922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e81e415b7902d43a63e136b90d71d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
-  - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}
-  Defzone: 0
 --- !u!1 &3061146318588056767
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +109,6 @@ GameObject:
   - component: {fileID: 3061146318588056762}
   - component: {fileID: 3061146318588056763}
   - component: {fileID: 3061146318588056764}
-  - component: {fileID: 3061146318588056765}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -212,22 +194,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9838899, y: 7.2359924, z: 1}
   m_Center: {x: -0.008054929, y: 3.1179962, z: 0}
---- !u!114 &3061146318588056765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3061146318588056767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e81e415b7902d43a63e136b90d71d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
-  - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}
-  Defzone: 0
 --- !u!1 &3061146318656769293
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +308,6 @@ GameObject:
   - component: {fileID: 3061146318886651551}
   - component: {fileID: 3061146318886651552}
   - component: {fileID: 3061146318886651553}
-  - component: {fileID: 3061146318886651554}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -428,22 +393,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.97647035, y: 5.6774836, z: 0.9594189}
   m_Center: {x: -0.011764639, y: 2.3387418, z: 0.020290544}
---- !u!114 &3061146318886651554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3061146318886651556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e81e415b7902d43a63e136b90d71d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
-  - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}
-  Defzone: 1
 --- !u!1 &3061146318888586044
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +405,6 @@ GameObject:
   - component: {fileID: 3061146318888586039}
   - component: {fileID: 3061146318888586040}
   - component: {fileID: 3061146318888586041}
-  - component: {fileID: 3061146318888586042}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -542,19 +490,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.98197234, y: 8.404054, z: 1}
   m_Center: {x: 0.009013495, y: 3.7020264, z: 0}
---- !u!114 &3061146318888586042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3061146318888586044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e81e415b7902d43a63e136b90d71d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
-  - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}
-  Defzone: 1
