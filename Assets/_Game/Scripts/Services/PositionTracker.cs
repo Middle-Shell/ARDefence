@@ -9,8 +9,9 @@ public class PositionTracker : MonoBehaviour
     [SerializeField] private GameObject _plane;
     [SerializeField] private GameObject _selfPrefab;
     [SerializeField] private Material[] materials;
+    public GameObject GIZMO;
     
-    private float _Tx, _Tz;
+    private float _tx, _tz;
     private Vector3 _oldPosition = Vector3.positiveInfinity;
     
     private bool _isFindWorking;
@@ -24,7 +25,7 @@ public class PositionTracker : MonoBehaviour
         StartCoroutine(MaterialChanger());
     }
     
-    IEnumerator Find()
+    IEnumerator Build()
     {
         while (true)
         {
@@ -68,8 +69,8 @@ public class PositionTracker : MonoBehaviour
                 SetInvisible(true);
                 yield break;
             }
-            _Tx = this.transform.position.x;
-            _Tz = this.transform.position.z;
+            _tx = this.transform.position.x;
+            _tz = this.transform.position.z;
             foreach (Transform child in
                      GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
@@ -81,41 +82,41 @@ public class PositionTracker : MonoBehaviour
                         print("local" + this.transform.position);
                         print("Global" + transform.TransformPoint(this.transform.position));
                         child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                        if (_Tx < 0 && _Tx > -0.25f) //сначала проверяем по Х потом уже по Z
+                        if (_tx < 0 && _tx > -0.25f) //сначала проверяем по Х потом уже по Z
                         {
-                            if (_Tz > 0 && _Tz < 0.25f)//left up
+                            if (_tz > 0 && _tz < 0.25f)//left up
                             {
-                                StopCoroutine(Find());
+                                StopCoroutine(Build());
                             } 
-                            else if (_Tz < 0 && _Tz > -0.25f)//left down
+                            else if (_tz < 0 && _tz > -0.25f)//left down
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
                                 if (!_isFindWorking)
                                 {
                                     _isFindWorking = true;
-                                    StartCoroutine(Find());
+                                    StartCoroutine(Build());
                                 }
                             }
                         }
-                        else if (_Tx > 0 && _Tx < 0.25f)
+                        else if (_tx > 0 && _tx < 0.25f)
                         {
-                            if (_Tz < 0 && _Tz > -0.25f)//right down
+                            if (_tz < 0 && _tz > -0.25f)//right down
                             {
-                                StopCoroutine(Find());
+                                StopCoroutine(Build());
                             }
-                            else if (_Tz > 0 && _Tz < 0.25f)//right up
+                            else if (_tz > 0 && _tz < 0.25f)//right up
                             {
                                 child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
                                 if (!_isFindWorking)
                                 {
                                     _isFindWorking = true;
-                                    StartCoroutine(Find());
+                                    StartCoroutine(Build());
                                 }
                             }
                         }
                         else
                         {
-                            StopCoroutine(Find());
+                            StopCoroutine(Build());
                         }
                     }
                     catch
