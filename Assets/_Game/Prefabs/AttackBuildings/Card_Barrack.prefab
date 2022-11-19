@@ -390,6 +390,6 @@ MonoBehaviour:
   _plane: {fileID: 0}
   _selfPrefab: {fileID: 4283592004498416376, guid: 7bff480631af01a45b38f52c9ae2f834,
     type: 3}
-  materials:
+  _materials:
   - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
   - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}

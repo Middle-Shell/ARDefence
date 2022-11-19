@@ -36,13 +36,13 @@ namespace _Game.Scripts.Enemies
         {
             solder.GetComponent<Enemy>().IdMasterBarrack = _idBarrack;
             _solders.Add(solder);
-            Debug.Log("Solder added");
+            //Debug.Log("Solder added");
         }
 
         public void ExitSolder()
         {
             _solders.RemoveAt(0);
-            Debug.Log("Solder came out");
+            //Debug.Log("Solder came out");
         }
 
         private void ReturnUnit(GameObject unit)
@@ -57,7 +57,7 @@ namespace _Game.Scripts.Enemies
         {
             while (true)
             {
-                Debug.Log("Start");
+                //Debug.Log("Start");
                 yield return new WaitForSeconds(_timeoutSpawn);
                 if (_target.activeSelf && _solders.Any())
                 {

@@ -51,7 +51,7 @@ namespace easyar
                 StopAllCoroutines();
                 _hp = 100;
                 EventCrossroad.OnUnitDied(this.gameObject);
-                Debug.Log("Died");
+                //Debug.Log("Died");
             }
         }
         

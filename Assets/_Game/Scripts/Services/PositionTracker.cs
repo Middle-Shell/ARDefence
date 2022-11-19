@@ -7,16 +7,15 @@ using UnityEngine.XR.ARSubsystems;
 public class PositionTracker : MonoBehaviour
 {
     [SerializeField] private GameObject _plane;
-    [SerializeField] private GameObject _selfPrefab;
-    [SerializeField] private Material[] materials;
-    public GameObject GIZMO;
+    [SerializeField] private GameObject _selfPrefab;//prefab для установки еа plane
+    [SerializeField] private Material[] _materials;
     
     private float _tx, _tz;
     private Vector3 _oldPosition = Vector3.positiveInfinity;
+
+    private const float DistanceBtwnPrefabs = 0.08f;//0.08 - расстояние между центрами установленных объектов (см. GetInstallPositionOnAxis)
     
-    private bool _isFindWorking;
-    private bool _isChangerWorking;
-    private bool _isCheckWorking;
+    private bool _isFindWorking, _isChangerWorking, _isCheckWorking;
 
     void Start()
     {
@@ -27,18 +26,21 @@ public class PositionTracker : MonoBehaviour
     
     IEnumerator Build()
     {
+        GameObject cam = Camera.main.gameObject;
         while (true)
         {
             //print("start check");
+            print("camTr " + new Vector3(GetInstallPositionOnAxis(cam.transform.position.x),
+                _plane.transform.position.y + 0.01f,
+                GetInstallPositionOnAxis(cam.transform.position.z)));
             if (Math.Abs(this.transform.position.x - _oldPosition.x) < 0.02 &&
                 Math.Abs(this.transform.position.z - _oldPosition.z) < 0.02)
                 //если объект не менял свою позицию больше чем на Х(0,02)(защита от случайной тряски)
                 //то установка в эту позицию(x, 0, z) префаба работающего объекта, с const y = 0
             {
-
-                var inst = Instantiate(_selfPrefab, new Vector3(GetInstallPositionOnAxis(_oldPosition.x),
+                var inst = Instantiate(_selfPrefab, new Vector3(GetInstallPositionOnAxis(cam.transform.position.x),
                         _plane.transform.position.y + 0.01f,
-                        GetInstallPositionOnAxis(_oldPosition.z)),
+                        GetInstallPositionOnAxis(cam.transform.position.z)),
                     _plane.transform.rotation);
                 inst.gameObject.transform.SetParent(_plane.transform);
 
@@ -75,13 +77,11 @@ public class PositionTracker : MonoBehaviour
                      GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
 
-                if (child.tag == "Deff")//лишняя проверка, если master объект имеет тег дефф, то логично, что все его части к нему относятся
+                if (child.tag == "Deff")
                 {//упразднить проверку в отдельную функцию чек(тег)
                     try
                     {
-                        print("local" + this.transform.position);
-                        print("Global" + transform.TransformPoint(this.transform.position));
-                        child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                        child.gameObject.GetComponent<MeshRenderer>().material = _materials[0];
                         if (_tx < 0 && _tx > -0.25f) //сначала проверяем по Х потом уже по Z
                         {
                             if (_tz > 0 && _tz < 0.25f)//left up
@@ -90,7 +90,7 @@ public class PositionTracker : MonoBehaviour
                             } 
                             else if (_tz < 0 && _tz > -0.25f)//left down
                             {
-                                child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                                child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
                                 if (!_isFindWorking)
                                 {
                                     _isFindWorking = true;
@@ -106,7 +106,7 @@ public class PositionTracker : MonoBehaviour
                             }
                             else if (_tz > 0 && _tz < 0.25f)//right up
                             {
-                                child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                                child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
                                 if (!_isFindWorking)
                                 {
                                     _isFindWorking = true;
@@ -121,7 +121,7 @@ public class PositionTracker : MonoBehaviour
                     }
                     catch
                     {
-                        print("меша нет");
+                        print("no mesh");
                     }
                 }
             //----------------------------------------------------------------------------------------------------
@@ -150,10 +150,10 @@ public class PositionTracker : MonoBehaviour
     }
     private float GetInstallPositionOnAxis(float coor)
     {
-        if ((coor % 0.12f) != 0) //0.12 - расстояние между центрами установленных объектов
-            //игровая локация бъётся на кусочки по 0,12(12см)х0,12
-            //позиция любой установленного объекта будет кратна 0,12
-            coor += coor > -1f ? (0.12f - coor % 0.12f) : -coor % 0.12f;
+        if ((coor % DistanceBtwnPrefabs) != 0) //0.08 - расстояние между центрами установленных объектов
+            //игровая локация бъётся на кусочки по 0,08(8см)х0,08
+            //позиция любой установленного объекта будет кратна 0,08
+            coor += coor > -1f ? (DistanceBtwnPrefabs - coor % DistanceBtwnPrefabs) : -coor % DistanceBtwnPrefabs;
         return coor;
     }
 
@@ -182,7 +182,6 @@ public class PositionTracker : MonoBehaviour
             if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState
                 == TrackingState.Tracking)
             {
-                print("tracking");
                 SetInvisible(false);
                 _isFindWorking = false;
                 StartCoroutine(MaterialChanger());
