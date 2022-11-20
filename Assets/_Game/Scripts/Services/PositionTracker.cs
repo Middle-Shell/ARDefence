@@ -6,46 +6,39 @@ using UnityEngine.XR.ARSubsystems;
 
 public class PositionTracker : MonoBehaviour
 {
-    [SerializeField] private GameObject _plane,_camera;
-    [SerializeField] private GameObject _selfPrefab;
-    [SerializeField] private Material[] materials;
     
-    private float _localX, _localZ,_globalX,_globalZ;
+    private float _localX, _localZ, _globalX, _globalZ;
     [SerializeField] private GameObject _plane;
     [SerializeField] private GameObject _selfPrefab;//prefab для установки еа plane
     [SerializeField] private Material[] _materials;
     
-    private float _tx, _tz;
     private Vector3 _oldPosition = Vector3.positiveInfinity;
 
     private const float DistanceBtwnPrefabs = 0.08f;//0.08 - расстояние между центрами установленных объектов (см. GetInstallPositionOnAxis)
     
     private bool _isFindWorking, _isChangerWorking, _isCheckWorking;
+    private GameObject _camera;
 
     void Start()
     {
         _plane = GameObject.FindWithTag("Anchor");//поиск plane
-        _camera = GameObject.FindGameObjectWithTag("MainCamera");
+        _camera = Camera.main.gameObject;
         StartCoroutine(MaterialChanger());
     }
     
     IEnumerator Build()
     {
-        GameObject cam = Camera.main.gameObject;
         while (true)
         {
             //print("start check");
-            print("camTr " + new Vector3(GetInstallPositionOnAxis(cam.transform.position.x),
-                _plane.transform.position.y + 0.01f,
-                GetInstallPositionOnAxis(cam.transform.position.z)));
             if (Math.Abs(this.transform.position.x - _oldPosition.x) < 0.02 &&
                 Math.Abs(this.transform.position.z - _oldPosition.z) < 0.02)
                 //если объект не менял свою позицию больше чем на Х(0,02)(защита от случайной тряски)
                 //то установка в эту позицию(x, 0, z) префаба работающего объекта, с const y = 0
             {
-                var inst = Instantiate(_selfPrefab, new Vector3(GetInstallPositionOnAxis(cam.transform.position.x),
+                var inst = Instantiate(_selfPrefab, new Vector3(GetInstallPositionOnAxis(_camera.transform.position.x),
                         _plane.transform.position.y + 0.01f,
-                        GetInstallPositionOnAxis(cam.transform.position.z)),
+                        GetInstallPositionOnAxis(_camera.transform.position.z)),
                     _plane.transform.rotation);
                 inst.gameObject.transform.SetParent(_plane.transform);
 
@@ -69,6 +62,7 @@ public class PositionTracker : MonoBehaviour
         _isChangerWorking = true;
         while (true)
         {
+            
             if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState
                 == TrackingState.Limited)
             {
@@ -79,28 +73,33 @@ public class PositionTracker : MonoBehaviour
 
             _localX = this.transform.position.x;
             _localZ = this.transform.position.z;
+            print(_localX);
+            print(_localZ);
             _globalX = _camera.transform.position.x;
-            _globalZ = _camera.transform.position.z; print(_camera.name+"------------------------------------------------------");
+            _globalZ = _camera.transform.position.z; 
+            
+            print((_localX < 0.02 && _localX > -0.02) &&
+                   (_localZ < 0.02 && _localZ > -0.02) && 
+                   _globalZ < 0);
             foreach (Transform child in
                      GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
 
-                if (child.tag ==
-                    "Deff" ) //лишняя проверка, если master объект имеет тег дефф, то логично, что все его части к нему относятся
+                if (child.tag == "Deff" ) 
                 {
                     //упразднить проверку в отдельную функцию чек(тег)1
                     /*try
                     {*/
                     
-                    child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                    child.gameObject.GetComponent<MeshRenderer>().material = _materials[0];
                     
-                    if ((_localX < 0.02 || _localX > -0.02) &&
-                        (_localZ < 0.02 ||
-                         _localZ > -0.02) && _globalZ < 0) //сначала проверяем взод в радиус погрешности над камерой(дроппод)
+                    if ((_localX < 0.2 && _localX > -0.2) &&
+                        (_localZ < 0.2 && _localZ > -0.2) && 
+                        _globalZ < 0) //сначала проверяем вход в радиус погрешности над камерой(дроппод)
                     {
                         /*if (_localZ > 0 && _localZ < 0.25f)//left up
                         {*/
-                        child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                        child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
                         if (!_isFindWorking)
                         {
                             _isFindWorking = true;
