@@ -20,14 +20,5 @@ namespace _Game.Scripts.Services
         {
             SpendMoneyEvent?.Invoke(gold, playerNumber);
         }
-
-        public delegate void DamageSystem(int damage, int playerNumber);
-
-        public static event DamageSystem DamageSystemEvent;
-
-        public static void OnDamageSystem(int damage, int playerNumber)
-        {
-            DamageSystemEvent?.Invoke(damage,playerNumber);
-        }
     }
 }
