@@ -55,11 +55,18 @@ namespace easyar
             }
         }
         
+        
+        
         IEnumerator Walk()
         {
             while (true)
             {
-                if (Vector3.Distance(transform.position, _target.position) < 0.05f) ApplyDamage(101); //тестовое
+                if (Vector3.Distance(transform.position, _target.position) < 0.05f)
+                {
+                    GameController.OnDamageSystem(50, 1);
+                    ApplyDamage(101);
+                } //тестовое
+
                 yield return new WaitForSeconds(0.5f);
                 
                 // Debug.Log(_text.value);
