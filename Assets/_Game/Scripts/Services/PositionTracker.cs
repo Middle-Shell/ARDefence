@@ -93,8 +93,8 @@ public class PositionTracker : MonoBehaviour
                     
                     child.gameObject.GetComponent<MeshRenderer>().material = _materials[0];
                     
-                    if ((_localX < 0.2 && _localX > -0.2) &&
-                        (_localZ < 0.2 && _localZ > -0.2) && 
+                    if ((_localX < 0.3 && _localX > -0.3) &&
+                        (_localZ < 0.3 && _localZ > -0.3) && 
                         _globalZ < 0) //сначала проверяем вход в радиус погрешности над камерой(дроппод)
                     {
                         /*if (_localZ > 0 && _localZ < 0.25f)//left up
@@ -175,8 +175,8 @@ public class PositionTracker : MonoBehaviour
         if ((coor % DistanceBtwnPrefabs) != 0) //0.08 - расстояние между центрами установленных объектов
             //игровая локация бъётся на кусочки по 0,08(8см)х0,08
             //позиция любой установленного объекта будет кратна 0,08
-            coor += coor > -1f ? (DistanceBtwnPrefabs - coor % DistanceBtwnPrefabs) : -coor % DistanceBtwnPrefabs;
-        return coor;
+            coor += coor > 0f ? (DistanceBtwnPrefabs - coor % DistanceBtwnPrefabs) : coor % DistanceBtwnPrefabs;
+        return coor - DistanceBtwnPrefabs/2;
     }
 
     private void SetInvisible(bool invisible)
