@@ -9,12 +9,13 @@ public class PositionTracker : MonoBehaviour
     
     private float _localX, _localZ, _globalX, _globalZ;
     [SerializeField] private GameObject _plane;
-    [SerializeField] private GameObject _selfPrefab;//prefab для установки еа plane
+    [SerializeField] private GameObject _selfPrefab;//prefab для установки на plane
     [SerializeField] private Material[] _materials;
     
     private Vector3 _oldPosition = Vector3.positiveInfinity;
 
-    private const float DistanceBtwnPrefabs = 0.08f;//0.08 - расстояние между центрами установленных объектов (см. GetInstallPositionOnAxis)
+    private const float DistanceBtwnPrefabs = 0.05f;// - расстояние между центрами установленных объектов (см. GetInstallPositionOnAxis)
+    private const float DroppodRange = 0.2f;
     
     private bool _isFindWorking, _isChangerWorking, _isCheckWorking;
     private GameObject _camera;
@@ -34,7 +35,7 @@ public class PositionTracker : MonoBehaviour
             if (Math.Abs(this.transform.position.x - _oldPosition.x) < 0.02 &&
                 Math.Abs(this.transform.position.z - _oldPosition.z) < 0.02)
                 //если объект не менял свою позицию больше чем на Х(0,02)(защита от случайной тряски)
-                //то установка в эту позицию(x, 0, z) префаба работающего объекта, с const y = 0
+                //то установка в эту позицию(x, 0.01, z) префаба работающего объекта, с const y = 0.01 (чуть выше plane)
             {
                 var inst = Instantiate(_selfPrefab, new Vector3(GetInstallPositionOnAxis(_camera.transform.position.x),
                         _plane.transform.position.y + 0.01f,
@@ -66,21 +67,22 @@ public class PositionTracker : MonoBehaviour
             if (this.transform.parent.gameObject.GetComponent<ARTrackedImage>().trackingState
                 == TrackingState.Limited)
             {
+                StopCoroutine(Build());
                 StartCoroutine(CheckState());
                 SetInvisible(true);
                 yield break;
             }
 
             _localX = this.transform.position.x;
-            _localZ = this.transform.position.z;
-            print(_localX);
-            print(_localZ);
+            _localZ = this.transform.position.z;//локальные координаты относительно камеры
+            //print(_localX);
+            //print(_localZ);
             _globalX = _camera.transform.position.x;
             _globalZ = _camera.transform.position.z; 
             
-            print((_localX < 0.02 && _localX > -0.02) &&
-                   (_localZ < 0.02 && _localZ > -0.02) && 
-                   _globalZ < 0);
+            /*print((_localX < 0.02 && _localX > -0.02) &&
+                       (_localZ < 0.02 && _localZ > -0.02) && 
+                       _globalZ < 0);*/
             foreach (Transform child in
                      GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
@@ -88,14 +90,14 @@ public class PositionTracker : MonoBehaviour
                 if (child.tag == "Deff" ) 
                 {
                     //упразднить проверку в отдельную функцию чек(тег)1
-                    /*try
-                    {*/
                     
                     child.gameObject.GetComponent<MeshRenderer>().material = _materials[0];
                     
-                    if ((_localX < 0.3 && _localX > -0.3) &&
-                        (_localZ < 0.3 && _localZ > -0.3) && 
-                        _globalZ < 0) //сначала проверяем вход в радиус погрешности над камерой(дроппод)
+                    if (_globalX > 0.015 &&
+                        (_localX < DroppodRange && _localX > -DroppodRange) &&
+                        (_localZ < DroppodRange && _localZ > -DroppodRange) && 
+                        _globalZ < 0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
+                                                                                                        //всех элементов префаба, если они и так вместе
                     {
                         /*if (_localZ > 0 && _localZ < 0.25f)//left up
                         {*/
@@ -105,7 +107,6 @@ public class PositionTracker : MonoBehaviour
                             _isFindWorking = true;
                             StartCoroutine(Build());
                         }
-                        // StopCoroutine(Build());
                         /*} 
                         else if (_localZ < 0 && _localZ > -0.25f)//left down
                         {
@@ -163,19 +164,46 @@ public class PositionTracker : MonoBehaviour
                         //}
 
                     }
-
-                    yield return new WaitForSeconds(0.5f);
+                }
+                else if (child.tag == "Attk" ) 
+                {
+                    //упразднить проверку в отдельную функцию чек(тег)
+                    
+                    child.gameObject.GetComponent<MeshRenderer>().material = _materials[0];
+                    
+                    if (_globalX < 0.015 && 
+                        (_localX < DroppodRange && _localX > -DroppodRange) &&
+                        (_localZ < DroppodRange && _localZ > -DroppodRange) && 
+                        _globalZ < 0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
+                        //всех элементов префаба, если они и так вместе
+                    {
+                        child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
+                        if (!_isFindWorking)
+                        {
+                            _isFindWorking = true;
+                            StartCoroutine(Build());
+                        }
+                    }
+                }
+                else
+                {
+                    StopCoroutine(Build());
+                    _isFindWorking = false;
                 }
             }
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
     private float GetInstallPositionOnAxis(float coor)
     {
+        //print("Origin InPos: " + coor);
         if ((coor % DistanceBtwnPrefabs) != 0) //0.08 - расстояние между центрами установленных объектов
             //игровая локация бъётся на кусочки по 0,08(8см)х0,08
             //позиция любой установленного объекта будет кратна 0,08
-            coor += coor > 0f ? (DistanceBtwnPrefabs - coor % DistanceBtwnPrefabs) : coor % DistanceBtwnPrefabs;
+            coor += coor > 0f ? (DistanceBtwnPrefabs - coor % DistanceBtwnPrefabs) : -1 * coor % DistanceBtwnPrefabs;
+        //print("Result InPos: " + coor);
+        //print("Minus: " + (coor - DistanceBtwnPrefabs/2));
         return coor - DistanceBtwnPrefabs/2;
     }
 

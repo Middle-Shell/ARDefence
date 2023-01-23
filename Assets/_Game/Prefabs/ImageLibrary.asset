@@ -18,32 +18,32 @@ MonoBehaviour:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5057479023380989505
-      m_GuidHigh: 2364310285345203352
+      m_GuidLow: 5552060443113303760
+      m_GuidHigh: 4716524470852530364
     m_SerializedTextureGuid:
-      m_GuidLow: 4113168705657716012
-      m_GuidHigh: 17926340894762909818
-    m_Size: {x: 0.5, y: 0.774571}
+      m_GuidLow: 12170000320557778250
+      m_GuidHigh: 4300424257787868745
+    m_Size: {x: 0.5, y: 0.77742946}
     m_SpecifySize: 1
-    m_Name: BarracksCard
-    m_Texture: {fileID: 2800000, guid: 31fb3d2ce92539147ac0e6e21028c7f8, type: 3}
+    m_Name: Barrack1card
+    m_Texture: {fileID: 2800000, guid: e73c854a86cfa8e44936ebec132dae3b, type: 3}
   - m_SerializedGuid:
-      m_GuidLow: 5178919080115890657
-      m_GuidHigh: 586649494314291082
+      m_GuidLow: 5756496996737160638
+      m_GuidHigh: 17808460600539357853
     m_SerializedTextureGuid:
-      m_GuidLow: 8945470039293950161
-      m_GuidHigh: 13768357424476638025
-    m_Size: {x: 0.5, y: 0.774571}
+      m_GuidLow: 17772458848711716983
+      m_GuidHigh: 12376952079043497274
+    m_Size: {x: 0.5, y: 0.7798742}
     m_SpecifySize: 1
-    m_Name: Turret
-    m_Texture: {fileID: 2800000, guid: 0903f8d1b19b7c2449cb8a32210813bf, type: 3}
+    m_Name: Turret1Card
+    m_Texture: {fileID: 2800000, guid: 0eb5b0777529f6a43a8d6b0957c4c3ab, type: 3}
   - m_SerializedGuid:
-      m_GuidLow: 5498412101847853951
-      m_GuidHigh: 18387046673965451138
+      m_GuidLow: 5595158689643651912
+      m_GuidHigh: 13729544374165509270
     m_SerializedTextureGuid:
-      m_GuidLow: 9981142853260803543
-      m_GuidHigh: 3921116662759640569
-    m_Size: {x: 0.5, y: 0.774571}
+      m_GuidLow: 541692412496346592
+      m_GuidHigh: 1177512694615644698
+    m_Size: {x: 0.5, y: 0.7798742}
     m_SpecifySize: 1
-    m_Name: MinerCard
-    m_Texture: {fileID: 2800000, guid: ed09fdd7248a8a84f94da76ed49a6a36, type: 3}
+    m_Name: Miner1Card
+    m_Texture: {fileID: 2800000, guid: 105e7de07a6107841a1a14998e5d5710, type: 3}
