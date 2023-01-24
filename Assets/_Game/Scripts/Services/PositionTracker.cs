@@ -17,7 +17,7 @@ public class PositionTracker : MonoBehaviour
     private const float DistanceBtwnPrefabs = 0.05f;// - расстояние между центрами установленных объектов (см. GetInstallPositionOnAxis)
     private const float DroppodRange = 0.2f;
     
-    private bool _isFindWorking, _isChangerWorking, _isCheckWorking;
+    private bool _isBuildWorking, _isChangerWorking, _isCheckWorking;
     private GameObject _camera;
 
     void Start()
@@ -29,6 +29,10 @@ public class PositionTracker : MonoBehaviour
     
     IEnumerator Build()
     {
+        if (_isBuildWorking) //проверка на экземпляры корутины
+            yield break;
+
+        _isBuildWorking = true;
         while (true)
         {
             //print("start check");
@@ -102,11 +106,7 @@ public class PositionTracker : MonoBehaviour
                         /*if (_localZ > 0 && _localZ < 0.25f)//left up
                         {*/
                         child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
-                        if (!_isFindWorking)
-                        {
-                            _isFindWorking = true;
-                            StartCoroutine(Build());
-                        }
+                        StartCoroutine(Build());
                         /*} 
                         else if (_localZ < 0 && _localZ > -0.25f)//left down
                         {
@@ -178,17 +178,8 @@ public class PositionTracker : MonoBehaviour
                         //всех элементов префаба, если они и так вместе
                     {
                         child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
-                        if (!_isFindWorking)
-                        {
-                            _isFindWorking = true;
-                            StartCoroutine(Build());
-                        }
+                        StartCoroutine(Build());
                     }
-                }
-                else
-                {
-                    StopCoroutine(Build());
-                    _isFindWorking = false;
                 }
             }
             yield return new WaitForSeconds(0.5f);
@@ -233,7 +224,7 @@ public class PositionTracker : MonoBehaviour
                 == TrackingState.Tracking)
             {
                 SetInvisible(false);
-                _isFindWorking = false;
+                _isBuildWorking = false;
                 StartCoroutine(MaterialChanger());
                 yield break;
             }
