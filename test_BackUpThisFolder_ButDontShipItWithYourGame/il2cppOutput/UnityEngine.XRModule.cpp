@@ -5418,15 +5418,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint32_t InputDevices_GetDeviceCharacteristic
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// System.Void UnityEngine.XR.InputTracking::Recenter()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InputTracking_Recenter_m1843AECFE9093882149E6B197E6EFEB6151E6C7C (const RuntimeMethod* method) 
-{
-	typedef void (*InputTracking_Recenter_m1843AECFE9093882149E6B197E6EFEB6151E6C7C_ftn) ();
-	static InputTracking_Recenter_m1843AECFE9093882149E6B197E6EFEB6151E6C7C_ftn _il2cpp_icall_func;
-	if (!_il2cpp_icall_func)
-	_il2cpp_icall_func = (InputTracking_Recenter_m1843AECFE9093882149E6B197E6EFEB6151E6C7C_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.XR.InputTracking::Recenter()");
-	_il2cpp_icall_func();
-}
 // System.Void UnityEngine.XR.InputTracking::GetNodeStates(System.Collections.Generic.List`1<UnityEngine.XR.XRNodeState>)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InputTracking_GetNodeStates_mA2E8D154A47C817ED74AD42F6B38A9C906A57A67 (List_1_t8AE5A65CCFBC753343962D38B82C801F7BDE3C87* ___nodeStates0, const RuntimeMethod* method) 
 {
