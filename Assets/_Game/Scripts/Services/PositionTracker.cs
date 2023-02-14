@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Game.Scripts.Services;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -46,6 +47,8 @@ public class PositionTracker : MonoBehaviour
                         GetInstallPositionOnAxis(_camera.transform.position.z)),
                     _plane.transform.rotation);
                 inst.gameObject.transform.SetParent(_plane.transform);
+                
+                GameController.OnServerSpawn(inst);
 
                 
                 SetInvisible(true);
@@ -103,66 +106,10 @@ public class PositionTracker : MonoBehaviour
                         _globalZ < 0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
                                                                                                         //всех элементов префаба, если они и так вместе
                     {
-                        /*if (_localZ > 0 && _localZ < 0.25f)//left up
-                        {*/
+                        
                         child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
                         StartCoroutine(Build());
-                        /*} 
-                        else if (_localZ < 0 && _localZ > -0.25f)//left down
-                        {
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                            if (!_isFindWorking)
-                            {
-                                _isFindWorking = true;
-                                StartCoroutine(Build());
-                            }
-                        }
-                    }
-                    else if (_localX > 0 && _localX < 0.25f)
-                    {
-                        if (_localZ < 0 && _localZ > -0.25f)//right down
-                        {
-                            StopCoroutine(Build());
-                        }
-                        else if (_localZ > 0 && _localZ < 0.25f)//right up
-                        {
-                            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                            if (!_isFindWorking)
-                            {
-                                _isFindWorking = true;
-                                StartCoroutine(Build());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        StopCoroutine(Build());
-                    }
-                }
-                catch
-                {
-                    print("меша нет");
-                }
-            }*/
-                        //----------------------------------------------------------------------------------------------------
-                        //if(child.tag =="Attk")
-                        //{
-                        //    if (_Tx > 0)//сначала проверяем по Х потом уже по Z
-                        //    {
-                        //        if (_Tz > 0)
-                        //            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                        //        else
-                        //            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                        //    }
-                        //    else
-                        //    {
-                        //        if (_Tz < 0)
-                        //            child.gameObject.GetComponent<MeshRenderer>().material = materials[0];
-                        //        else
-                        //            child.gameObject.GetComponent<MeshRenderer>().material = materials[1];
-                        //    }
-                        //}
-
+                        
                     }
                 }
                 else if (child.tag == "Attk" ) 

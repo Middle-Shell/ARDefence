@@ -7,6 +7,8 @@ using TMPro;
 public class Bastille : MonoBehaviour
 {
     [SerializeField] private int _gold = 100;
+    [SerializeField] private GameObject Pref;
+    [SerializeField] private GameObject _plane;
 
     [SerializeField] private int _playerNumber;//указывать в редакторе
     [SerializeField] private TextMeshProUGUI _text;
@@ -15,6 +17,7 @@ public class Bastille : MonoBehaviour
     {
         GameController.CollectMoneyEvent += AddMoney;
         GameController.SpendMoneyEvent += SpendMoney;
+        _plane = GameObject.FindWithTag("Anchor");
     }
 
     void AddMoney(int gold, int playerNumber)
@@ -26,6 +29,12 @@ public class Bastille : MonoBehaviour
 
     public void test()//для тестов, потом убрать
     {
+        var inst = Instantiate(Pref, new Vector3(-0.1213229f,
+                -0.0405f,
+                -0.0672235f),
+            Quaternion.identity);
+        inst.gameObject.transform.SetParent(_plane.transform);
+        GameController.OnServerSpawn(inst);
         SpendMoney(10, 1);
     }
     void SpendMoney(int gold, int playerNumber) 

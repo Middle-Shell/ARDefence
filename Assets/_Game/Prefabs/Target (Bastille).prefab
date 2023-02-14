@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gold: 100
+  Pref: {fileID: 4283592004498416376, guid: 7bff480631af01a45b38f52c9ae2f834, type: 3}
+  _plane: {fileID: 0}
   _playerNumber: 0
   _text: {fileID: 0}
 --- !u!114 &-85992542580614190
