@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using _Game.Scripts.Services;
+using Mirror;
 
 
 
-namespace Mirror
+public class SpawnNetController : NetworkBehaviour
 {
-
-
-    public class SpawnNetController : NetworkBehaviour
+    void Start()
     {
-        void Start()
-        {
-            GameController.ServerSpawnEvent += ServerTransfer;
-        }
+        GameController.ServerSpawnEvent += ServerTransfer;
+    }
 
-        private void ServerTransfer(GameObject build)
-        {
-            NetworkServer.Spawn(build);
-        }
+    private void ServerTransfer(GameObject build)
+    {
+        print("Sent");
+        NetworkServer.Spawn(build);
     }
 }
