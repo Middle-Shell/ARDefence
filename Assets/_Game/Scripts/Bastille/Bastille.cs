@@ -16,10 +16,21 @@ public class Bastille : NetworkBehaviour
     
     void Start()
     {
+        Debug.LogError(playerNumber);
         GameController.CollectMoneyEvent += AddMoney;
         GameController.SpendMoneyEvent += SpendMoney;
         _plane = GameObject.FindWithTag("Anchor");
         Invoke("test",  5f);
+        if (NetworkServer.active) 
+        {
+            Debug.LogError("Im client");
+        }
+    }
+
+    public int playerNumber
+    {
+        get => _playerNumber;
+        set => _playerNumber = value;
     }
 
     void AddMoney(int gold, int playerNumber)
@@ -36,8 +47,8 @@ public class Bastille : NetworkBehaviour
                 -0.0405f,
                 -0.0672235f),
             Quaternion.identity);
-        inst.gameObject.transform.SetParent(_plane.transform);
         GameController.OnServerSpawn(inst);
+        //inst.gameObject.transform.SetParent(_plane.transform);
         //SpendMoney(10, 1);
     }
     void SpendMoney(int gold, int playerNumber) 

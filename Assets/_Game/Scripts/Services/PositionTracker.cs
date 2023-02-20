@@ -4,8 +4,9 @@ using _Game.Scripts.Services;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using Mirror;
 
-public class PositionTracker : MonoBehaviour
+public class PositionTracker : NetworkBehaviour
 {
     
     private float _localX, _localZ, _globalX, _globalZ;
@@ -28,6 +29,7 @@ public class PositionTracker : MonoBehaviour
         StartCoroutine(MaterialChanger());
     }
     
+    //[Command]//выполняется на сервере ...Call this from a client to run this function on the server
     IEnumerator Build()
     {
         if (_isBuildWorking) //проверка на экземпляры корутины
@@ -42,11 +44,12 @@ public class PositionTracker : MonoBehaviour
                 //если объект не менял свою позицию больше чем на Х(0,02)(защита от случайной тряски)
                 //то установка в эту позицию(x, 0.01, z) префаба работающего объекта, с const y = 0.01 (чуть выше plane)
             {
+                //переписать в отдельный метод
                 var inst = Instantiate(_selfPrefab, new Vector3(GetInstallPositionOnAxis(_camera.transform.position.x),
                         _plane.transform.position.y + 0.01f,
                         GetInstallPositionOnAxis(_camera.transform.position.z)),
                     _plane.transform.rotation);
-                inst.gameObject.transform.SetParent(_plane.transform);
+                //inst.gameObject.transform.SetParent(_plane.transform);
                 
                 GameController.OnServerSpawn(inst);
 
