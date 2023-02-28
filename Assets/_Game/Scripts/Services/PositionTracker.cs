@@ -46,7 +46,7 @@ public class PositionTracker : MonoBehaviour
                         _plane.transform.position.y + 0.01f,
                         GetInstallPositionOnAxis(_camera.transform.position.z)),
                     _plane.transform.rotation);
-                inst.gameObject.transform.SetParent(_plane.transform);
+               // inst.gameObject.transform.SetParent(_plane.transform);
                 
                 GameController.OnServerSpawn(inst);
 

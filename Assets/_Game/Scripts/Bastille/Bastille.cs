@@ -36,8 +36,9 @@ public class Bastille : NetworkBehaviour
                 -0.0405f,
                 -0.0672235f),
             Quaternion.identity);
-        inst.gameObject.transform.SetParent(_plane.transform);
         GameController.OnServerSpawn(inst);
+        //inst.gameObject.transform.SetParent(_plane.transform);
+
         //SpendMoney(10, 1);
     }
     void SpendMoney(int gold, int playerNumber) 
