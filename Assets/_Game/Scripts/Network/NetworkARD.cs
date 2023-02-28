@@ -16,8 +16,7 @@ namespace Mirror
 		
         public Transform MainSpawn;
         public Transform DebilSpawn;
-		
-
+        
         public override void OnServerAddPlayer(NetworkConnectionToClient conn)
         {
             // add player at correct spawn position

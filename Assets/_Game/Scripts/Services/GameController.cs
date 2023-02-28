@@ -31,5 +31,7 @@ namespace _Game.Scripts.Services
         {
             ServerSpawnEvent?.Invoke(build);
         }
+
+        
     }
 }
