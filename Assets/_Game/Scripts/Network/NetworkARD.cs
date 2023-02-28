@@ -22,14 +22,10 @@ namespace Mirror
         {
             // add player at correct spawn position
 			
-
-			
             Transform start = numPlayers == 0 ? MainSpawn : DebilSpawn;
             GameObject player = Instantiate(playerPrefab, start.position, start.rotation);
+            player.GetComponent<Bastille>().playerNumber = (numPlayers == 0 ? 0 : 1);
             NetworkServer.AddPlayerForConnection(conn, player);
-			
-
-
         }
 
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
