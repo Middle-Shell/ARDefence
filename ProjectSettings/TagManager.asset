@@ -9,6 +9,7 @@ TagManager:
   - Deff
   - Anchor
   - EnemyBastille
+  - MyBastille
   layers:
   - Default
   - TransparentFX

@@ -11,20 +11,29 @@ public class Bastille : NetworkBehaviour
     [SerializeField] private GameObject Pref;
     [SerializeField] private GameObject _plane;
 
+    [SyncVar(hook = nameof(SyncNumber))]
     [SerializeField] private int _playerNumber;//указывать в редакторе
     [SerializeField] private TextMeshProUGUI _text;
-    
+
+    void SyncNumber(int oldValue, int newValue) //обязательно делаем два значения - старое и новое. 
+    {
+        _playerNumber = newValue;
+    }
+
     void Start()
     {
+        if(this.transform.position.z < 0)
+            this.gameObject.tag = "MyBastille";
+
         Debug.LogError(playerNumber);
         GameController.CollectMoneyEvent += AddMoney;
         GameController.SpendMoneyEvent += SpendMoney;
         _plane = GameObject.FindWithTag("Anchor");
         Invoke("test",  5f);
-        if (NetworkServer.active) 
-        {
-            Debug.LogError("Im client");
-        }
+
+        GameController.SetPlayer();
+        
+        //Debug.LogError(NetworkServer.connections.Count);
     }
 
     public int playerNumber
