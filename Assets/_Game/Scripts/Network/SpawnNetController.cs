@@ -15,7 +15,19 @@ public class SpawnNetController : NetworkBehaviour
 
     private void ServerTransfer(GameObject build)
     {
-        print("Sent");
         NetworkServer.Spawn(build);
+        print("Sent");
+    }
+    public override void OnStartLocalPlayer()
+    {
+        print("ЧТО то происходит");
+        if (isServer)
+        {
+            Debug.LogError("I am the server host!");
+        }
+        else
+        {
+            Debug.LogError("I am a client.");
+        }
     }
 }

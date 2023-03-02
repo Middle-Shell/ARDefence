@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _Game.Scripts.Services;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,11 @@ public class Return : MonoBehaviour
     public void Rotate()
     {
         _plane.transform.rotation = Quaternion.Euler(0f,-180f,0f);
+    }
+    
+    public void TESTSpendMoney()
+    {
+        GameController.OnSpendMoney(5, GameController.Player.playerNumber);
     }
 }
 

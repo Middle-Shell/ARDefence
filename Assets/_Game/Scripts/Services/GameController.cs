@@ -6,12 +6,17 @@ namespace _Game.Scripts.Services
 {
     public class GameController
     {
-        private static Bastille player1, player2;
+        private static Bastille _player;
 
-        public static void SetPlayer()
+        public static Bastille Player
         {
-            player1 = GameObject.FindWithTag("MyBastille").GetComponent<Bastille>();
-            player2 = GameObject.FindWithTag("EnemyBastille").GetComponent<Bastille>();
+            get => _player;
+            private set => _player = value;
+        }
+
+        public static void SetPlayer(Bastille player)
+        {
+            Player = player;
         }
 
         public delegate void CollectMoney(int gold, int playerNumber);
@@ -38,11 +43,6 @@ namespace _Game.Scripts.Services
         public static  void OnServerSpawn(GameObject build)
         {
             ServerSpawnEvent?.Invoke(build);
-        }
-
-        public static int GetPlayerNumber(bool isMe)
-        {
-            return isMe ? player1.playerNumber : player2.playerNumber;
         }
     }
 }

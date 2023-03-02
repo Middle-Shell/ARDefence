@@ -57,7 +57,7 @@ public class PositionTracker : NetworkBehaviour
                 SetInvisible(true);
                 yield return new WaitForSeconds(1f);
                 StartCoroutine(CheckState());
-                GameController.OnSpendMoney(100, GameController.GetPlayerNumber(true));
+                GameController.OnSpendMoney(100, GameController.Player.playerNumber);
                 yield break;
             }
 

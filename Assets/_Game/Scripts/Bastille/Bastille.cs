@@ -7,33 +7,73 @@ using Mirror;
 
 public class Bastille : NetworkBehaviour
 {
+    [SyncVar]
     [SerializeField] private int _gold = 100;
     [SerializeField] private GameObject Pref;
     [SerializeField] private GameObject _plane;
 
     [SyncVar(hook = nameof(SyncNumber))]
     [SerializeField] private int _playerNumber;//указывать в редакторе
-    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private TextMeshPro _textNum;
 
-    void SyncNumber(int oldValue, int newValue) //обязательно делаем два значения - старое и новое. 
+    [SerializeField] private TextMeshPro _text;
+    
+    [SyncVar(hook = nameof(OnColorChanged))]
+    public Color playerColor = Color.white;
+    
+    private Material playerMaterialClone;
+    public GameObject bast;
+
+
+    void SyncNumber(int oldValue, int newValue)
     {
         _playerNumber = newValue;
     }
-
+    void SyncGold(int oldValue, int newValue)
+    {
+        _gold = newValue;
+    }
+    
+    void OnColorChanged(Color _Old, Color _New)
+    {
+        playerMaterialClone = new Material(bast.GetComponent<Renderer>().material);
+        playerMaterialClone.color = _New;
+        bast.GetComponent<Renderer>().material = playerMaterialClone;
+    }
+    public override void OnStartLocalPlayer()
+    {
+        Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        CmdSetupPlayer(color);
+    }
+    [Command]
+    private void CmdSetupPlayer(Color col)
+    {
+        // player info sent to server, then server updates sync vars which handles it on all clients
+        playerColor = col;
+    }
+    
     void Start()
     {
-        if(this.transform.position.z < 0)
+        _plane = GameObject.FindWithTag("Anchor");
+        //gameObject.transform.SetParent(_plane.transform);
+        
+        if(isOwned)//(this.transform.position.z < 0)
             this.gameObject.tag = "MyBastille";
 
         Debug.LogError(playerNumber);
         GameController.CollectMoneyEvent += AddMoney;
-        GameController.SpendMoneyEvent += SpendMoney;
-        _plane = GameObject.FindWithTag("Anchor");
-        Invoke("test",  5f);
+        GameController.SpendMoneyEvent += CmdSpendMoney;
 
-        GameController.SetPlayer();
-        
-        //Debug.LogError(NetworkServer.connections.Count);
+        Invoke("test",  5f);
+        GameController.SetPlayer(this);
+
+        //Debug.LogError(NetworkServer.);
+    }
+    void Update()
+    {
+        _textNum.text = gameObject.tag;//playerNumber.ToString();
+        //Debug.LogError("Im a " + isLocalPlayer);
+        //Debug.LogError("Its my " + isOwned);
     }
 
     public int playerNumber
@@ -60,7 +100,9 @@ public class Bastille : NetworkBehaviour
         //inst.gameObject.transform.SetParent(_plane.transform);
         //SpendMoney(10, 1);
     }
-    void SpendMoney(int gold, int playerNumber) 
+    
+    //[Command]
+    void CmdSpendMoney(int gold, int playerNumber) 
     {
         if(CheckPlayer(playerNumber))
             _gold -= gold;
