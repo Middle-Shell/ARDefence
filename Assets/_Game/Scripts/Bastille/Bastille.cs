@@ -7,8 +7,9 @@ using Mirror;
 
 public class Bastille : NetworkBehaviour
 {
-    [SyncVar]
+    [SyncVar(hook = nameof(SyncGold))]
     [SerializeField] private int _gold = 100;
+    
     [SerializeField] private GameObject Pref;
     [SerializeField] private GameObject _plane;
 
@@ -56,13 +57,17 @@ public class Bastille : NetworkBehaviour
     {
         _plane = GameObject.FindWithTag("Anchor");
         //gameObject.transform.SetParent(_plane.transform);
-        
-        if(isOwned)//(this.transform.position.z < 0)
-            this.gameObject.tag = "MyBastille";
-
-        Debug.LogError(playerNumber);
         GameController.CollectMoneyEvent += AddMoney;
         GameController.SpendMoneyEvent += CmdSpendMoney;
+        if(isOwned)//(this.transform.position.z < 0)
+            this.gameObject.tag = "MyBastille";
+        else
+        {
+            GameController.SpendMoneyEvent -= CmdSpendMoney;
+        }
+
+        Debug.LogError(playerNumber);
+        
 
         Invoke("test",  5f);
         GameController.SetPlayer(this);
@@ -71,7 +76,9 @@ public class Bastille : NetworkBehaviour
     }
     void Update()
     {
-        _textNum.text = gameObject.tag;//playerNumber.ToString();
+        _textNum.text = GameController.Player.playerNumber.ToString(); //gameObject.tag;
+        _text.text = _gold.ToString();
+        //playerNumber.ToString();
         //Debug.LogError("Im a " + isLocalPlayer);
         //Debug.LogError("Its my " + isOwned);
     }
@@ -101,8 +108,8 @@ public class Bastille : NetworkBehaviour
         //SpendMoney(10, 1);
     }
     
-    //[Command]
-    void CmdSpendMoney(int gold, int playerNumber) 
+    [Command]
+    void CmdSpendMoney(int gold) 
     {
         if(CheckPlayer(playerNumber))
             _gold -= gold;

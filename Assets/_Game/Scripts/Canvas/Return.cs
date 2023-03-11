@@ -28,7 +28,7 @@ public class Return : MonoBehaviour
     
     public void TESTSpendMoney()
     {
-        GameController.OnSpendMoney(5, GameController.Player.playerNumber);
+        GameController.OnSpendMoney(5);
     }
 }
 

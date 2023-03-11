@@ -28,12 +28,12 @@ namespace _Game.Scripts.Services
             
         }
         
-        public delegate void SpendMoney(int gold, int playerNumber);
+        public delegate void SpendMoney(int gold);
         public static event SpendMoney SpendMoneyEvent;
 
-        public static void OnSpendMoney(int gold, int playerNumber)
+        public static void OnSpendMoney(int gold)
         {
-            SpendMoneyEvent?.Invoke(gold, playerNumber);
+            SpendMoneyEvent?.Invoke(gold);
         }
 
         public delegate void SpawnToServer(GameObject build);
