@@ -14,7 +14,7 @@ public class Bastille : NetworkBehaviour
     [SerializeField] private GameObject _plane;
 
     [SyncVar(hook = nameof(SyncNumber))]
-    [SerializeField] private int _playerNumber;//указывать в редакторе
+    [SerializeField] private int _playerNumber;
     [SerializeField] private TextMeshPro _textNum;
 
     [SerializeField] private TextMeshPro _text;
@@ -56,11 +56,14 @@ public class Bastille : NetworkBehaviour
     void Start()
     {
         _plane = GameObject.FindWithTag("Anchor");
-        //gameObject.transform.SetParent(_plane.transform);
+        gameObject.transform.SetParent(_plane.transform);
         GameController.CollectMoneyEvent += AddMoney;
         GameController.SpendMoneyEvent += CmdSpendMoney;
-        if(isOwned)//(this.transform.position.z < 0)
+        if (isOwned) //(this.transform.position.z < 0)
+        {
             this.gameObject.tag = "MyBastille";
+            GameController.SetPlayer(this);
+        }
         else
         {
             GameController.SpendMoneyEvent -= CmdSpendMoney;
@@ -70,13 +73,13 @@ public class Bastille : NetworkBehaviour
         
 
         Invoke("test",  5f);
-        GameController.SetPlayer(this);
+        
 
         //Debug.LogError(NetworkServer.);
     }
     void Update()
     {
-        _textNum.text = GameController.Player.playerNumber.ToString(); //gameObject.tag;
+        _textNum.text = playerNumber.ToString(); //gameObject.tag;
         _text.text = _gold.ToString();
         //playerNumber.ToString();
         //Debug.LogError("Im a " + isLocalPlayer);
