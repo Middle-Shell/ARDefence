@@ -20,12 +20,18 @@ public class Return : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    
+    public void RotateBack()
+    {
+        _plane.transform.rotation = Quaternion.Euler(0f,0f,0f);
+    }
     public void Rotate()
     {
-        _plane.transform.rotation = Quaternion.Euler(0f,-180f,0f);
+        _plane.transform.rotation = Quaternion.Euler(0f,180f,0f);
     }
     
+    
+        
     public void TESTSpendMoney()
     {
         GameController.OnSpendMoney(5);
