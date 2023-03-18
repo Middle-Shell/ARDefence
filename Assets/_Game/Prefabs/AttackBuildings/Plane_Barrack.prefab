@@ -578,6 +578,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -714,6 +719,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -842,6 +852,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Solder (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
         type: 3}
@@ -976,6 +991,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -1104,6 +1124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Solder (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
         type: 3}
@@ -1238,6 +1263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -1366,6 +1396,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Solder (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3001876228092603248, guid: 136e7be16a2c39d42a1c23036b7109de,
         type: 3}

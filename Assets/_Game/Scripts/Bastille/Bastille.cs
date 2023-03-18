@@ -106,13 +106,13 @@ public class Bastille : NetworkBehaviour
     [Command]//выполняется на сервере ...Call this from a client to run this function on the server
     public void test()//для тестов, потом убрать
     {
-        var inst = Instantiate(Pref, new Vector3(-0.1213229f,
-                -0.0405f,
-                -0.0672235f),
+        var inst = Instantiate(Pref, new Vector3(-0.12f,
+                -0.04f,
+                -0.06f),
             Quaternion.identity);
-        var inst2 = Instantiate(AttPref, new Vector3(0.1213229f,
-                -0.0405f,
-                -0.0672235f),
+        var inst2 = Instantiate(AttPref, new Vector3(-0.06f,
+                -0.05f, 
+                0.13f),
             Quaternion.identity);
         GameController.OnServerSpawn(inst);
         GameController.OnServerSpawn(inst2);
