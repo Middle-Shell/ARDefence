@@ -4494,7 +4494,7 @@ Transform:
   m_GameObject: {fileID: 883924144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.026, y: 0.097, z: 0.528}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1239621125}
@@ -6244,6 +6244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061146318656769289, guid: 28614c2041dbaf8408fa055f3f250426,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3061146318656769289, guid: 28614c2041dbaf8408fa055f3f250426,
         type: 3}
@@ -8230,7 +8235,7 @@ GameObject:
   - component: {fileID: 1618019900}
   m_Layer: 0
   m_Name: SpawnPointMain
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8244,7 +8249,7 @@ Transform:
   m_GameObject: {fileID: 1618019899}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.026, y: 0.097, z: -0.51}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1239621125}
@@ -9896,12 +9901,13 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 100
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 9155257356025752464, guid: 6f86cc4e631b5ff49bd74d8f4df75e7f,
+  playerPrefab: {fileID: 6775791412916850181, guid: 6408fa999c3f6de4592e43c3c924acbe,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 4283592004498416376, guid: 7bff480631af01a45b38f52c9ae2f834, type: 3}
+  - {fileID: 6737339785514771972, guid: b57948be9dcaf0745b6fce4c5b92297b, type: 3}
   timeInterpolationGui: 0
   MainSpawn: {fileID: 1618019900}
   DebilSpawn: {fileID: 883924145}

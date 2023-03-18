@@ -11,8 +11,9 @@ public class Bastille : NetworkBehaviour
     [SerializeField] private int _gold = 100;
     
     [SerializeField] private GameObject Pref;
+    [SerializeField] private GameObject AttPref;
     [SerializeField] private GameObject _plane;
-
+    [SerializeField] private GameObject _spawnPoint;
     [SyncVar(hook = nameof(SyncNumber))]
     [SerializeField] private int _playerNumber;
     [SerializeField] private TextMeshPro _textNum;
@@ -56,6 +57,8 @@ public class Bastille : NetworkBehaviour
     void Start()
     {
         _plane = GameObject.FindWithTag("Anchor");
+        _spawnPoint = GameObject.FindWithTag("SpawnPoint");
+
         gameObject.transform.SetParent(_plane.transform);
         GameController.CollectMoneyEvent += AddMoney;
         GameController.SpendMoneyEvent += CmdSpendMoney;
@@ -67,11 +70,12 @@ public class Bastille : NetworkBehaviour
         else
         {
             GameController.SpendMoneyEvent -= CmdSpendMoney;
+            this.gameObject.transform.position = _spawnPoint.transform.position;
         }
 
         Debug.LogError(playerNumber);
-        
 
+        this.gameObject.transform.localScale = new Vector3(2, 1, 2);
         Invoke("test",  5f);
         
 
@@ -106,7 +110,12 @@ public class Bastille : NetworkBehaviour
                 -0.0405f,
                 -0.0672235f),
             Quaternion.identity);
+        var inst2 = Instantiate(AttPref, new Vector3(0.1213229f,
+                -0.0405f,
+                -0.0672235f),
+            Quaternion.identity);
         GameController.OnServerSpawn(inst);
+        GameController.OnServerSpawn(inst2);
         //inst.gameObject.transform.SetParent(_plane.transform);
         //SpendMoney(10, 1);
     }
