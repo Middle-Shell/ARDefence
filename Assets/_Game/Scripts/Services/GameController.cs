@@ -6,16 +6,11 @@ namespace _Game.Scripts.Services
 {
     public class GameController
     {
-        private static Bastille _player;
-
-        public static Bastille Player
-        {
-            get => _player;
-            private set => _player = value;
-        }
+        public static Bastille Player { get; private set; }
 
         public static void SetPlayer(Bastille player)
         {
+            Debug.LogError(player.gameObject.tag);
             Player = player;
         }
 
