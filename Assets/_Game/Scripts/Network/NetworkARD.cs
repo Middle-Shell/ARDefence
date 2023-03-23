@@ -23,7 +23,7 @@ namespace Mirror
             Debug.LogError("START " + numPlayers);
             Transform start = numPlayers == 0 ? MainSpawn : DebilSpawn;
             GameObject player = Instantiate(playerPrefab, start.position, start.rotation);
-            player.GetComponent<Bastille>().playerNumber = (numPlayers == 0 ? 0 : 1);
+            player.GetComponent<Bastille>().PlayerNumber = (numPlayers == 0 ? 0 : 1);
             
             NetworkServer.AddPlayerForConnection(conn, player);
         }

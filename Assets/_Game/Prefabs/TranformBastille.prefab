@@ -68,8 +68,10 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   _gold: 100
-  Pref: {fileID: 4283592004498416376, guid: 7bff480631af01a45b38f52c9ae2f834, type: 3}
-  AttPref: {fileID: 6737339785514771972, guid: b57948be9dcaf0745b6fce4c5b92297b, type: 3}
+  _hp: 500
+  _pref: {fileID: 4283592004498416376, guid: 7bff480631af01a45b38f52c9ae2f834, type: 3}
+  _attPref: {fileID: 6737339785514771972, guid: b57948be9dcaf0745b6fce4c5b92297b,
+    type: 3}
   _plane: {fileID: 0}
   _spawnPoint: {fileID: 0}
   _playerNumber: 0
@@ -77,6 +79,8 @@ MonoBehaviour:
   _text: {fileID: 6147026744189533247}
   playerColor: {r: 1, g: 1, b: 1, a: 1}
   bast: {fileID: 8691550832741652545}
+  spawnPos: {x: 0, y: 0, z: 0}
+  spawnPosAttk: {x: 0, y: 0, z: 0}
 --- !u!114 &8114040591364556184
 MonoBehaviour:
   m_ObjectHideFlags: 0
