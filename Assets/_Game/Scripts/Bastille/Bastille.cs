@@ -111,7 +111,7 @@ public class Bastille : NetworkBehaviour
                 -0.0672235f),
             Quaternion.identity);
         var inst2 = Instantiate(AttPref, new Vector3(0.1213229f,
-                -0.0405f,
+                -0.055f,
                 -0.0672235f),
             Quaternion.identity);
         GameController.OnServerSpawn(inst);
