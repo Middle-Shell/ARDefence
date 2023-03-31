@@ -7,11 +7,7 @@ using Mirror;
 
 public class Bastille : NetworkBehaviour
 {
-    [SyncVar(hook = nameof(SyncGold))]
-    [SerializeField] private int _gold = 100;
-
-    [SyncVar(hook = nameof(SyncHp))]
-    [SerializeField] private float _hp = 500f;
+    [SerializeField] private SyncHPnGold _syncHPnGold;
     
     //delete//
     [SerializeField] private GameObject _pref;
@@ -26,56 +22,36 @@ public class Bastille : NetworkBehaviour
     
     [SerializeField] private TextMeshPro _textNum;
     [SerializeField] private TextMeshPro _text;
-    
-    //delete//
-    [SyncVar(hook = nameof(OnColorChanged))]
-    public Color playerColor = Color.white;
-    //
-    
-    //delete//
-    private Material playerMaterialClone;
-    public GameObject bast;
-    //
-    
+
     //delete//
     public Vector3 spawnPos;
     public Vector3 spawnPosAttk;
     //
 
 
-    void SyncNumber(int oldValue, int newValue)
+    void SyncNumber(int _, int newValue)
     {
         _playerNumber = newValue;
     }
-    void SyncGold(int oldValue, int newValue)
+
+    void AddMoney(int gold, int number)
     {
-        _gold = newValue;
+        if (CheckPlayer(number))
+            _syncHPnGold.SetGold(-gold);
     }
-    
-    void SyncHp(float oldValue, float newValue)
+
+    void CmdSpendMoney(int gold, int number)
     {
-        _hp = newValue;
+        if (CheckPlayer(number))
+            _syncHPnGold.SetGold(gold);
     }
-    
-    void OnColorChanged(Color oldValue, Color newValue)
+
+    void CmdGetDamage(float damage, int number)
     {
-        playerMaterialClone = new Material(bast.GetComponent<Renderer>().material);
-        playerMaterialClone.color = newValue;
-        bast.GetComponent<Renderer>().material = playerMaterialClone;
+        if (CheckPlayer(number))
+            _syncHPnGold.SetHP(damage);
     }
-    
-    public override void OnStartLocalPlayer()
-    {
-        Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-        CmdSetupPlayer(color);
-    }
-    [Command]
-    private void CmdSetupPlayer(Color col)
-    {
-        // player info sent to server, then server updates sync vars which handles it on all clients
-        playerColor = col;
-    }
-    
+
     void Start()
     {
         _plane = GameObject.FindWithTag("Anchor");
@@ -84,12 +60,10 @@ public class Bastille : NetworkBehaviour
         gameObject.transform.SetParent(_plane.transform);
         
         GameController.GetDamageEvent += CmdGetDamage;
-        
+        GameController.CollectMoneyEvent += AddMoney;
+        GameController.SpendMoneyEvent += CmdSpendMoney;
         if (isOwned) //(this.transform.position.z < 0)
         {
-            GameController.CollectMoneyEvent += AddMoney;
-            GameController.SpendMoneyEvent += CmdSpendMoney;
-            
             this.gameObject.tag = "MyBastille";
             GameController.SetPlayer(this);
             
@@ -103,35 +77,24 @@ public class Bastille : NetworkBehaviour
             this.gameObject.transform.position = _spawnPoint.transform.position;
             
             spawnPos = new Vector3(0.12f,-0.0415f,0.11f);
-            spawnPosAttk = new Vector3(-0.12f, -0.06f, 0.12f);
+            spawnPosAttk = new Vector3(-0.18f, -0.06f, 0.12f);
         }
 
         this.gameObject.transform.localScale = new Vector3(2, 1, 2);
         Invoke("test",  5f);
-        
-
-        //Debug.LogError(NetworkServer.);
     }
-    void Update()
+    /*void Update()
     {
         _textNum.text = "HP: " + _hp; //gameObject.tag;
         _text.text = _gold.ToString();
-        //playerNumber.ToString();
         //Debug.LogError("Im a " + isLocalPlayer);
         //Debug.LogError("Its my " + isOwned);
-    }
+    }*/
 
     public int PlayerNumber
     {
         get => _playerNumber;
         set => _playerNumber = value;
-    }
-
-    [Command]
-    void AddMoney(int gold)
-    {
-        _gold += gold;
-        _text.text = _gold.ToString();
     }
 
     [Command]//выполняется на сервере ...Call this from a client to run this function on the server
@@ -142,25 +105,15 @@ public class Bastille : NetworkBehaviour
         var inst2 = Instantiate(_attPref, spawnPosAttk,
             Quaternion.identity);
         GameController.OnServerSpawn(inst);
+        inst.GetComponent<OwnerController>().SetOwner(_playerNumber);
         GameController.OnServerSpawn(inst2);
+        inst2.GetComponent<OwnerController>().SetOwner(_playerNumber);
         //inst.gameObject.transform.SetParent(_plane.transform);
-        GameController.OnSpendMoney(20);
+        //Выяснить почему здесь вычитаются деньги у сервера, но не у клиента, кнопка однако работает корректно
+        //подозреваю что то с подписками на событие
+        GameController.OnSpendMoney(20, GameController.Player.PlayerNumber);
     }
     
-    [Command]
-    void CmdSpendMoney(int gold) 
-    {
-        _gold -= gold;
-        _text.text = _gold.ToString();
-    }
-
-    [Command]
-    void CmdGetDamage(float damage, int number)
-    {
-        if(CheckPlayer(number))
-            _hp -= damage;
-        _textNum.text = "HP: " + _hp;
-    }
 
     bool CheckPlayer(int number)
     {

@@ -50,14 +50,13 @@ public class PositionTracker : NetworkBehaviour
                         GetInstallPositionOnAxis(_camera.transform.position.z)),
                     _plane.transform.rotation);
                 //inst.gameObject.transform.SetParent(_plane.transform);
-                
+                inst.GetComponent<OwnerController>().SetOwner(GameController.Player.PlayerNumber);
                 GameController.OnServerSpawn(inst);
 
-                
                 SetInvisible(true);
                 yield return new WaitForSeconds(1f);
                 StartCoroutine(CheckState());
-                GameController.OnSpendMoney(100);
+                GameController.OnSpendMoney(10, GameController.Player.PlayerNumber);
                 yield break;
             }
 
