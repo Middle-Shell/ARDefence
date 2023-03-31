@@ -2,21 +2,19 @@
 using _Game.Scripts.Services;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
+using Mirror;
 
 namespace easyar
 {
-    public class Enemy : UnityEngine.MonoBehaviour
+    public class Enemy : NetworkBehaviour
     {
-        [SerializeField] private Transform _target = null;
+        private Transform _target = null;
         private NavMeshAgent _navMeshAgent;
-        
-        private byte _motheLand = 0;
-        
-        [SerializeField] private int _hp = 100;
-        [SerializeField] private float _speed = 2f;
 
-        [SerializeField] private int _idMasterBarrack;
+        [SerializeField] private int _hp = 100;
+        [SerializeField] private float _attackDamage = 10;
+
+        private int _idMasterBarrack;
 
         private void Awake()
         {
@@ -47,10 +45,12 @@ namespace easyar
             _hp -= damageValue;
             if (_hp <= 0)
             {
+                print(isOwned);
+                
                 _navMeshAgent.enabled = false;
                 StopAllCoroutines();
                 _hp = 100;
-                EventCrossroad.OnUnitDied(this.gameObject);
+                GameController.OnUnitDied(this.gameObject);
                 //Debug.Log("Died");
             }
         }
@@ -59,7 +59,12 @@ namespace easyar
         {
             while (true)
             {
-                if (Vector3.Distance(transform.position, _target.position) < 0.05f) ApplyDamage(101); //тестовое
+                if (Vector3.Distance(transform.position, _target.position) < 0.05f)
+                {
+                    GameController.OnGetDamage(_attackDamage, _target.GetComponent<Bastille>().PlayerNumber);
+                    ApplyDamage(101); //тестовое
+                }
+
                 yield return new WaitForSeconds(0.5f);
                 
                 // Debug.Log(_text.value);

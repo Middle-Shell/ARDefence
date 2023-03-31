@@ -90,7 +90,7 @@ public class Turret : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _range.radius, 1 << 6))
                 //6 слой-enemy, что бы игнорировать все столкновения кроме как с 6
             {
-                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
                 hit.collider.gameObject.GetComponent<Enemy>().ApplyDamage(damageValue);
             }
         }

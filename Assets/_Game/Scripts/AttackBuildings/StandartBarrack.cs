@@ -15,6 +15,8 @@ namespace _Game.Scripts.Enemies
         [SerializeField] private float _timeoutSpawn = 1f;
         
         private GameObject _target;
+
+        public int IdOwner { get; set; } = 0;
         
         [SerializeField] private Transform _startPosition;
         [SerializeField] private Transform _storeUnitPosition; // vector3
@@ -22,19 +24,33 @@ namespace _Game.Scripts.Enemies
         public void Start()
         {
             //EventCrossroad.UnitDiedEvent += AddSolder;
-            EventCrossroad.UnitDiedEvent += ReturnUnit;//подпись на события
+            GameController.UnitDiedEvent += ReturnUnit;//подпись на события
             
-            _target = GameObject.FindWithTag("EnemyBastille");
+            GameController.NumberOfBarracks += 1;
+            _idBarrack = GameController.NumberOfBarracks;
+            //тут дописать
+                //надо что бы барраки били чужих а не своих, а то сейчас правильно только у хоста, клиент сосёт жопу, опять
+            //и типа при постройке в позитионтрекер присваивался бы номер игрока, а пока ебануть тестовое в бастиллии 
+            if (IdOwner == 0)
+            {
+                _target = GameController.Imposter.gameObject;
+            }
+            else
+            {
+                _target = GameController.Player.gameObject;
+            }
+            
             foreach (var solder in _solders)
             {
                 solder.GetComponent<Enemy>().IdMasterBarrack = _idBarrack;
             }
+
+            
             StartCoroutine(Spawn());
         }
 
         public void AddSolder(GameObject solder)
         {
-            solder.GetComponent<Enemy>().IdMasterBarrack = _idBarrack;
             _solders.Add(solder);
             //Debug.Log("Solder added");
         }
