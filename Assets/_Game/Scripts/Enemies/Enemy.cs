@@ -6,7 +6,7 @@ using Mirror;
 
 namespace easyar
 {
-    public class Enemy : NetworkBehaviour
+    public class Enemy : MonoBehaviour
     {
         private Transform _target = null;
         private NavMeshAgent _navMeshAgent;
@@ -45,7 +45,6 @@ namespace easyar
             _hp -= damageValue;
             if (_hp <= 0)
             {
-                print(isOwned);
                 
                 _navMeshAgent.enabled = false;
                 StopAllCoroutines();

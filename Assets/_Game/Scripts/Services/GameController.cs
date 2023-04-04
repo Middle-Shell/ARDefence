@@ -13,29 +13,29 @@ namespace _Game.Scripts.Services
 
         public static void SetPlayer(Bastille player)
         {
-            Debug.LogError(player.gameObject.tag);
             Player = player;
+            Debug.LogError("Player" + Player.PlayerNumber);
         }
 
         public static void SetImposter(Bastille imposter)
         {
-            Debug.LogError(imposter.gameObject.tag);
             Imposter = imposter;
+            Debug.LogError("imposter " + imposter.PlayerNumber);
         }
 
-        public delegate void CollectMoney(int gold);
+        public delegate void CollectMoney(int gold, int number);
         public static event CollectMoney CollectMoneyEvent;
-        public static void OnCollectMoney(int gold)
+        public static void OnCollectMoney(int gold, int number)
         {
-            CollectMoneyEvent?.Invoke(gold);
+            CollectMoneyEvent?.Invoke(gold, number);
             
         }
         
-        public delegate void SpendMoney(int gold);
+        public delegate void SpendMoney(int gold, int number);
         public static event SpendMoney SpendMoneyEvent;
-        public static void OnSpendMoney(int gold)
+        public static void OnSpendMoney(int gold, int number)
         {
-            SpendMoneyEvent?.Invoke(gold);
+            SpendMoneyEvent?.Invoke(gold, number);
         }
 
         public delegate void SpawnToServer(GameObject build);

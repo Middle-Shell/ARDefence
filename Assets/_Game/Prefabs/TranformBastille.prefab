@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8988279730449325182}
   - component: {fileID: -5939283857045416177}
   - component: {fileID: 8114040591364556184}
+  - component: {fileID: -7567716751641763807}
+  - component: {fileID: 8526409975417821611}
   m_Layer: 0
   m_Name: TranformBastille
   m_TagString: EnemyBastille
@@ -67,8 +69,7 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0.1
-  _gold: 100
-  _hp: 500
+  _syncHPnGold: {fileID: 8526409975417821611}
   _pref: {fileID: 4283592004498416376, guid: 7bff480631af01a45b38f52c9ae2f834, type: 3}
   _attPref: {fileID: 6737339785514771972, guid: b57948be9dcaf0745b6fce4c5b92297b,
     type: 3}
@@ -77,8 +78,6 @@ MonoBehaviour:
   _playerNumber: 0
   _textNum: {fileID: 3179781879386073983}
   _text: {fileID: 6147026744189533247}
-  playerColor: {r: 1, g: 1, b: 1, a: 1}
-  bast: {fileID: 8691550832741652545}
   spawnPos: {x: 0, y: 0, z: 0}
   spawnPosAttk: {x: 0, y: 0, z: 0}
 --- !u!114 &8114040591364556184
@@ -110,6 +109,43 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &-7567716751641763807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775791412916850181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06d529e00484714485efc53531ad07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0.1
+  color:
+    serializedVersion: 2
+    rgba: 4278190080
+--- !u!114 &8526409975417821611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775791412916850181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df83c2e06bcce7e40bb50fc2016aafe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0.1
+  _hp: 500
+  _gold: 100
+  _hpText: {fileID: 3179781879386073983}
+  _goldText: {fileID: 6147026744189533247}
 --- !u!1001 &545099802056664933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,12 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8691550832741652545 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9155257357958659876, guid: 6f86cc4e631b5ff49bd74d8f4df75e7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 545099802056664933}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8691550832820964599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9155257356025752466, guid: 6f86cc4e631b5ff49bd74d8f4df75e7f,

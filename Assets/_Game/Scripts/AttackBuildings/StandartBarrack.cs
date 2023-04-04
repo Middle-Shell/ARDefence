@@ -10,14 +10,13 @@ namespace _Game.Scripts.Enemies
     public class StandartBarrack : MonoBehaviour, IBaseBarrack
     {
         [SerializeField] private int _idBarrack = 0;
+        [SerializeField] private OwnerController _ownerController;
         [SerializeField] private List<GameObject> _solders = new List<GameObject>();
         
         [SerializeField] private float _timeoutSpawn = 1f;
         
-        private GameObject _target;
+        [SerializeField] private GameObject _target;
 
-        public int IdOwner { get; set; } = 0;
-        
         [SerializeField] private Transform _startPosition;
         [SerializeField] private Transform _storeUnitPosition; // vector3
 
@@ -28,24 +27,35 @@ namespace _Game.Scripts.Enemies
             
             GameController.NumberOfBarracks += 1;
             _idBarrack = GameController.NumberOfBarracks;
+            
             //тут дописать
                 //надо что бы барраки били чужих а не своих, а то сейчас правильно только у хоста, клиент сосёт жопу, опять
             //и типа при постройке в позитионтрекер присваивался бы номер игрока, а пока ебануть тестовое в бастиллии 
-            if (IdOwner == 0)
-            {
-                _target = GameController.Imposter.gameObject;
-            }
-            else
-            {
-                _target = GameController.Player.gameObject;
-            }
             
             foreach (var solder in _solders)
             {
                 solder.GetComponent<Enemy>().IdMasterBarrack = _idBarrack;
             }
 
-            
+            StartCoroutine(WaitChangeOwner());
+        }
+        
+        private IEnumerator WaitChangeOwner()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(0.01f);
+                if (GetComponent<OwnerController>().GetOwner() == -1) continue;
+                StartAttack();
+                yield break;
+            }
+        }
+
+        private void StartAttack()
+        {
+            print("OwN " + _ownerController.GetOwner() + " - PlN " + GameController.Player.PlayerNumber + " ImN " + GameController.Imposter.PlayerNumber);
+            _target = _ownerController.GetOwner() == GameController.Player.PlayerNumber ? GameController.Imposter.gameObject : GameController.Player.gameObject;
+            print(_target.tag);
             StartCoroutine(Spawn());
         }
 
