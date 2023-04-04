@@ -7369,8 +7369,10 @@ struct InputSettings_tBA8835B505722A59702A08BCBA46ECF0B0274EEF  : public Scripta
 	float ___m_MultiTapDelayTime_19;
 	// System.Boolean UnityEngine.InputSystem.InputSettings::m_DisableRedundantEventsMerging
 	bool ___m_DisableRedundantEventsMerging_20;
+	// System.Boolean UnityEngine.InputSystem.InputSettings::m_ShortcutKeysConsumeInputs
+	bool ___m_ShortcutKeysConsumeInputs_21;
 	// System.Collections.Generic.HashSet`1<System.String> UnityEngine.InputSystem.InputSettings::m_FeatureFlags
-	HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178* ___m_FeatureFlags_21;
+	HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178* ___m_FeatureFlags_22;
 };
 
 // UnityEngine.InputSystem.LowLevel.InputUpdateDelegate
@@ -29670,14 +29672,14 @@ IL_0085:
 		uint64_t L_34 = V_1;
 		if ((!(((uint64_t)L_34) > ((uint64_t)((int64_t)0)))))
 		{
-			goto IL_0272;
+			goto IL_027e;
 		}
 	}
 	{
 		uint64_t L_35 = V_2;
 		if ((!(((uint64_t)L_35) > ((uint64_t)((int64_t)0)))))
 		{
-			goto IL_0272;
+			goto IL_027e;
 		}
 	}
 	{
@@ -29707,7 +29709,7 @@ IL_0085:
 
 IL_00d5:
 	{
-		// buffer = (byte*)UnsafeUtility.Malloc((long)totalEventSizeInBytes, 4, Allocator.Persistent);
+		// buffer = (byte*)UnsafeUtility.Malloc((long)totalEventSizeInBytes, InputEvent.kAlignment, Allocator.Persistent);
 		uint64_t L_40 = V_2;
 		void* L_41;
 		L_41 = UnsafeUtility_Malloc_mD7BD28D5AE7E4901B225B7DFFE2B568EE7BDC0C9(L_40, 4, 4, NULL);
@@ -29734,7 +29736,7 @@ IL_00e6:
 			V_7 = ((int64_t)0);
 			// for (var i = 0ul; i < eventCount; ++i)
 			V_10 = ((int64_t)0);
-			goto IL_01aa_1;
+			goto IL_01b6_1;
 		}
 
 IL_00ff_1:
@@ -29763,7 +29765,7 @@ IL_00ff_1:
 			uint8_t* L_54 = V_5;
 			if ((((int64_t)((int64_t)(uint64_t)L_52)) > ((int64_t)((int64_t)(intptr_t)((uint8_t*)((intptr_t)((uint8_t*)il2cpp_codegen_subtract((intptr_t)L_53, (intptr_t)L_54))/1))))))
 			{
-				goto IL_01b2_1;
+				goto IL_01be_1;
 			}
 		}
 		{
@@ -29861,57 +29863,61 @@ IL_017c_2:
 
 IL_018e_1:
 		{
-			// tailPtr += remainingSize;
+			// tailPtr += remainingSize.AlignToMultipleOf(InputEvent.kAlignment);
 			uint8_t* L_75 = V_5;
 			int32_t L_76 = V_14;
-			V_5 = ((uint8_t*)il2cpp_codegen_add((intptr_t)L_75, L_76));
-			// totalEventSize += eventSizeInBytes;
-			int64_t L_77 = V_7;
-			uint32_t L_78 = V_12;
-			V_7 = ((int64_t)il2cpp_codegen_add(L_77, ((int64_t)(uint64_t)L_78)));
+			int32_t L_77;
+			L_77 = NumberHelpers_AlignToMultipleOf_m1DD6F7938F5F4EA99168EFE5AAD4604972F2FB6D_inline(L_76, 4, NULL);
+			V_5 = ((uint8_t*)il2cpp_codegen_add((intptr_t)L_75, L_77));
+			// totalEventSize += eventSizeInBytes.AlignToMultipleOf(InputEvent.kAlignment);
+			int64_t L_78 = V_7;
+			uint32_t L_79 = V_12;
+			uint32_t L_80;
+			L_80 = NumberHelpers_AlignToMultipleOf_m44B66C972BC1F508B9022564F265D1AA6A001AAE_inline(L_79, 4, NULL);
+			V_7 = ((int64_t)il2cpp_codegen_add(L_78, ((int64_t)(uint64_t)L_80)));
 			// if (tailPtr >= endPtr)
-			uint8_t* L_79 = V_5;
-			uint8_t* L_80 = V_6;
-			if ((!(((uintptr_t)L_79) < ((uintptr_t)L_80))))
+			uint8_t* L_81 = V_5;
+			uint8_t* L_82 = V_6;
+			if ((!(((uintptr_t)L_81) < ((uintptr_t)L_82))))
 			{
-				goto IL_01b2_1;
+				goto IL_01be_1;
 			}
 		}
 		{
 			// for (var i = 0ul; i < eventCount; ++i)
-			uint64_t L_81 = V_10;
-			V_10 = ((int64_t)il2cpp_codegen_add((int64_t)L_81, ((int64_t)1)));
+			uint64_t L_83 = V_10;
+			V_10 = ((int64_t)il2cpp_codegen_add((int64_t)L_83, ((int64_t)1)));
 		}
 
-IL_01aa_1:
+IL_01b6_1:
 		{
 			// for (var i = 0ul; i < eventCount; ++i)
-			uint64_t L_82 = V_10;
-			uint64_t L_83 = V_1;
-			if ((!(((uint64_t)L_82) >= ((uint64_t)L_83))))
+			uint64_t L_84 = V_10;
+			uint64_t L_85 = V_1;
+			if ((!(((uint64_t)L_84) >= ((uint64_t)L_85))))
 			{
 				goto IL_00ff_1;
 			}
 		}
 
-IL_01b2_1:
+IL_01be_1:
 		{
 			// var deviceCount = reader.ReadInt32();
-			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_84 = V_0;
-			NullCheck(L_84);
-			int32_t L_85;
-			L_85 = VirtualFuncInvoker0< int32_t >::Invoke(15 /* System.Int32 System.IO.BinaryReader::ReadInt32() */, L_84);
-			V_8 = L_85;
+			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_86 = V_0;
+			NullCheck(L_86);
+			int32_t L_87;
+			L_87 = VirtualFuncInvoker0< int32_t >::Invoke(15 /* System.Int32 System.IO.BinaryReader::ReadInt32() */, L_86);
+			V_8 = L_87;
 			// var deviceInfos = new DeviceInfo[deviceCount];
-			int32_t L_86 = V_8;
-			DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A* L_87 = (DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A*)(DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A*)SZArrayNew(DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A_il2cpp_TypeInfo_var, (uint32_t)L_86);
-			V_9 = L_87;
+			int32_t L_88 = V_8;
+			DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A* L_89 = (DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A*)(DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A*)SZArrayNew(DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A_il2cpp_TypeInfo_var, (uint32_t)L_88);
+			V_9 = L_89;
 			// for (var i = 0; i < deviceCount; ++i)
 			V_18 = 0;
-			goto IL_0227_1;
+			goto IL_0233_1;
 		}
 
-IL_01c8_1:
+IL_01d4_1:
 		{
 			// deviceInfos[i] = new DeviceInfo
 			// {
@@ -29921,78 +29927,78 @@ IL_01c8_1:
 			//     stateSizeInBytes = reader.ReadInt32(),
 			//     m_FullLayoutJson = reader.ReadString()
 			// };
-			DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A* L_88 = V_9;
-			int32_t L_89 = V_18;
+			DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A* L_90 = V_9;
+			int32_t L_91 = V_18;
 			il2cpp_codegen_initobj((&V_19), sizeof(DeviceInfo_tAB83FF3BB4996BA68DFDF5D6255C1FEBB452AE52));
-			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_90 = V_0;
-			NullCheck(L_90);
-			int32_t L_91;
-			L_91 = VirtualFuncInvoker0< int32_t >::Invoke(15 /* System.Int32 System.IO.BinaryReader::ReadInt32() */, L_90);
-			DeviceInfo_set_deviceId_m76EE4AFBA1FA3FFACF2E017498621E66A819DEBD_inline((&V_19), L_91, NULL);
 			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_92 = V_0;
 			NullCheck(L_92);
-			String_t* L_93;
-			L_93 = VirtualFuncInvoker0< String_t* >::Invoke(22 /* System.String System.IO.BinaryReader::ReadString() */, L_92);
-			DeviceInfo_set_layout_mB0175279434FFE48B744FE2CA4800A1EF24B2D69_inline((&V_19), L_93, NULL);
+			int32_t L_93;
+			L_93 = VirtualFuncInvoker0< int32_t >::Invoke(15 /* System.Int32 System.IO.BinaryReader::ReadInt32() */, L_92);
+			DeviceInfo_set_deviceId_m76EE4AFBA1FA3FFACF2E017498621E66A819DEBD_inline((&V_19), L_93, NULL);
 			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_94 = V_0;
 			NullCheck(L_94);
-			int32_t L_95;
-			L_95 = VirtualFuncInvoker0< int32_t >::Invoke(15 /* System.Int32 System.IO.BinaryReader::ReadInt32() */, L_94);
-			FourCC_tA6CAA4015BC25A7F1053B6C512202D57A9C994ED L_96;
-			L_96 = FourCC_op_Implicit_mFEE14A923AACEE90FAAC5234C718CD1B20690F61(L_95, NULL);
-			DeviceInfo_set_stateFormat_mFC8581D56C34FFCBF8264CFD61BA12CE56755478_inline((&V_19), L_96, NULL);
-			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_97 = V_0;
-			NullCheck(L_97);
-			int32_t L_98;
-			L_98 = VirtualFuncInvoker0< int32_t >::Invoke(15 /* System.Int32 System.IO.BinaryReader::ReadInt32() */, L_97);
-			DeviceInfo_set_stateSizeInBytes_m7D7507BD0D817A86E99E3E44E216B31855ED06B3_inline((&V_19), L_98, NULL);
+			String_t* L_95;
+			L_95 = VirtualFuncInvoker0< String_t* >::Invoke(22 /* System.String System.IO.BinaryReader::ReadString() */, L_94);
+			DeviceInfo_set_layout_mB0175279434FFE48B744FE2CA4800A1EF24B2D69_inline((&V_19), L_95, NULL);
+			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_96 = V_0;
+			NullCheck(L_96);
+			int32_t L_97;
+			L_97 = VirtualFuncInvoker0< int32_t >::Invoke(15 /* System.Int32 System.IO.BinaryReader::ReadInt32() */, L_96);
+			FourCC_tA6CAA4015BC25A7F1053B6C512202D57A9C994ED L_98;
+			L_98 = FourCC_op_Implicit_mFEE14A923AACEE90FAAC5234C718CD1B20690F61(L_97, NULL);
+			DeviceInfo_set_stateFormat_mFC8581D56C34FFCBF8264CFD61BA12CE56755478_inline((&V_19), L_98, NULL);
 			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_99 = V_0;
 			NullCheck(L_99);
-			String_t* L_100;
-			L_100 = VirtualFuncInvoker0< String_t* >::Invoke(22 /* System.String System.IO.BinaryReader::ReadString() */, L_99);
-			(&V_19)->___m_FullLayoutJson_4 = L_100;
-			Il2CppCodeGenWriteBarrier((void**)(&(&V_19)->___m_FullLayoutJson_4), (void*)L_100);
-			DeviceInfo_tAB83FF3BB4996BA68DFDF5D6255C1FEBB452AE52 L_101 = V_19;
-			NullCheck(L_88);
-			(L_88)->SetAt(static_cast<il2cpp_array_size_t>(L_89), (DeviceInfo_tAB83FF3BB4996BA68DFDF5D6255C1FEBB452AE52)L_101);
+			int32_t L_100;
+			L_100 = VirtualFuncInvoker0< int32_t >::Invoke(15 /* System.Int32 System.IO.BinaryReader::ReadInt32() */, L_99);
+			DeviceInfo_set_stateSizeInBytes_m7D7507BD0D817A86E99E3E44E216B31855ED06B3_inline((&V_19), L_100, NULL);
+			BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_101 = V_0;
+			NullCheck(L_101);
+			String_t* L_102;
+			L_102 = VirtualFuncInvoker0< String_t* >::Invoke(22 /* System.String System.IO.BinaryReader::ReadString() */, L_101);
+			(&V_19)->___m_FullLayoutJson_4 = L_102;
+			Il2CppCodeGenWriteBarrier((void**)(&(&V_19)->___m_FullLayoutJson_4), (void*)L_102);
+			DeviceInfo_tAB83FF3BB4996BA68DFDF5D6255C1FEBB452AE52 L_103 = V_19;
+			NullCheck(L_90);
+			(L_90)->SetAt(static_cast<il2cpp_array_size_t>(L_91), (DeviceInfo_tAB83FF3BB4996BA68DFDF5D6255C1FEBB452AE52)L_103);
 			// for (var i = 0; i < deviceCount; ++i)
-			int32_t L_102 = V_18;
-			V_18 = ((int32_t)il2cpp_codegen_add(L_102, 1));
+			int32_t L_104 = V_18;
+			V_18 = ((int32_t)il2cpp_codegen_add(L_104, 1));
 		}
 
-IL_0227_1:
+IL_0233_1:
 		{
 			// for (var i = 0; i < deviceCount; ++i)
-			int32_t L_103 = V_18;
-			int32_t L_104 = V_8;
-			if ((((int32_t)L_103) < ((int32_t)L_104)))
+			int32_t L_105 = V_18;
+			int32_t L_106 = V_8;
+			if ((((int32_t)L_105) < ((int32_t)L_106)))
 			{
-				goto IL_01c8_1;
+				goto IL_01d4_1;
 			}
 		}
 		{
 			// m_EventBuffer = buffer;
-			uint8_t* L_105 = V_4;
-			InputEventTrace_set_m_EventBuffer_m9E277FFE218D8DB8738E10166B8685AAEBF20A56(__this, L_105, NULL);
+			uint8_t* L_107 = V_4;
+			InputEventTrace_set_m_EventBuffer_m9E277FFE218D8DB8738E10166B8685AAEBF20A56(__this, L_107, NULL);
 			// m_EventBufferHead = m_EventBuffer;
-			uint8_t* L_106;
-			L_106 = InputEventTrace_get_m_EventBuffer_mE0A429C0F9F57F7EF20002FB6DB132137739311B(__this, NULL);
-			InputEventTrace_set_m_EventBufferHead_m1D7E13093AAC343D59DC33FF9EE2656399156156(__this, L_106, NULL);
+			uint8_t* L_108;
+			L_108 = InputEventTrace_get_m_EventBuffer_mE0A429C0F9F57F7EF20002FB6DB132137739311B(__this, NULL);
+			InputEventTrace_set_m_EventBufferHead_m1D7E13093AAC343D59DC33FF9EE2656399156156(__this, L_108, NULL);
 			// m_EventBufferTail = endPtr;
-			uint8_t* L_107 = V_6;
-			InputEventTrace_set_m_EventBufferTail_mB66F5AF649362018180B0DC73A2B7B9DE24E4C7B(__this, L_107, NULL);
+			uint8_t* L_109 = V_6;
+			InputEventTrace_set_m_EventBufferTail_mB66F5AF649362018180B0DC73A2B7B9DE24E4C7B(__this, L_109, NULL);
 			// m_EventCount = (long)eventCount;
-			uint64_t L_108 = V_1;
-			__this->___m_EventCount_9 = L_108;
+			uint64_t L_110 = V_1;
+			__this->___m_EventCount_9 = L_110;
 			// m_EventSizeInBytes = totalEventSize;
-			int64_t L_109 = V_7;
-			__this->___m_EventSizeInBytes_10 = L_109;
+			int64_t L_111 = V_7;
+			__this->___m_EventSizeInBytes_10 = L_111;
 			// m_DeviceInfos = deviceInfos;
-			DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A* L_110 = V_9;
-			__this->___m_DeviceInfos_16 = L_110;
-			Il2CppCodeGenWriteBarrier((void**)(&__this->___m_DeviceInfos_16), (void*)L_110);
+			DeviceInfoU5BU5D_t83A513EC4EB7BD3AA21A9352117520BC63C34E1A* L_112 = V_9;
+			__this->___m_DeviceInfos_16 = L_112;
+			Il2CppCodeGenWriteBarrier((void**)(&__this->___m_DeviceInfos_16), (void*)L_112);
 			// }
-			goto IL_028a;
+			goto IL_0296;
 		}
 	}// end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
@@ -30000,37 +30006,37 @@ IL_0227_1:
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&RuntimeObject_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_0262;
+			goto CATCH_026e;
 		}
 		throw e;
 	}
 
-CATCH_0262:
+CATCH_026e:
 	{// begin catch(System.Object)
 		{
 			// catch
 			// if (buffer != oldBuffer)
-			uint8_t* L_111 = V_4;
-			uint8_t* L_112 = V_3;
-			if ((((intptr_t)L_111) == ((intptr_t)L_112)))
+			uint8_t* L_113 = V_4;
+			uint8_t* L_114 = V_3;
+			if ((((intptr_t)L_113) == ((intptr_t)L_114)))
 			{
-				goto IL_0270;
+				goto IL_027c;
 			}
 		}
 		{
 			// UnsafeUtility.Free(buffer, Allocator.Persistent);
-			uint8_t* L_113 = V_4;
-			UnsafeUtility_Free_mFF99F4F02FE7F735AB30D8987D6953E55A2B23E1((void*)L_113, 4, NULL);
+			uint8_t* L_115 = V_4;
+			UnsafeUtility_Free_mFF99F4F02FE7F735AB30D8987D6953E55A2B23E1((void*)L_115, 4, NULL);
 		}
 
-IL_0270:
+IL_027c:
 		{
 			// throw;
 			IL2CPP_RETHROW_MANAGED_EXCEPTION(IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));
 		}
 	}// end catch (depth: 1)
 
-IL_0272:
+IL_027e:
 	{
 		// m_EventBuffer = default;
 		InputEventTrace_set_m_EventBuffer_m9E277FFE218D8DB8738E10166B8685AAEBF20A56(__this, (uint8_t*)((uintptr_t)0), NULL);
@@ -30040,35 +30046,35 @@ IL_0272:
 		InputEventTrace_set_m_EventBufferTail_mB66F5AF649362018180B0DC73A2B7B9DE24E4C7B(__this, (uint8_t*)((uintptr_t)0), NULL);
 	}
 
-IL_028a:
+IL_0296:
 	{
 		// if (m_EventBuffer != oldBuffer && oldBuffer != null)
-		uint8_t* L_114;
-		L_114 = InputEventTrace_get_m_EventBuffer_mE0A429C0F9F57F7EF20002FB6DB132137739311B(__this, NULL);
-		uint8_t* L_115 = V_3;
-		if ((((intptr_t)L_114) == ((intptr_t)L_115)))
+		uint8_t* L_116;
+		L_116 = InputEventTrace_get_m_EventBuffer_mE0A429C0F9F57F7EF20002FB6DB132137739311B(__this, NULL);
+		uint8_t* L_117 = V_3;
+		if ((((intptr_t)L_116) == ((intptr_t)L_117)))
 		{
-			goto IL_029f;
+			goto IL_02ab;
 		}
 	}
 	{
-		uint8_t* L_116 = V_3;
-		if ((((intptr_t)L_116) == ((intptr_t)((uintptr_t)0))))
+		uint8_t* L_118 = V_3;
+		if ((((intptr_t)L_118) == ((intptr_t)((uintptr_t)0))))
 		{
-			goto IL_029f;
+			goto IL_02ab;
 		}
 	}
 	{
 		// UnsafeUtility.Free(oldBuffer, Allocator.Persistent);
-		uint8_t* L_117 = V_3;
-		UnsafeUtility_Free_mFF99F4F02FE7F735AB30D8987D6953E55A2B23E1((void*)L_117, 4, NULL);
+		uint8_t* L_119 = V_3;
+		UnsafeUtility_Free_mFF99F4F02FE7F735AB30D8987D6953E55A2B23E1((void*)L_119, 4, NULL);
 	}
 
-IL_029f:
+IL_02ab:
 	{
 		// ++m_ChangeCounter;
-		int32_t L_118 = __this->___m_ChangeCounter_1;
-		__this->___m_ChangeCounter_1 = ((int32_t)il2cpp_codegen_add(L_118, 1));
+		int32_t L_120 = __this->___m_ChangeCounter_1;
+		__this->___m_ChangeCounter_1 = ((int32_t)il2cpp_codegen_add(L_120, 1));
 		// }
 		return;
 	}
@@ -30300,7 +30306,7 @@ IL_0020:
 
 IL_0027:
 	{
-		// var newEventBuffer = (byte*)UnsafeUtility.Malloc(newBufferSize, 4, Allocator.Persistent);
+		// var newEventBuffer = (byte*)UnsafeUtility.Malloc(newBufferSize, InputEvent.kAlignment, Allocator.Persistent);
 		int64_t L_7 = ___newBufferSize0;
 		void* L_8;
 		L_8 = UnsafeUtility_Malloc_mD7BD28D5AE7E4901B225B7DFFE2B568EE7BDC0C9(L_7, 4, 4, NULL);
@@ -30370,7 +30376,7 @@ IL_0079:
 		uint32_t L_17;
 		L_17 = InputEventPtr_get_sizeInBytes_mE060F5A7176AAF8ED749DB4A3DC7976249716597((&V_1), NULL);
 		V_7 = L_17;
-		// var alignedEventSizeInBytes = eventSizeInBytes.AlignToMultipleOf(4);
+		// var alignedEventSizeInBytes = eventSizeInBytes.AlignToMultipleOf(InputEvent.kAlignment);
 		uint32_t L_18 = V_7;
 		uint32_t L_19;
 		L_19 = NumberHelpers_AlignToMultipleOf_m44B66C972BC1F508B9022564F265D1AA6A001AAE_inline(L_18, 4, NULL);
@@ -30898,7 +30904,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InputEventTrace_set_m_EventBufferTail_mB
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InputEventTrace_Allocate_mDF187B47860B3630C655626FC6745DA0CC927E9D (InputEventTrace_t1D25547AACA8FD1C1AA974F31EF9BD9478205FBD* __this, const RuntimeMethod* method) 
 {
 	{
-		// m_EventBuffer = (byte*)UnsafeUtility.Malloc(m_EventBufferSize, 4, Allocator.Persistent);
+		// m_EventBuffer = (byte*)UnsafeUtility.Malloc(m_EventBufferSize, InputEvent.kAlignment, Allocator.Persistent);
 		int64_t L_0 = __this->___m_EventBufferSize_6;
 		void* L_1;
 		L_1 = UnsafeUtility_Malloc_mD7BD28D5AE7E4901B225B7DFFE2B568EE7BDC0C9(L_0, 4, 4, NULL);
@@ -31130,7 +31136,7 @@ IL_004d:
 
 IL_0058:
 	{
-		// var bytesNeeded = inputEvent.sizeInBytes.AlignToMultipleOf(4);
+		// var bytesNeeded = inputEvent.sizeInBytes.AlignToMultipleOf(InputEvent.kAlignment);
 		uint32_t L_13;
 		L_13 = InputEventPtr_get_sizeInBytes_mE060F5A7176AAF8ED749DB4A3DC7976249716597((&___inputEvent0), NULL);
 		uint32_t L_14;
@@ -31231,7 +31237,7 @@ IL_00ba:
 		}
 	}
 	{
-		// var increment = Math.Max(m_GrowIncrementSize, bytesNeeded.AlignToMultipleOf(4));
+		// var increment = Math.Max(m_GrowIncrementSize, bytesNeeded.AlignToMultipleOf(InputEvent.kAlignment));
 		int64_t L_32 = __this->___m_GrowIncrementSize_8;
 		uint32_t L_33 = V_0;
 		uint32_t L_34;

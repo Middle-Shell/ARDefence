@@ -700,6 +700,7 @@ IL2CPP_EXTERN_C RuntimeClass* ARPlanesChangedEventArgs_t8D63E0257BF9942EF8F8C044
 IL2CPP_EXTERN_C RuntimeClass* ARPointCloudChangedEventArgs_t7DE4CA4D30D369496221061F89CC4BF84E42CC1B_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ARPointCloudMeshVisualizer_t4F8CE749071585A79C8D91A11C153DC08213C011_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ARPointCloudParticleVisualizer_t67074F1B4F383F2FBF705802F42777E3B67CBC60_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ARSession_t13374A44A01F2C6D90578F93E0F0DA2482BE3014_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ARTrackableManager_5_t1F9F85442D84B92DE0BC4C518768C0154AB69103_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ARTrackableManager_5_t2AEA0FB85E08D94EE295557C7AEDBADA317EA986_il2cpp_TypeInfo_var;
@@ -742,7 +743,6 @@ IL2CPP_EXTERN_C RuntimeClass* IEnumerator_1_t6FCFE52A04251FAED93302CB77CD89DCEEF
 IL2CPP_EXTERN_C RuntimeClass* IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_il2cpp_TypeInfo_var;
-IL2CPP_EXTERN_C RuntimeClass* IntPtr_t_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* InvalidOperationException_t5DDE4D49B7405FAAB1E4576F4715A42A3FAD4BAB_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* List_1_t05915E9237850A58106982B7FE4BC5DA4E872E73_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* List_1_t0F231C3F13EBA1FF9081BD61489D01AA3CBE59D4_il2cpp_TypeInfo_var;
@@ -1841,11 +1841,6 @@ struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_pinvoke
 };
 // Native definition for COM marshalling of System.ValueType
 struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_com
-{
-};
-
-// UnityEngine.XR.ARFoundation.ARCameraBackground/NativeApi
-struct NativeApi_t2BDC00EF4CB0E89946F6C2300585BADC31AF4E84  : public RuntimeObject
 {
 };
 
@@ -6868,12 +6863,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer_ClearRenderTarget_mABBE498
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RenderTargetIdentifier_tA528663AC6EB3911D8E91AA40F7070FA5455442B RenderTargetIdentifier_op_Implicit_m3E2366E36F14173DBEED75591978EBE1F01A1325 (int32_t ___type0, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Rendering.CommandBuffer::Blit(UnityEngine.Texture,UnityEngine.Rendering.RenderTargetIdentifier,UnityEngine.Material)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer_Blit_m067EA6B3B00F78DDF43887B565A3208164F84FC3 (CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* __this, Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* ___source0, RenderTargetIdentifier_tA528663AC6EB3911D8E91AA40F7070FA5455442B ___dest1, Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___mat2, const RuntimeMethod* method) ;
-// System.IntPtr UnityEngine.XR.ARFoundation.ARCameraBackground/NativeApi::Unity_Camera_GetTextureReleaseCallbackHandle()
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR intptr_t NativeApi_Unity_Camera_GetTextureReleaseCallbackHandle_mE47CA8055086B0B93F98C7566BFC95CF18C454FF_inline (const RuntimeMethod* method) ;
-// System.Boolean System.IntPtr::op_Inequality(System.IntPtr,System.IntPtr)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool IntPtr_op_Inequality_m90EFC9C4CAD9A33E309F2DDF98EE4E1DD253637B (intptr_t ___value10, intptr_t ___value21, const RuntimeMethod* method) ;
-// System.Void UnityEngine.Rendering.CommandBuffer::IssuePluginEvent(System.IntPtr,System.Int32)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer_IssuePluginEvent_mCA87F5D91890B22858471CD3EE0153E3FA1F1E8B (CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* __this, intptr_t ___callback0, int32_t ___eventID1, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Rendering.CommandBuffer::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer__ctor_m9445F1606331B732FCA393591F3E230714FD5FF4 (CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* __this, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Rendering.CommandBuffer::set_name(System.String)
@@ -6882,6 +6871,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer_set_name_mEC83B7FE28D6817A
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Camera_AddCommandBuffer_m2C1C3C2D93CB62D569714B3FFA694CAB9BF81A9A (Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* __this, int32_t ___evt0, CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* ___buffer1, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Camera::RemoveCommandBuffer(UnityEngine.Rendering.CameraEvent,UnityEngine.Rendering.CommandBuffer)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Camera_RemoveCommandBuffer_m7749BA282C14AA7E9E71A68E911F41D1B8429F11 (Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* __this, int32_t ___evt0, CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* ___buffer1, const RuntimeMethod* method) ;
+// System.Void UnityEngine.Rendering.CommandBuffer::IssuePluginEvent(System.IntPtr,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CommandBuffer_IssuePluginEvent_mCA87F5D91890B22858471CD3EE0153E3FA1F1E8B (CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* __this, intptr_t ___callback0, int32_t ___eventID1, const RuntimeMethod* method) ;
 // System.Collections.Generic.List`1<UnityEngine.Texture2D> UnityEngine.XR.ARFoundation.ARCameraFrameEventArgs::get_textures()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR List_1_t0F231C3F13EBA1FF9081BD61489D01AA3CBE59D4* ARCameraFrameEventArgs_get_textures_m96823876351BD11C26D78BAA01936FF751182547_inline (ARCameraFrameEventArgs_t4060608C37C2B7248AFC908876309CC36D53E0EC* __this, const RuntimeMethod* method) ;
 // System.Int32 System.Collections.Generic.List`1<UnityEngine.Texture2D>::get_Count()
@@ -9501,6 +9492,12 @@ inline Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* Component_GetComponen
 {
 	return ((  Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* (*) (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3*, const RuntimeMethod*))Component_GetComponent_TisRuntimeObject_m7181F81CAEC2CF53F5D2BC79B7425C16E1F80D33_gshared)(__this, method);
 }
+// System.Int32 UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::GetHashCode()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ARPointCloudUpdatedEventArgs_GetHashCode_m53F08CA39C23B713F1918D21E6AFD78731EACC6F (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, const RuntimeMethod* method) ;
+// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::Equals(UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___other0, const RuntimeMethod* method) ;
+// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::Equals(System.Object)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_Equals_m79BA8AC909F4E622B9396930F80B1A900DEDD217 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, RuntimeObject* ___obj0, const RuntimeMethod* method) ;
 // System.Single UnityEngine.Matrix4x4::get_Item(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Matrix4x4_get_Item_m771C2EE3A3BFFBAC9F2AD07FFCAAF6146C1BE92A (Matrix4x4_tDB70CF134A14BA38190C59AA700BCE10E2AED3E6* __this, int32_t ___index0, const RuntimeMethod* method) ;
 // System.Single UnityEngine.Vector4::Dot(UnityEngine.Vector4,UnityEngine.Vector4)
@@ -11618,13 +11615,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ARCameraBackground_ConfigureLegacyComman
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ARCameraBackground_t5E400069BEB27E2F5ECE553C3C23475FC80A1703_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4B8146FB95E4F51B29DA41EB5F6D60F8FD0ECF21);
 		s_Il2CppMethodInitialized = true;
 	}
 	Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* V_0 = NULL;
-	intptr_t V_1;
-	memset((&V_1), 0, sizeof(V_1));
 	Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* G_B3_0 = NULL;
 	{
 		// Texture texture = !material.HasProperty(k_MainTexName) ? null : material.GetTexture(k_MainTexName);
@@ -11688,30 +11682,6 @@ IL_0025:
 		L_14 = ARCameraBackground_get_material_mD444C30747216E7E7B5FF0F714EE0DF57CC93EC8(__this, NULL);
 		NullCheck(L_11);
 		CommandBuffer_Blit_m067EA6B3B00F78DDF43887B565A3208164F84FC3(L_11, L_12, L_13, L_14, NULL);
-		// var callback = NativeApi.Unity_Camera_GetTextureReleaseCallbackHandle();
-		intptr_t L_15;
-		L_15 = NativeApi_Unity_Camera_GetTextureReleaseCallbackHandle_mE47CA8055086B0B93F98C7566BFC95CF18C454FF_inline(NULL);
-		V_1 = L_15;
-		// if (callback != IntPtr.Zero)
-		intptr_t L_16 = V_1;
-		intptr_t L_17 = ((IntPtr_t_StaticFields*)il2cpp_codegen_static_fields_for(IntPtr_t_il2cpp_TypeInfo_var))->___Zero_1;
-		bool L_18;
-		L_18 = IntPtr_op_Inequality_m90EFC9C4CAD9A33E309F2DDF98EE4E1DD253637B(L_16, L_17, NULL);
-		if (!L_18)
-		{
-			goto IL_0085;
-		}
-	}
-	{
-		// commandBuffer.IssuePluginEvent(callback, 1);
-		CommandBuffer_tB56007DC84EF56296C325EC32DD12AC1E3DC91F7* L_19 = ___commandBuffer0;
-		intptr_t L_20 = V_1;
-		NullCheck(L_19);
-		CommandBuffer_IssuePluginEvent_mCA87F5D91890B22858471CD3EE0153E3FA1F1E8B(L_19, L_20, 1, NULL);
-	}
-
-IL_0085:
-	{
 		// }
 		return;
 	}
@@ -12574,29 +12544,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ARCameraBackground__cctor_mC0E4565290768
 		((ARCameraBackground_t5E400069BEB27E2F5ECE553C3C23475FC80A1703_StaticFields*)il2cpp_codegen_static_fields_for(ARCameraBackground_t5E400069BEB27E2F5ECE553C3C23475FC80A1703_il2cpp_TypeInfo_var))->___s_DefaultCameraEvents_24 = L_8;
 		Il2CppCodeGenWriteBarrier((void**)(&((ARCameraBackground_t5E400069BEB27E2F5ECE553C3C23475FC80A1703_StaticFields*)il2cpp_codegen_static_fields_for(ARCameraBackground_t5E400069BEB27E2F5ECE553C3C23475FC80A1703_il2cpp_TypeInfo_var))->___s_DefaultCameraEvents_24), (void*)L_8);
 		return;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-// System.IntPtr UnityEngine.XR.ARFoundation.ARCameraBackground/NativeApi::Unity_Camera_GetTextureReleaseCallbackHandle()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t NativeApi_Unity_Camera_GetTextureReleaseCallbackHandle_mE47CA8055086B0B93F98C7566BFC95CF18C454FF (const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		// public static IntPtr Unity_Camera_GetTextureReleaseCallbackHandle() => IntPtr.Zero;
-		intptr_t L_0 = ((IntPtr_t_StaticFields*)il2cpp_codegen_static_fields_for(IntPtr_t_il2cpp_TypeInfo_var))->___Zero_1;
-		return L_0;
 	}
 }
 #ifdef __clang__
@@ -36477,6 +36424,110 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ARPointCloudParticleVisualizer__cctor_mE
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Int32 UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::GetHashCode()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ARPointCloudUpdatedEventArgs_GetHashCode_m53F08CA39C23B713F1918D21E6AFD78731EACC6F (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, const RuntimeMethod* method) 
+{
+	{
+		// public override int GetHashCode() => 0;
+		return 0;
+	}
+}
+IL2CPP_EXTERN_C  int32_t ARPointCloudUpdatedEventArgs_GetHashCode_m53F08CA39C23B713F1918D21E6AFD78731EACC6F_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*>(__this + _offset);
+	int32_t _returnValue;
+	_returnValue = ARPointCloudUpdatedEventArgs_GetHashCode_m53F08CA39C23B713F1918D21E6AFD78731EACC6F(_thisAdjusted, method);
+	return _returnValue;
+}
+// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::Equals(System.Object)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_Equals_m79BA8AC909F4E622B9396930F80B1A900DEDD217 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, RuntimeObject* ___obj0, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// if (!(obj is ARPointCloudUpdatedEventArgs))
+		RuntimeObject* L_0 = ___obj0;
+		if (((RuntimeObject*)IsInstSealed((RuntimeObject*)L_0, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4_il2cpp_TypeInfo_var)))
+		{
+			goto IL_000a;
+		}
+	}
+	{
+		// return false;
+		return (bool)0;
+	}
+
+IL_000a:
+	{
+		// return Equals((ARPointCloudUpdatedEventArgs)obj);
+		RuntimeObject* L_1 = ___obj0;
+		bool L_2;
+		L_2 = ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4(__this, ((*(ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*)((ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*)(ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*)UnBox(L_1, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4_il2cpp_TypeInfo_var)))), NULL);
+		return L_2;
+	}
+}
+IL2CPP_EXTERN_C  bool ARPointCloudUpdatedEventArgs_Equals_m79BA8AC909F4E622B9396930F80B1A900DEDD217_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___obj0, const RuntimeMethod* method)
+{
+	ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*>(__this + _offset);
+	bool _returnValue;
+	_returnValue = ARPointCloudUpdatedEventArgs_Equals_m79BA8AC909F4E622B9396930F80B1A900DEDD217(_thisAdjusted, ___obj0, method);
+	return _returnValue;
+}
+// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::Equals(UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___other0, const RuntimeMethod* method) 
+{
+	{
+		// public bool Equals(ARPointCloudUpdatedEventArgs other) => true;
+		return (bool)1;
+	}
+}
+IL2CPP_EXTERN_C  bool ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4_AdjustorThunk (RuntimeObject* __this, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___other0, const RuntimeMethod* method)
+{
+	ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*>(__this + _offset);
+	bool _returnValue;
+	_returnValue = ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4(_thisAdjusted, ___other0, method);
+	return _returnValue;
+}
+// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::op_Equality(UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs,UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_op_Equality_m68F17CFE1A16FAB1F9ACEBBCED0346AF6B7285C2 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___lhs0, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___rhs1, const RuntimeMethod* method) 
+{
+	{
+		// public static bool operator ==(ARPointCloudUpdatedEventArgs lhs, ARPointCloudUpdatedEventArgs rhs) => lhs.Equals(rhs);
+		ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 L_0 = ___rhs1;
+		bool L_1;
+		L_1 = ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4((&___lhs0), L_0, NULL);
+		return L_1;
+	}
+}
+// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::op_Inequality(UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs,UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_op_Inequality_mADACED9475D0DACDBBE54486D047FA9E6C70B4E2 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___lhs0, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___rhs1, const RuntimeMethod* method) 
+{
+	{
+		// public static bool operator !=(ARPointCloudUpdatedEventArgs lhs, ARPointCloudUpdatedEventArgs rhs) => !lhs.Equals(rhs);
+		ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 L_0 = ___rhs1;
+		bool L_1;
+		L_1 = ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4((&___lhs0), L_0, NULL);
+		return (bool)((((int32_t)L_1) == ((int32_t)0))? 1 : 0);
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR intptr_t XRAnchor_get_nativePtr_mC0551FA7E8DB8A0DA1EAE02D9B0BFD9D47389C26_inline (XRAnchor_tDD427E66CAA09DE7B058EA76223EF7DC3880FE82* __this, const RuntimeMethod* method) 
 {
 	{
@@ -36626,20 +36677,6 @@ IL_001d:
 	{
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_1 = V_0;
 		return L_1;
-	}
-}
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR intptr_t NativeApi_Unity_Camera_GetTextureReleaseCallbackHandle_mE47CA8055086B0B93F98C7566BFC95CF18C454FF_inline (const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		// public static IntPtr Unity_Camera_GetTextureReleaseCallbackHandle() => IntPtr.Zero;
-		intptr_t L_0 = ((IntPtr_t_StaticFields*)il2cpp_codegen_static_fields_for(IntPtr_t_il2cpp_TypeInfo_var))->___Zero_1;
-		return L_0;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR List_1_t0F231C3F13EBA1FF9081BD61489D01AA3CBE59D4* ARCameraFrameEventArgs_get_textures_m96823876351BD11C26D78BAA01936FF751182547_inline (ARCameraFrameEventArgs_t4060608C37C2B7248AFC908876309CC36D53E0EC* __this, const RuntimeMethod* method) 

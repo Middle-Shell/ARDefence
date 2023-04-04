@@ -460,7 +460,6 @@ struct Provider_t0627E1D57929C5383287A5E240CFF77F6603BF42;
 // UnityEngine.XR.ARSubsystems.XRSessionSubsystem/Provider
 struct Provider_t0E03563C43D7DC05CCBFBE3C117052E76FD76AD5;
 
-IL2CPP_EXTERN_C RuntimeClass* ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ARPoseDriver_t443CDE7DCB55B1BA8CCF1E0550F874293019EF16_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ARRaycastHit_tB32B5606815B8A7DF479C00187A852F8D20E3B70_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ARRaycastManager_tD9459374F0F5BD9E2E4A8A1C665E7F33F9C2EE44_il2cpp_TypeInfo_var;
@@ -1602,18 +1601,6 @@ struct SubsystemWithProvider_3_tE0F8337476BBB744801608BD9EFE495479A39526  : publ
 	XRSessionSubsystemDescriptor_tC27BC32D3225FDB3C2114906B7917065435E3076* ___U3CsubsystemDescriptorU3Ek__BackingField_2;
 	// TProvider UnityEngine.SubsystemsImplementation.SubsystemWithProvider`3::<provider>k__BackingField
 	Provider_t0E03563C43D7DC05CCBFBE3C117052E76FD76AD5* ___U3CproviderU3Ek__BackingField_3;
-};
-
-// UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs
-struct ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 
-{
-	union
-	{
-		struct
-		{
-		};
-		uint8_t ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4__padding[1];
-	};
 };
 
 // UnityEngine.XR.ARFoundation.ARRaycastUpdatedEventArgs
@@ -4371,12 +4358,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void List_1_set_Item_m35C8C18BF5DF9A5C8867BF0
 // System.Int32 System.Collections.Generic.List`1<UnityEngine.Vector3>::get_Count()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m46EEFFA770BE665EA0CB3A5332E941DA4B3C1D37_gshared_inline (List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* __this, const RuntimeMethod* method) ;
 
-// System.Int32 UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::GetHashCode()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ARPointCloudUpdatedEventArgs_GetHashCode_m53F08CA39C23B713F1918D21E6AFD78731EACC6F (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, const RuntimeMethod* method) ;
-// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::Equals(UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___other0, const RuntimeMethod* method) ;
-// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::Equals(System.Object)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_Equals_m79BA8AC909F4E622B9396930F80B1A900DEDD217 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, RuntimeObject* ___obj0, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Events.UnityAction::.ctor(System.Object,System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131 (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* __this, RuntimeObject* ___object0, intptr_t ___method1, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Application::add_onBeforeRender(UnityEngine.Events.UnityAction)
@@ -5752,110 +5733,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Array_Clear_m50BAA3751899858B097D3FF2ED3
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Quaternion_Dot_mF9D3BE33940A47979DADA7E81650AEB356D5D12B_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___a0, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___b1, const RuntimeMethod* method) ;
 // System.Boolean UnityEngine.Quaternion::IsEqualUsingDot(System.Single)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Quaternion_IsEqualUsingDot_m9C672201C918C2D1E739F559DBE4406F95997CBD_inline (float ___dot0, const RuntimeMethod* method) ;
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-// System.Int32 UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::GetHashCode()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t ARPointCloudUpdatedEventArgs_GetHashCode_m53F08CA39C23B713F1918D21E6AFD78731EACC6F (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, const RuntimeMethod* method) 
-{
-	{
-		// public override int GetHashCode() => 0;
-		return 0;
-	}
-}
-IL2CPP_EXTERN_C  int32_t ARPointCloudUpdatedEventArgs_GetHashCode_m53F08CA39C23B713F1918D21E6AFD78731EACC6F_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
-{
-	ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* _thisAdjusted;
-	int32_t _offset = 1;
-	_thisAdjusted = reinterpret_cast<ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*>(__this + _offset);
-	int32_t _returnValue;
-	_returnValue = ARPointCloudUpdatedEventArgs_GetHashCode_m53F08CA39C23B713F1918D21E6AFD78731EACC6F(_thisAdjusted, method);
-	return _returnValue;
-}
-// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::Equals(System.Object)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_Equals_m79BA8AC909F4E622B9396930F80B1A900DEDD217 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, RuntimeObject* ___obj0, const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		// if (!(obj is ARPointCloudUpdatedEventArgs))
-		RuntimeObject* L_0 = ___obj0;
-		if (((RuntimeObject*)IsInstSealed((RuntimeObject*)L_0, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4_il2cpp_TypeInfo_var)))
-		{
-			goto IL_000a;
-		}
-	}
-	{
-		// return false;
-		return (bool)0;
-	}
-
-IL_000a:
-	{
-		// return Equals((ARPointCloudUpdatedEventArgs)obj);
-		RuntimeObject* L_1 = ___obj0;
-		bool L_2;
-		L_2 = ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4(__this, ((*(ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*)((ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*)(ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*)UnBox(L_1, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4_il2cpp_TypeInfo_var)))), NULL);
-		return L_2;
-	}
-}
-IL2CPP_EXTERN_C  bool ARPointCloudUpdatedEventArgs_Equals_m79BA8AC909F4E622B9396930F80B1A900DEDD217_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___obj0, const RuntimeMethod* method)
-{
-	ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* _thisAdjusted;
-	int32_t _offset = 1;
-	_thisAdjusted = reinterpret_cast<ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*>(__this + _offset);
-	bool _returnValue;
-	_returnValue = ARPointCloudUpdatedEventArgs_Equals_m79BA8AC909F4E622B9396930F80B1A900DEDD217(_thisAdjusted, ___obj0, method);
-	return _returnValue;
-}
-// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::Equals(UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* __this, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___other0, const RuntimeMethod* method) 
-{
-	{
-		// public bool Equals(ARPointCloudUpdatedEventArgs other) => true;
-		return (bool)1;
-	}
-}
-IL2CPP_EXTERN_C  bool ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4_AdjustorThunk (RuntimeObject* __this, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___other0, const RuntimeMethod* method)
-{
-	ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4* _thisAdjusted;
-	int32_t _offset = 1;
-	_thisAdjusted = reinterpret_cast<ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4*>(__this + _offset);
-	bool _returnValue;
-	_returnValue = ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4(_thisAdjusted, ___other0, method);
-	return _returnValue;
-}
-// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::op_Equality(UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs,UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_op_Equality_m68F17CFE1A16FAB1F9ACEBBCED0346AF6B7285C2 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___lhs0, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___rhs1, const RuntimeMethod* method) 
-{
-	{
-		// public static bool operator ==(ARPointCloudUpdatedEventArgs lhs, ARPointCloudUpdatedEventArgs rhs) => lhs.Equals(rhs);
-		ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 L_0 = ___rhs1;
-		bool L_1;
-		L_1 = ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4((&___lhs0), L_0, NULL);
-		return L_1;
-	}
-}
-// System.Boolean UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs::op_Inequality(UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs,UnityEngine.XR.ARFoundation.ARPointCloudUpdatedEventArgs)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ARPointCloudUpdatedEventArgs_op_Inequality_mADACED9475D0DACDBBE54486D047FA9E6C70B4E2 (ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___lhs0, ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 ___rhs1, const RuntimeMethod* method) 
-{
-	{
-		// public static bool operator !=(ARPointCloudUpdatedEventArgs lhs, ARPointCloudUpdatedEventArgs rhs) => !lhs.Equals(rhs);
-		ARPointCloudUpdatedEventArgs_t9AC3E8FAC2452088DE276694AFE257D823EB79B4 L_0 = ___rhs1;
-		bool L_1;
-		L_1 = ARPointCloudUpdatedEventArgs_Equals_mD3C036D4490380AE4099AAF2F4D9BA32519159F4((&___lhs0), L_0, NULL);
-		return (bool)((((int32_t)L_1) == ((int32_t)0))? 1 : 0);
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
 #ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
