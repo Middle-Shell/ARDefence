@@ -29,7 +29,7 @@ public class PositionTracker : NetworkBehaviour
         StartCoroutine(MaterialChanger());
     }
     
-    //[Command]//выполняется на сервере ...Call this from a client to run this function on the server
+   //[Command]//выполняется на сервере ...Call this from a client to run this function on the server
     IEnumerator Build()
     {
         if (_isBuildWorking) //проверка на экземпляры корутины
@@ -50,9 +50,8 @@ public class PositionTracker : NetworkBehaviour
                         GetInstallPositionOnAxis(_camera.transform.position.z)),
                     _plane.transform.rotation);
                 //inst.gameObject.transform.SetParent(_plane.transform);
-                inst.GetComponent<OwnerController>().SetOwner(GameController.Player.PlayerNumber);
                 GameController.OnServerSpawn(inst);
-
+                inst.GetComponent<OwnerController>().SetOwner(GameController.Player.PlayerNumber);
                 SetInvisible(true);
                 yield return new WaitForSeconds(1f);
                 StartCoroutine(CheckState());
