@@ -12,10 +12,11 @@ public class SpawnNetController : NetworkBehaviour
     {
         GameController.ServerSpawnEvent += ServerTransfer;
     }
-
+//поймал за говно, он обращается к сервер нетворку, а у клиента то какой сервер нетворк
+    [Command]
     private void ServerTransfer(GameObject build)
     {
         NetworkServer.Spawn(build);
-        print("Sent");
+        Debug.LogError("Sent");
     }
 }

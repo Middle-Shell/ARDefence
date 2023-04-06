@@ -30,6 +30,10 @@ public class Return : MonoBehaviour
         _plane.transform.rotation = Quaternion.Euler(0f,180f,0f);
     }
     
+    public void TestBuild()
+    {
+        GameController.Player.test();
+    }
     
         
     public void TESTSpendMoney()

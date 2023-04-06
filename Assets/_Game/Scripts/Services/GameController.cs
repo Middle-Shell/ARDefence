@@ -60,5 +60,7 @@ namespace _Game.Scripts.Services
         {
             GetDamageEvent?.Invoke(damage, number);
         }
+
+        
     }
 }
