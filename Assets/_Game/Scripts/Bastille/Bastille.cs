@@ -81,7 +81,6 @@ public class Bastille : NetworkBehaviour
         }
 
         this.gameObject.transform.localScale = new Vector3(2, 1, 2);
-        Invoke("test",  5f);
     }
     /*void Update()
     {
@@ -97,7 +96,7 @@ public class Bastille : NetworkBehaviour
         set => _playerNumber = value;
     }
 
-    [Command]//выполняется на сервере ...Call this from a client to run this function on the server
+    //[Command]//выполняется на сервере ...Call this from a client to run this function on the server
     public void test()//для тестов, потом убрать
     {
         var inst = Instantiate(_pref, spawnPos,

@@ -28,8 +28,21 @@ public class PositionTracker : NetworkBehaviour
         _camera = Camera.main.gameObject;
         StartCoroutine(MaterialChanger());
     }
+
+    //[Command]
+    private void StartBuild()
+    {
+        Debug.LogError("Building");
+        var inst = Instantiate(_selfPrefab, new Vector3(GetInstallPositionOnAxis(_camera.transform.position.x),
+                _plane.transform.position.y + 0.01f,
+                GetInstallPositionOnAxis(_camera.transform.position.z)),
+            _plane.transform.rotation);
+        //inst.gameObject.transform.SetParent(_plane.transform);
+        GameController.OnServerSpawn(inst);
+        inst.GetComponent<OwnerController>().SetOwner(GameController.Player.PlayerNumber);
+    }
     
-   //[Command]//выполняется на сервере ...Call this from a client to run this function on the server
+    //[Command]//выполняется на сервере ...Call this from a client to run this function on the server
     IEnumerator Build()
     {
         if (_isBuildWorking) //проверка на экземпляры корутины
@@ -45,13 +58,7 @@ public class PositionTracker : NetworkBehaviour
                 //то установка в эту позицию(x, 0.01, z) префаба работающего объекта, с const y = 0.01 (чуть выше plane)
             {
                 //переписать в отдельный метод
-                var inst = Instantiate(_selfPrefab, new Vector3(GetInstallPositionOnAxis(_camera.transform.position.x),
-                        _plane.transform.position.y + 0.01f,
-                        GetInstallPositionOnAxis(_camera.transform.position.z)),
-                    _plane.transform.rotation);
-                //inst.gameObject.transform.SetParent(_plane.transform);
-                GameController.OnServerSpawn(inst);
-                inst.GetComponent<OwnerController>().SetOwner(GameController.Player.PlayerNumber);
+                StartBuild();
                 SetInvisible(true);
                 yield return new WaitForSeconds(1f);
                 StartCoroutine(CheckState());
@@ -63,7 +70,9 @@ public class PositionTracker : NetworkBehaviour
             _oldPosition = this.transform.position;
         }
     }
-
+    
+    
+    
     IEnumerator MaterialChanger()
     {
         if (_isChangerWorking) //проверка на экземпляры корутины
