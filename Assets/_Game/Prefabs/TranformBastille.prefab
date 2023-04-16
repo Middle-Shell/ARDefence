@@ -80,6 +80,11 @@ MonoBehaviour:
   _text: {fileID: 6147026744189533247}
   spawnPos: {x: 0, y: 0, z: 0}
   spawnPosAttk: {x: 0, y: 0, z: 0}
+  _installPosition: {x: -0.1263, y: -0.0645, z: -0.0574}
+  _numBuild: 0
+  prefabs:
+  - {fileID: 4283592004498416376, guid: 7bff480631af01a45b38f52c9ae2f834, type: 3}
+  shootKey: 32
 --- !u!114 &8114040591364556184
 MonoBehaviour:
   m_ObjectHideFlags: 0
