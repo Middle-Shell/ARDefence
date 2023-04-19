@@ -45,9 +45,9 @@ public class PositionTracker : NetworkBehaviour
                 //то установка в эту позицию(x, 0.01, z) префаба работающего объекта, с const y = 0.01 (чуть выше plane)
             {
                 //inst.gameObject.transform.SetParent(_plane.transform);
-                GameController.OnServerSpawn(0, new Vector3(GetInstallPositionOnAxis(_camera.transform.position.x),
-                    _plane.transform.position.y + 0.01f,
-                    GetInstallPositionOnAxis(_camera.transform.position.z)), _plane.transform.rotation, GameController.Player.PlayerNumber);
+                GameController.OnServerSpawn(0, GetInstallPositionOnAxis(_camera.transform.position.x),
+                    _plane.transform.position.y + 0.01f, GetInstallPositionOnAxis(_camera.transform.position.z),
+                    GameController.Player.PlayerNumber);
 
                 SetInvisible(true);
                 yield return new WaitForSeconds(1f);
