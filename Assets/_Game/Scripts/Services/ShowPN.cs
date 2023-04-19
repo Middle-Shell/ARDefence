@@ -15,6 +15,11 @@ public class ShowPN : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameController.Player == null)
+        {
+            Debug.LogError("Player is null");
+            return;
+        }
         _PN.text = GameController.Player.PlayerNumber.ToString();
     }
 }
