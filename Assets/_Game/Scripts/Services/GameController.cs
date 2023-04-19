@@ -38,11 +38,11 @@ namespace _Game.Scripts.Services
             SpendMoneyEvent?.Invoke(gold, number);
         }
 
-        public delegate void SpawnToServer(GameObject build);
+        public delegate void SpawnToServer(int i, Vector3 installPosition, Quaternion rotation, int id);
         public static event SpawnToServer ServerSpawnEvent;
-        public static  void OnServerSpawn(GameObject build)
+        public static  void OnServerSpawn(int i, Vector3 installPosition, Quaternion rotation, int id)
         {
-            ServerSpawnEvent?.Invoke(build);
+            ServerSpawnEvent?.Invoke(i, installPosition, rotation, id);
         }
         
         public delegate void UnitDied(GameObject unit);

@@ -26,6 +26,8 @@ public class Bastille : NetworkBehaviour
     //delete//
     public Vector3 spawnPos;
     public Vector3 spawnPosAttk;
+    
+    
     //
 
 
@@ -81,6 +83,7 @@ public class Bastille : NetworkBehaviour
         }
 
         this.gameObject.transform.localScale = new Vector3(2, 1, 2);
+        //Invoke("test",  5f);
     }
     /*void Update()
     {
@@ -89,6 +92,7 @@ public class Bastille : NetworkBehaviour
         //Debug.LogError("Im a " + isLocalPlayer);
         //Debug.LogError("Its my " + isOwned);
     }*/
+    
 
     public int PlayerNumber
     {
@@ -96,22 +100,8 @@ public class Bastille : NetworkBehaviour
         set => _playerNumber = value;
     }
 
-    //[Command]//выполняется на сервере ...Call this from a client to run this function on the server
-    public void test()//для тестов, потом убрать
-    {
-        var inst = Instantiate(_pref, spawnPos,
-            Quaternion.identity);
-        var inst2 = Instantiate(_attPref, spawnPosAttk,
-            Quaternion.identity);
-        GameController.OnServerSpawn(inst);
-        inst.GetComponent<OwnerController>().SetOwner(_playerNumber);
-        GameController.OnServerSpawn(inst2);
-        inst2.GetComponent<OwnerController>().SetOwner(_playerNumber);
-        //inst.gameObject.transform.SetParent(_plane.transform);
-        //Выяснить почему здесь вычитаются деньги у сервера, но не у клиента, кнопка однако работает корректно
-        //подозреваю что то с подписками на событие
-        GameController.OnSpendMoney(20, GameController.Player.PlayerNumber);
-    }
+    //выполняется на сервере ...Call this from a client to run this function on the server
+    
     
 
     bool CheckPlayer(int number)

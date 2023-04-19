@@ -428,6 +428,7 @@ MonoBehaviour:
   - {fileID: 6967754505355316642}
   - {fileID: 4652711033962732838}
   _timeoutSpawn: 1
+  _target: {fileID: 0}
   _startPosition: {fileID: 3237926724918233904}
   _storeUnitPosition: {fileID: 2092711848301288354}
 --- !u!208 &5200916456883580815
@@ -470,7 +471,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4283592004498416376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
   m_Name: 
@@ -503,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9986db1e90efc2f4d9290f0f279310cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
   _idOwner: -1
