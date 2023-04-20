@@ -8,12 +8,12 @@ public class Miner : MonoBehaviour
     [SerializeField] private float _timeOfMining = 1f;
 
     [SerializeField] private int _minedGold = 10;
+    
     [SerializeField] private OwnerController _ownerController;
     
     void Start()
     {
-        if(transform.position.z < 0)
-            StartCoroutine(Mining());
+        StartCoroutine(Mining());
     }
 
     IEnumerator Mining()

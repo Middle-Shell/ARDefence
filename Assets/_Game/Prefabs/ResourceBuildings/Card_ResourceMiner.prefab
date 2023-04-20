@@ -244,8 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plane: {fileID: 0}
-  _selfPrefab: {fileID: 2451963958028745633, guid: bba2e9ab8cbe11441b4fd2aa035ba197,
-    type: 3}
+  _nameTypeOfPrefab: Miner
   _materials:
   - {fileID: 2100000, guid: d29beac9295a1f842a26f9c61619c79b, type: 2}
   - {fileID: 2100000, guid: 7889d03e655e97d44b6f62bea25e1e45, type: 2}

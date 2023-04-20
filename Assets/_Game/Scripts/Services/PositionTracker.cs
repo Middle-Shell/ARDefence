@@ -6,12 +6,12 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using Mirror;
 
-public class PositionTracker : NetworkBehaviour
+public class PositionTracker : MonoBehaviour
 {
     
     private float _localX, _localZ, _globalX, _globalZ;
     [SerializeField] private GameObject _plane;
-    [SerializeField] private GameObject _selfPrefab;//prefab для установки на plane
+    [SerializeField] private string _nameTypeOfPrefab;//prefab для установки на plane
     [SerializeField] private Material[] _materials;
     
     private Vector3 _oldPosition = Vector3.positiveInfinity;
@@ -45,7 +45,7 @@ public class PositionTracker : NetworkBehaviour
                 //то установка в эту позицию(x, 0.01, z) префаба работающего объекта, с const y = 0.01 (чуть выше plane)
             {
                 //inst.gameObject.transform.SetParent(_plane.transform);
-                GameController.OnServerSpawn(0, GetInstallPositionOnAxis(_camera.transform.position.x),
+                GameController.OnServerSpawn(_nameTypeOfPrefab, GetInstallPositionOnAxis(_camera.transform.position.x),
                     _plane.transform.position.y + 0.01f, GetInstallPositionOnAxis(_camera.transform.position.z),
                     GameController.Player.PlayerNumber);
 

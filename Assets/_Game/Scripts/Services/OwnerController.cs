@@ -8,11 +8,12 @@ public class OwnerController : NetworkBehaviour
     [SyncVar(hook = nameof(SyncIdOwner))]
     [SerializeField] private int _idOwner = -1;
 
-    [SerializeField] private TextMeshPro _numText;
+    [SerializeField] private TextMeshPro _numText = null;
 
     void Update()
     {
-        _numText.text = GetOwner().ToString();
+        if(_numText!= null)
+            _numText.text = GetOwner().ToString();
     }
     private void SyncIdOwner(int _, int newValue)
     {

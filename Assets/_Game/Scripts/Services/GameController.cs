@@ -38,11 +38,11 @@ namespace _Game.Scripts.Services
             SpendMoneyEvent?.Invoke(gold, number);
         }
 
-        public delegate void SpawnToServer(int i, float x,float y,float z, int id);
+        public delegate void SpawnToServer(string keyName, float x, float y, float z, int id);
         public static event SpawnToServer ServerSpawnEvent;
-        public static  void OnServerSpawn(int i, float x,float y,float z, int id)
+        public static  void OnServerSpawn(string keyName, float x, float y, float z, int id)
         {
-            ServerSpawnEvent?.Invoke(i, x, y, z, id);
+            ServerSpawnEvent?.Invoke(keyName, x, y, z, id);
         }
         
         public delegate void UnitDied(GameObject unit);
@@ -60,7 +60,5 @@ namespace _Game.Scripts.Services
         {
             GetDamageEvent?.Invoke(damage, number);
         }
-
-        
     }
 }
