@@ -40,5 +40,15 @@ public class SpawnNetController : NetworkBehaviour
         //Выяснить почему здесь вычитаются деньги у сервера, но не у клиента, кнопка однако работает корректно
         //подозреваю что то с подписками на событие
         GameController.OnSpendMoney(10, GameController.Player.PlayerNumber);
+        test2();
+    }
+    public void test2()//для тестов, потом убрать
+    {
+        print(_nameInDict + spawnPos.x + spawnPos.y + spawnPos.z + GameController.Player.PlayerNumber);
+        GameController.OnServerSpawn("Turret", 0.12f, -0.0415f, -0.11f, GameController.Player.PlayerNumber);
+        //inst.gameObject.transform.SetParent(_plane.transform);
+        //Выяснить почему здесь вычитаются деньги у сервера, но не у клиента, кнопка однако работает корректно
+        //подозреваю что то с подписками на событие
+        GameController.OnSpendMoney(10, GameController.Player.PlayerNumber);
     }
 }
