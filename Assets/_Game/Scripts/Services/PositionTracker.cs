@@ -93,22 +93,40 @@ public class PositionTracker : MonoBehaviour
                      GetComponentsInChildren<Transform>()) //берем все дочки и проверяем их на тег (тег есть тольуо у обьектов с мешом)
             {
 
-                if (child.tag == "Deff" ) 
+                if (child.tag == "Deff")
                 {
                     //упразднить проверку в отдельную функцию чек(тег)1
-                    
+
                     child.gameObject.GetComponent<MeshRenderer>().material = _materials[0];
-                    
-                    if (_globalX > 0.015 &&
-                        (_localX < DroppodRange && _localX > -DroppodRange) &&
-                        (_localZ < DroppodRange && _localZ > -DroppodRange) && 
-                        _globalZ < 0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
-                                                                                                        //всех элементов префаба, если они и так вместе
+                    if (GameController.Player.PlayerNumber == 0)
                     {
-                        
-                        child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
-                        StartCoroutine(Build());
-                        
+                        if (_globalX > 0.015 &&
+                            (_localX < DroppodRange && _localX > -DroppodRange) &&
+                            (_localZ < DroppodRange && _localZ > -DroppodRange) &&
+                            _globalZ <
+                            0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
+                            //всех элементов префаба, если они и так вместе
+                        {
+
+                            child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
+                            StartCoroutine(Build());
+
+                        }
+                    }
+                    if(GameController.Player.PlayerNumber == 1)
+                    {
+                        if (_globalX < 0.015 &&
+                            (_localX < DroppodRange && _localX > -DroppodRange) &&
+                            (_localZ < DroppodRange && _localZ > -DroppodRange) &&
+                            _globalZ >
+                            0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
+                            //всех элементов префаба, если они и так вместе
+                        {
+
+                            child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
+                            StartCoroutine(Build());
+
+                        }
                     }
                 }
                 else if (child.tag == "Attk" ) 
@@ -116,15 +134,33 @@ public class PositionTracker : MonoBehaviour
                     //упразднить проверку в отдельную функцию чек(тег)
                     
                     child.gameObject.GetComponent<MeshRenderer>().material = _materials[0];
-                    
-                    if (_globalX < 0.015 && 
-                        (_localX < DroppodRange && _localX > -DroppodRange) &&
-                        (_localZ < DroppodRange && _localZ > -DroppodRange) && 
-                        _globalZ < 0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
-                        //всех элементов префаба, если они и так вместе
+                    if (GameController.Player.PlayerNumber == 0)
                     {
-                        child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
-                        StartCoroutine(Build());
+                        if (_globalX < 0.015 &&
+                            (_localX < DroppodRange && _localX > -DroppodRange) &&
+                            (_localZ < DroppodRange && _localZ > -DroppodRange) &&
+                            _globalZ <
+                            0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
+                            //всех элементов префаба, если они и так вместе
+                        {
+                            child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
+                            StartCoroutine(Build());
+                        }
+                    }
+                    if(GameController.Player.PlayerNumber == 1)
+                    {
+                        if (_globalX > 0.015 &&
+                            (_localX < DroppodRange && _localX > -DroppodRange) &&
+                            (_localZ < DroppodRange && _localZ > -DroppodRange) &&
+                            _globalZ >
+                            0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
+                            //всех элементов префаба, если они и так вместе
+                        {
+
+                            child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
+                            StartCoroutine(Build());
+
+                        }
                     }
                 }
             }
