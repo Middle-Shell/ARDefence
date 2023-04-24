@@ -9,17 +9,25 @@ public class ShowPN : MonoBehaviour
     [SerializeField] private TextMeshPro _PN;
     void Start()
     {
-        
+        Invoke("OwnerTEXT", 2f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OwnerTEXT()
     {
         if (GameController.Player == null)
         {
             Debug.LogError("Player is null");
             return;
         }
-        _PN.text = GameController.Player.PlayerNumber.ToString();
+        
+        if (this.transform.position.z < 0 && GameController.Player.PlayerNumber == 0)
+            _PN.text = "My Bastille";
+        else if (this.transform.position.z > 0 && GameController.Player.PlayerNumber == 1)
+            _PN.text = "My Bastille";
+        else
+        {
+            _PN.text = "Enemy Bastille";
+            _PN.rectTransform.localEulerAngles = new Vector3(0f, 180f, 0f);
+        }
     }
 }

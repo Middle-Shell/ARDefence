@@ -10,8 +10,10 @@ public class RandomColor : NetworkBehaviour
     }
 
     // Color32 packs to 4 bytes
-    [SyncVar(hook = nameof(SetColor))]
-    public Color32 color = Color.black;
+    [SyncVar(hook = nameof(SetColor))] 
+    [SerializeField] private Color32 color = Color.black;
+
+    [SerializeField] private Renderer _colorChangeObject;
 
     // Unity clones the material when GetComponent<Renderer>().material is called
     // Cache it here and destroy it in OnDestroy to prevent a memory leak
@@ -19,7 +21,7 @@ public class RandomColor : NetworkBehaviour
 
     void SetColor(Color32 _, Color32 newColor)
     {
-        if (cachedMaterial == null) cachedMaterial = GetComponentInChildren<Renderer>().material;
+        if (cachedMaterial == null) cachedMaterial = _colorChangeObject.material;
         cachedMaterial.color = newColor;
     }
 }
