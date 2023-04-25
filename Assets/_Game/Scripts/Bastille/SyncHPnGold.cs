@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Mirror;
 using TMPro;
 using UnityEngine;
@@ -11,13 +12,15 @@ public class SyncHPnGold : NetworkBehaviour
     [SyncVar(hook = nameof(SyncGold))]
     [SerializeField] private int _gold = 100;
 
-    [SerializeField] private TextMeshPro _hpText;
-    [SerializeField] private TextMeshPro _goldText;
+    [SerializeField] private List<TextMeshPro> _hpText;
+    [SerializeField] private List<TextMeshPro> _goldText;
+    
 
     void Update()
     {
-        _hpText.text = _hp.ToString();
-        _goldText.text = _gold.ToString();
+        _hpText[0].text = "Armor:\n"+  + _hp;
+        _goldText[0].text = "Gold:\n" + _gold;
+        _hpText[1].text = "Armor:\n"+  + _hp;
     }
     private void SyncHP(float _, float newValue)
     {

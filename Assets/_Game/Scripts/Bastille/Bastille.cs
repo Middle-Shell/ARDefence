@@ -8,28 +8,13 @@ using Mirror;
 public class Bastille : NetworkBehaviour
 {
     [SerializeField] private SyncHPnGold _syncHPnGold;
-    
-    //delete//
-    [SerializeField] private GameObject _pref;
-    [SerializeField] private GameObject _attPref;
-    //
-    
+
     [SerializeField] private GameObject _plane;
     [SerializeField] private GameObject _spawnPoint;
     
     [SyncVar(hook = nameof(SyncNumber))]
     [SerializeField] private int _playerNumber;
     
-    [SerializeField] private TextMeshPro _textNum;
-    [SerializeField] private TextMeshPro _text;
-
-    //delete//
-    public Vector3 spawnPos;
-    public Vector3 spawnPosAttk;
-    
-    
-    //
-
 
     void SyncNumber(int _, int newValue)
     {
@@ -68,23 +53,20 @@ public class Bastille : NetworkBehaviour
         {
             this.gameObject.tag = "MyBastille";
             GameController.SetPlayer(this);
+            if (this.transform.position.z > 0 )
+                this.gameObject.transform.rotation = Quaternion.Euler(0,180,0);
         }
         else
         {
             GameController.SetImposter(this);
+            if (this.transform.position.z > 0 )
+                this.gameObject.transform.rotation = Quaternion.Euler(0,180,0);
             this.gameObject.transform.position = _spawnPoint.transform.position;
         }
+        
 
         this.gameObject.transform.localScale = new Vector3(2, 1, 2);
-        //Invoke("test",  5f);
     }
-    /*void Update()
-    {
-        _textNum.text = "HP: " + _hp; //gameObject.tag;
-        _text.text = _gold.ToString();
-        //Debug.LogError("Im a " + isLocalPlayer);
-        //Debug.LogError("Its my " + isOwned);
-    }*/
     
 
     public int PlayerNumber
@@ -92,11 +74,7 @@ public class Bastille : NetworkBehaviour
         get => _playerNumber;
         set => _playerNumber = value;
     }
-
-    //выполняется на сервере ...Call this from a client to run this function on the server
     
-    
-
     bool CheckPlayer(int number)
     {
         if (number == PlayerNumber)
