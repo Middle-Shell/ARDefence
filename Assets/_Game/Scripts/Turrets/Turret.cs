@@ -24,16 +24,17 @@ public class Turret : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other);
+        Debug.Log(other);
 
         // создать очередь на расстрел
-        if (other.tag != "Deff") { 
-        _targets.Enqueue(other.gameObject.transform);
-        if (target == null)
+        if (other.tag != "Deff")
         {
-            target = _targets.Dequeue();
+            _targets.Enqueue(other.gameObject.transform);
+            if (target == null)
+            {
+                target = _targets.Dequeue();
+            }
         }
-    }
 
 
     }
@@ -80,6 +81,7 @@ public class Turret : MonoBehaviour
         _newLookDirection = Vector3.RotateTowards(transform.forward, _targetDirection, _turretRoatationStep, 0f);
         
         transform.rotation = Quaternion.LookRotation(_newLookDirection);
+        //transform.rotation = Quaternion.Euler(0,transform.rotation.y + 90,0);
 
         _fireRateDelta -= Time.deltaTime;
         if (_fireRateDelta <= 0)
