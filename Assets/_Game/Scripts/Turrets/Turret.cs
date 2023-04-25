@@ -24,10 +24,11 @@ public class Turret : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other);
+        Debug.Log(other);
 
         // создать очередь на расстрел
         if (other.tag != "Deff") { 
+        Debug.Log("TYT");
         _targets.Enqueue(other.gameObject.transform);
         if (target == null)
         {
