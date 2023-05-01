@@ -97,7 +97,4 @@ public class Turret : MonoBehaviour
             }
         }
     }
-
-
-
 }

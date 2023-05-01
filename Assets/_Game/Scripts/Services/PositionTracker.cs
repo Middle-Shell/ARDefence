@@ -81,8 +81,6 @@ public class PositionTracker : MonoBehaviour
 
             _localX = this.transform.position.x;
             _localZ = this.transform.position.z;//локальные координаты относительно камеры
-            //print(_localX);
-            //print(_localZ);
             _globalX = _camera.transform.position.x;
             _globalZ = _camera.transform.position.z; 
             
@@ -96,7 +94,6 @@ public class PositionTracker : MonoBehaviour
                 if (child.tag == "Deff")
                 {
                     //упразднить проверку в отдельную функцию чек(тег)1
-
                     child.gameObject.GetComponent<MeshRenderer>().material = _materials[0];
                     if (GameController.Player.PlayerNumber == 0)
                     {
@@ -119,8 +116,7 @@ public class PositionTracker : MonoBehaviour
                             (_localX < DroppodRange && _localX > -DroppodRange) &&
                             (_localZ < DroppodRange && _localZ > -DroppodRange) &&
                             _globalZ >
-                            0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
-                            //всех элементов префаба, если они и так вместе
+                            0)
                         {
 
                             child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
@@ -140,8 +136,7 @@ public class PositionTracker : MonoBehaviour
                             (_localX < DroppodRange && _localX > -DroppodRange) &&
                             (_localZ < DroppodRange && _localZ > -DroppodRange) &&
                             _globalZ <
-                            0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
-                            //всех элементов префаба, если они и так вместе
+                            0)
                         {
                             child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
                             StartCoroutine(Build());
@@ -153,8 +148,7 @@ public class PositionTracker : MonoBehaviour
                             (_localX < DroppodRange && _localX > -DroppodRange) &&
                             (_localZ < DroppodRange && _localZ > -DroppodRange) &&
                             _globalZ >
-                            0) //сначала проверяем вход в радиус погрешности над камерой(дроппод) //надо перенести проверку до цикла, потому что зачем проверять координаты для
-                            //всех элементов префаба, если они и так вместе
+                            0) 
                         {
 
                             child.gameObject.GetComponent<MeshRenderer>().material = _materials[1];
@@ -193,7 +187,6 @@ public class PositionTracker : MonoBehaviour
         {
             print("no mesh");
         }
-        
     }
     private IEnumerator CheckState()
     {
